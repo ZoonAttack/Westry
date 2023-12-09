@@ -41,11 +41,11 @@
             searchButton.BackColor = Color.AntiqueWhite;
             searchButton.Font = new Font("Times New Roman", 20F, FontStyle.Regular, GraphicsUnit.Point);
             searchButton.ForeColor = SystemColors.ControlText;
-            searchButton.Location = new Point(508, 200);
+            searchButton.Location = new Point(189, 204);
             searchButton.Name = "searchButton";
             searchButton.Size = new Size(116, 51);
             searchButton.TabIndex = 9;
-            searchButton.Text = "Search";
+            searchButton.Text = "بحث";
             searchButton.UseVisualStyleBackColor = false;
             searchButton.Click += searchButton_Click;
             // 
@@ -56,6 +56,7 @@
             phoneBox.Size = new Size(154, 23);
             phoneBox.TabIndex = 8;
             phoneBox.TextChanged += phoneBox_TextChanged;
+            phoneBox.KeyPress += phoneBox_KeyPress;
             // 
             // nameBox
             // 
@@ -64,27 +65,28 @@
             nameBox.Size = new Size(154, 23);
             nameBox.TabIndex = 7;
             nameBox.TextChanged += nameBox_TextChanged;
+            nameBox.KeyPress += nameBox_KeyPress;
             // 
             // phoneLabel
             // 
             phoneLabel.AutoSize = true;
             phoneLabel.Font = new Font("Times New Roman", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            phoneLabel.Location = new Point(179, 239);
+            phoneLabel.Location = new Point(508, 239);
             phoneLabel.Name = "phoneLabel";
-            phoneLabel.Size = new Size(90, 31);
+            phoneLabel.Size = new Size(107, 31);
             phoneLabel.TabIndex = 6;
-            phoneLabel.Text = "Phone ";
+            phoneLabel.Text = "رقم الهاتف";
             phoneLabel.Click += phoneLabel_Click;
             // 
             // nameLabel
             // 
             nameLabel.AutoSize = true;
             nameLabel.Font = new Font("Times New Roman", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            nameLabel.Location = new Point(179, 180);
+            nameLabel.Location = new Point(510, 188);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(129, 31);
+            nameLabel.Size = new Size(105, 31);
             nameLabel.TabIndex = 5;
-            nameLabel.Text = "User name";
+            nameLabel.Text = "اسم العميل";
             nameLabel.Click += nameLabel_Click;
             // 
             // newUserButton
@@ -92,11 +94,11 @@
             newUserButton.BackColor = Color.AntiqueWhite;
             newUserButton.Font = new Font("Times New Roman", 20F, FontStyle.Regular, GraphicsUnit.Point);
             newUserButton.ForeColor = SystemColors.ControlText;
-            newUserButton.Location = new Point(339, 293);
+            newUserButton.Location = new Point(655, 364);
             newUserButton.Name = "newUserButton";
-            newUserButton.Size = new Size(133, 51);
+            newUserButton.Size = new Size(133, 74);
             newUserButton.TabIndex = 10;
-            newUserButton.Text = "New User";
+            newUserButton.Text = "تسجيل عميل جديد";
             newUserButton.UseVisualStyleBackColor = false;
             newUserButton.Click += newUserButton_Click;
             // 
@@ -113,7 +115,7 @@
             Controls.Add(phoneLabel);
             Controls.Add(nameLabel);
             Name = "cashierPage";
-            Text = "cashierPage";
+            Text = "Cashier Page";
             ResumeLayout(false);
             PerformLayout();
         }

@@ -40,11 +40,11 @@
             addButton.BackColor = Color.AntiqueWhite;
             addButton.Font = new Font("Times New Roman", 20F, FontStyle.Regular, GraphicsUnit.Point);
             addButton.ForeColor = SystemColors.ControlText;
-            addButton.Location = new Point(503, 181);
+            addButton.Location = new Point(188, 182);
             addButton.Name = "addButton";
             addButton.Size = new Size(116, 51);
             addButton.TabIndex = 9;
-            addButton.Text = "Add";
+            addButton.Text = "تسجيل";
             addButton.UseVisualStyleBackColor = false;
             addButton.Click += addButton_Click;
             // 
@@ -68,22 +68,22 @@
             // 
             passwordLabel.AutoSize = true;
             passwordLabel.Font = new Font("Times New Roman", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            passwordLabel.Location = new Point(177, 221);
+            passwordLabel.Location = new Point(487, 221);
             passwordLabel.Name = "passwordLabel";
-            passwordLabel.Size = new Size(117, 31);
+            passwordLabel.Size = new Size(120, 31);
             passwordLabel.TabIndex = 6;
-            passwordLabel.Text = "Password";
+            passwordLabel.Text = "كلمة المرور";
             passwordLabel.Click += passwordLabel_Click;
             // 
             // nameLabel
             // 
             nameLabel.AutoSize = true;
             nameLabel.Font = new Font("Times New Roman", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            nameLabel.Location = new Point(177, 162);
+            nameLabel.Location = new Point(487, 162);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(129, 31);
+            nameLabel.Size = new Size(58, 31);
             nameLabel.TabIndex = 5;
-            nameLabel.Text = "User name";
+            nameLabel.Text = "الاسم";
             nameLabel.Click += nameLabel_Click;
             // 
             // AddCashierPage

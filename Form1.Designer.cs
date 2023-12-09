@@ -39,22 +39,22 @@
             // 
             nameLabel.AutoSize = true;
             nameLabel.Font = new Font("Times New Roman", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            nameLabel.Location = new Point(205, 148);
+            nameLabel.Location = new Point(536, 156);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(129, 31);
+            nameLabel.Size = new Size(126, 31);
             nameLabel.TabIndex = 0;
-            nameLabel.Text = "User name";
+            nameLabel.Text = "اسم المستخدم";
             nameLabel.Click += nameLabel_Click;
             // 
             // passwordLabel
             // 
             passwordLabel.AutoSize = true;
             passwordLabel.Font = new Font("Times New Roman", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            passwordLabel.Location = new Point(205, 207);
+            passwordLabel.Location = new Point(536, 207);
             passwordLabel.Name = "passwordLabel";
-            passwordLabel.Size = new Size(117, 31);
+            passwordLabel.Size = new Size(120, 31);
             passwordLabel.TabIndex = 1;
-            passwordLabel.Text = "Password";
+            passwordLabel.Text = "كلمة المرور";
             passwordLabel.Click += passwordLabel_Click;
             // 
             // nameBox
@@ -71,6 +71,7 @@
             passwordBox.Name = "passwordBox";
             passwordBox.Size = new Size(154, 23);
             passwordBox.TabIndex = 3;
+            passwordBox.UseSystemPasswordChar = true;
             passwordBox.TextChanged += passwordBox_TextChanged;
             // 
             // loginButton
@@ -78,11 +79,11 @@
             loginButton.BackColor = Color.AntiqueWhite;
             loginButton.Font = new Font("Times New Roman", 20F, FontStyle.Regular, GraphicsUnit.Point);
             loginButton.ForeColor = SystemColors.ControlText;
-            loginButton.Location = new Point(531, 167);
+            loginButton.Location = new Point(178, 167);
             loginButton.Name = "loginButton";
-            loginButton.Size = new Size(116, 51);
+            loginButton.Size = new Size(155, 51);
             loginButton.TabIndex = 4;
-            loginButton.Text = "Log in";
+            loginButton.Text = "تسجيل الدخول";
             loginButton.UseVisualStyleBackColor = false;
             loginButton.Click += loginButton_Click;
             // 

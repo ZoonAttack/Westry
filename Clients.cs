@@ -15,11 +15,7 @@ namespace Westry
         public Clients()
         {
             InitializeComponent();
-        }
-
-        private void clientsInfo_TextChanged(object sender, EventArgs e)
-        {
-
+            ClientsDataGridView.ReadOnly = true;
         }
     }
 }
