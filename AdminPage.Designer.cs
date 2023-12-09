@@ -28,34 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            cashiersInfo = new TextBox();
             addCashierButton = new Button();
             deleteCashierButton = new Button();
             viewClientsButton = new Button();
             viewDailyButton = new Button();
+            cashierInfoDataGridView = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)cashierInfoDataGridView).BeginInit();
             SuspendLayout();
-            // 
-            // cashiersInfo
-            // 
-            cashiersInfo.BackColor = SystemColors.Window;
-            cashiersInfo.Font = new Font("Times New Roman", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            cashiersInfo.Location = new Point(59, 12);
-            cashiersInfo.Multiline = true;
-            cashiersInfo.Name = "cashiersInfo";
-            cashiersInfo.ReadOnly = true;
-            cashiersInfo.Size = new Size(652, 155);
-            cashiersInfo.TabIndex = 0;
-            cashiersInfo.TextChanged += cashiersInfo_TextChanged;
             // 
             // addCashierButton
             // 
             addCashierButton.BackColor = Color.AntiqueWhite;
             addCashierButton.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            addCashierButton.Location = new Point(71, 205);
+            addCashierButton.Location = new Point(71, 345);
             addCashierButton.Name = "addCashierButton";
             addCashierButton.Size = new Size(146, 79);
             addCashierButton.TabIndex = 1;
-            addCashierButton.Text = "Add Cashier";
+            addCashierButton.Text = "تسجيل كاشير جديد";
             addCashierButton.UseVisualStyleBackColor = false;
             addCashierButton.Click += addCashierButton_Click;
             // 
@@ -63,11 +52,11 @@
             // 
             deleteCashierButton.BackColor = Color.AntiqueWhite;
             deleteCashierButton.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            deleteCashierButton.Location = new Point(565, 205);
+            deleteCashierButton.Location = new Point(565, 345);
             deleteCashierButton.Name = "deleteCashierButton";
             deleteCashierButton.Size = new Size(146, 79);
             deleteCashierButton.TabIndex = 2;
-            deleteCashierButton.Text = "Delete Cashier";
+            deleteCashierButton.Text = "حذف كاشير";
             deleteCashierButton.UseVisualStyleBackColor = false;
             deleteCashierButton.Click += deleteCashierButton_Click;
             // 
@@ -75,11 +64,11 @@
             // 
             viewClientsButton.BackColor = Color.AntiqueWhite;
             viewClientsButton.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            viewClientsButton.Location = new Point(71, 359);
+            viewClientsButton.Location = new Point(71, 449);
             viewClientsButton.Name = "viewClientsButton";
             viewClientsButton.Size = new Size(146, 79);
             viewClientsButton.TabIndex = 3;
-            viewClientsButton.Text = "View Clients data";
+            viewClientsButton.Text = "بيانات العملاء";
             viewClientsButton.UseVisualStyleBackColor = false;
             viewClientsButton.Click += viewClientsButton_Click;
             // 
@@ -87,37 +76,45 @@
             // 
             viewDailyButton.BackColor = Color.AntiqueWhite;
             viewDailyButton.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            viewDailyButton.Location = new Point(565, 359);
+            viewDailyButton.Location = new Point(565, 449);
             viewDailyButton.Name = "viewDailyButton";
             viewDailyButton.Size = new Size(146, 79);
             viewDailyButton.TabIndex = 4;
-            viewDailyButton.Text = "View Daily log";
+            viewDailyButton.Text = "سجل الطلبات اليومي";
             viewDailyButton.UseVisualStyleBackColor = false;
             viewDailyButton.Click += viewDailyButton_Click;
+            // 
+            // cashierInfoDataGridView
+            // 
+            cashierInfoDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            cashierInfoDataGridView.Location = new Point(71, 12);
+            cashierInfoDataGridView.Name = "cashierInfoDataGridView";
+            cashierInfoDataGridView.RowTemplate.Height = 25;
+            cashierInfoDataGridView.Size = new Size(640, 303);
+            cashierInfoDataGridView.TabIndex = 5;
             // 
             // AdminPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AliceBlue;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 540);
+            Controls.Add(cashierInfoDataGridView);
             Controls.Add(viewDailyButton);
             Controls.Add(viewClientsButton);
             Controls.Add(deleteCashierButton);
             Controls.Add(addCashierButton);
-            Controls.Add(cashiersInfo);
             Name = "AdminPage";
             Text = "AdminPage";
+            ((System.ComponentModel.ISupportInitialize)cashierInfoDataGridView).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private TextBox cashiersInfo;
         private Button addCashierButton;
         private Button deleteCashierButton;
         private Button viewClientsButton;
         private Button viewDailyButton;
+        private DataGridView cashierInfoDataGridView;
     }
 }

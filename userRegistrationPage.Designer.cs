@@ -34,9 +34,9 @@
             phoneLabel = new Label();
             nameLabel = new Label();
             mealsBox = new GroupBox();
-            oneMealRadioButton = new RadioButton();
-            twoMealRadioButton = new RadioButton();
             threeMealRadioButton = new RadioButton();
+            twoMealRadioButton = new RadioButton();
+            oneMealRadioButton = new RadioButton();
             mealsBox.SuspendLayout();
             SuspendLayout();
             // 
@@ -45,11 +45,11 @@
             registerButton.BackColor = Color.AntiqueWhite;
             registerButton.Font = new Font("Times New Roman", 20F, FontStyle.Regular, GraphicsUnit.Point);
             registerButton.ForeColor = SystemColors.ControlText;
-            registerButton.Location = new Point(338, 256);
+            registerButton.Location = new Point(328, 256);
             registerButton.Name = "registerButton";
-            registerButton.Size = new Size(133, 51);
+            registerButton.Size = new Size(154, 66);
             registerButton.TabIndex = 16;
-            registerButton.Text = "Register";
+            registerButton.Text = "تسجيل العميل";
             registerButton.UseVisualStyleBackColor = false;
             registerButton.Click += registerButton_Click;
             // 
@@ -60,6 +60,7 @@
             phoneBox.Size = new Size(154, 23);
             phoneBox.TabIndex = 14;
             phoneBox.TextChanged += phoneBox_TextChanged;
+            phoneBox.KeyPress += phoneBox_KeyPress;
             // 
             // nameBox
             // 
@@ -68,27 +69,28 @@
             nameBox.Size = new Size(154, 23);
             nameBox.TabIndex = 13;
             nameBox.TextChanged += nameBox_TextChanged;
+            nameBox.KeyPress += nameBox_KeyPress;
             // 
             // phoneLabel
             // 
             phoneLabel.AutoSize = true;
             phoneLabel.Font = new Font("Times New Roman", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            phoneLabel.Location = new Point(178, 202);
+            phoneLabel.Location = new Point(488, 202);
             phoneLabel.Name = "phoneLabel";
-            phoneLabel.Size = new Size(90, 31);
+            phoneLabel.Size = new Size(107, 31);
             phoneLabel.TabIndex = 12;
-            phoneLabel.Text = "Phone ";
+            phoneLabel.Text = "رقم الهاتف";
             phoneLabel.Click += phoneLabel_Click;
             // 
             // nameLabel
             // 
             nameLabel.AutoSize = true;
             nameLabel.Font = new Font("Times New Roman", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            nameLabel.Location = new Point(178, 143);
+            nameLabel.Location = new Point(488, 143);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(129, 31);
+            nameLabel.Size = new Size(105, 31);
             nameLabel.TabIndex = 11;
-            nameLabel.Text = "User name";
+            nameLabel.Text = "اسم العميل";
             nameLabel.Click += nameLabel_Click;
             // 
             // mealsBox
@@ -98,49 +100,49 @@
             mealsBox.Controls.Add(oneMealRadioButton);
             mealsBox.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             mealsBox.ForeColor = SystemColors.ControlText;
-            mealsBox.Location = new Point(529, 143);
+            mealsBox.Location = new Point(97, 126);
             mealsBox.Name = "mealsBox";
             mealsBox.Size = new Size(200, 117);
             mealsBox.TabIndex = 17;
             mealsBox.TabStop = false;
-            mealsBox.Text = "Meal types";
+            mealsBox.Text = "نوع الاشتراك";
             mealsBox.Enter += mealsBox_Enter;
-            // 
-            // oneMealRadioButton
-            // 
-            oneMealRadioButton.AutoSize = true;
-            oneMealRadioButton.Location = new Point(6, 19);
-            oneMealRadioButton.Name = "oneMealRadioButton";
-            oneMealRadioButton.Size = new Size(78, 25);
-            oneMealRadioButton.TabIndex = 0;
-            oneMealRadioButton.TabStop = true;
-            oneMealRadioButton.Text = "1 Meal";
-            oneMealRadioButton.UseVisualStyleBackColor = true;
-            oneMealRadioButton.CheckedChanged += oneMealRadioButton_CheckedChanged;
-            // 
-            // twoMealRadioButton
-            // 
-            twoMealRadioButton.AutoSize = true;
-            twoMealRadioButton.Location = new Point(6, 50);
-            twoMealRadioButton.Name = "twoMealRadioButton";
-            twoMealRadioButton.Size = new Size(86, 25);
-            twoMealRadioButton.TabIndex = 1;
-            twoMealRadioButton.TabStop = true;
-            twoMealRadioButton.Text = "2 Meals";
-            twoMealRadioButton.UseVisualStyleBackColor = true;
-            twoMealRadioButton.CheckedChanged += twoMealRadioButton_CheckedChanged;
             // 
             // threeMealRadioButton
             // 
             threeMealRadioButton.AutoSize = true;
-            threeMealRadioButton.Location = new Point(6, 86);
+            threeMealRadioButton.Location = new Point(51, 81);
             threeMealRadioButton.Name = "threeMealRadioButton";
-            threeMealRadioButton.Size = new Size(86, 25);
+            threeMealRadioButton.Size = new Size(143, 25);
             threeMealRadioButton.TabIndex = 2;
             threeMealRadioButton.TabStop = true;
-            threeMealRadioButton.Text = "3 Meals";
+            threeMealRadioButton.Text = "نظام الثلاث وجبات";
             threeMealRadioButton.UseVisualStyleBackColor = true;
             threeMealRadioButton.CheckedChanged += threeMealRadioButton_CheckedChanged;
+            // 
+            // twoMealRadioButton
+            // 
+            twoMealRadioButton.AutoSize = true;
+            twoMealRadioButton.Location = new Point(51, 50);
+            twoMealRadioButton.Name = "twoMealRadioButton";
+            twoMealRadioButton.Size = new Size(110, 25);
+            twoMealRadioButton.TabIndex = 1;
+            twoMealRadioButton.TabStop = true;
+            twoMealRadioButton.Text = "نظام الوجبتين";
+            twoMealRadioButton.UseVisualStyleBackColor = true;
+            twoMealRadioButton.CheckedChanged += twoMealRadioButton_CheckedChanged;
+            // 
+            // oneMealRadioButton
+            // 
+            oneMealRadioButton.AutoSize = true;
+            oneMealRadioButton.Location = new Point(51, 19);
+            oneMealRadioButton.Name = "oneMealRadioButton";
+            oneMealRadioButton.Size = new Size(143, 25);
+            oneMealRadioButton.TabIndex = 0;
+            oneMealRadioButton.TabStop = true;
+            oneMealRadioButton.Text = "نظام الوجبة الواحدة";
+            oneMealRadioButton.UseVisualStyleBackColor = true;
+            oneMealRadioButton.CheckedChanged += oneMealRadioButton_CheckedChanged;
             // 
             // userRegistrationPage
             // 

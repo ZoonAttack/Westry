@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             pdfButton = new Button();
-            logBox = new TextBox();
+            LogDataGridView = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)LogDataGridView).BeginInit();
             SuspendLayout();
             // 
             // pdfButton
             // 
             pdfButton.BackColor = Color.AntiqueWhite;
             pdfButton.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            pdfButton.Location = new Point(331, 242);
+            pdfButton.Location = new Point(316, 573);
             pdfButton.Name = "pdfButton";
             pdfButton.Size = new Size(146, 79);
             pdfButton.TabIndex = 8;
@@ -44,35 +45,33 @@
             pdfButton.UseVisualStyleBackColor = false;
             pdfButton.Click += pdfButton_Click;
             // 
-            // logBox
+            // LogDataGridView
             // 
-            logBox.BackColor = SystemColors.Window;
-            logBox.Font = new Font("Times New Roman", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            logBox.Location = new Point(74, 12);
-            logBox.Multiline = true;
-            logBox.Name = "logBox";
-            logBox.ReadOnly = true;
-            logBox.Size = new Size(652, 155);
-            logBox.TabIndex = 5;
-            logBox.TextChanged += logBox_TextChanged;
+            LogDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            LogDataGridView.Location = new Point(12, 12);
+            LogDataGridView.Name = "LogDataGridView";
+            LogDataGridView.RowTemplate.Height = 25;
+            LogDataGridView.Size = new Size(776, 555);
+            LogDataGridView.TabIndex = 9;
             // 
             // Log
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = Color.AliceBlue;
+            ClientSize = new Size(800, 664);
+            Controls.Add(LogDataGridView);
             Controls.Add(pdfButton);
-            Controls.Add(logBox);
             Name = "Log";
             Text = "Log";
             Load += Log_Load;
+            ((System.ComponentModel.ISupportInitialize)LogDataGridView).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private Button pdfButton;
-        private TextBox logBox;
+        private DataGridView LogDataGridView;
     }
 }

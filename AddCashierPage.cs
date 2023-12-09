@@ -20,6 +20,13 @@ namespace Westry
         private void addButton_Click(object sender, EventArgs e)
         {
 
+            if (nameBox.Text == "" || passwordBox.Text == "")
+            {
+                Console.Beep(500, 500);
+                MessageBox.Show("You cannot leave name or password fields empty");
+            }
+            //TO DO: Add Cashir name and password to the database
+
         }
 
         private void nameBox_TextChanged(object sender, EventArgs e)

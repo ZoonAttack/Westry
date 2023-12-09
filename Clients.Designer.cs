@@ -28,36 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            clientsInfo = new TextBox();
+            ClientsDataGridView = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)ClientsDataGridView).BeginInit();
             SuspendLayout();
             // 
-            // clientsInfo
+            // ClientsDataGridView
             // 
-            clientsInfo.BackColor = SystemColors.Window;
-            clientsInfo.Font = new Font("Times New Roman", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            clientsInfo.Location = new Point(74, 12);
-            clientsInfo.Multiline = true;
-            clientsInfo.Name = "clientsInfo";
-            clientsInfo.ReadOnly = true;
-            clientsInfo.Size = new Size(652, 155);
-            clientsInfo.TabIndex = 5;
-            clientsInfo.TextChanged += clientsInfo_TextChanged;
+            ClientsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            ClientsDataGridView.Location = new Point(12, 12);
+            ClientsDataGridView.Name = "ClientsDataGridView";
+            ClientsDataGridView.RowTemplate.Height = 25;
+            ClientsDataGridView.Size = new Size(580, 660);
+            ClientsDataGridView.TabIndex = 0;
             // 
             // Clients
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AliceBlue;
-            ClientSize = new Size(800, 450);
-            Controls.Add(clientsInfo);
+            ClientSize = new Size(604, 684);
+            Controls.Add(ClientsDataGridView);
             Name = "Clients";
             Text = "Clients";
+            ((System.ComponentModel.ISupportInitialize)ClientsDataGridView).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private TextBox clientsInfo;
+        private DataGridView ClientsDataGridView;
     }
 }

@@ -15,19 +15,16 @@ namespace Westry
         public Log()
         {
             InitializeComponent();
+            LogDataGridView.ReadOnly = true;
         }
 
         private void pdfButton_Click(object sender, EventArgs e)
         {
+            //TO DO: print pdf *itextsharp ?
 
         }
 
         private void Log_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void logBox_TextChanged(object sender, EventArgs e)
         {
 
         }
