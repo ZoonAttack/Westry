@@ -30,7 +30,8 @@ namespace Westry
 		{
 			customer = FoundCustomer;
 			db = new DevDbContext();
-
+			subscriptionType = FoundCustomer.MealId;
+			
 			InitializeComponent();
 			ManageComboboxes(subscriptionType);
 			ShowData();
@@ -55,12 +56,13 @@ namespace Westry
 
 		private void ManageComboboxes(int? subtype)
 		{
+			
 			if (subtype == 1)
 			{
 				LaunchComboBox.Visible = false; DinnerComboBox.Visible = false;
 				launchRemLabel.Visible = false; dinnerRemLabel.Visible = false;
 			}
-			else if (subtype == 2) { DinnerComboBox.Visible = false; dinnerRemLabel.Visible = false; }
+			else if (subtype == 2) {DinnerComboBox.Visible = false; dinnerRemLabel.Visible = false; }
 		}
 
 		private void BreakfastComboBox_SelectedIndexChanged(object sender, EventArgs e)
