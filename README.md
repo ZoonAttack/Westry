@@ -72,3 +72,27 @@ and adjust to be like this
 
 # Finally
 Then after all of this the connection string should be the same for all of us.
+
+# More Information
+
+Notice that you have to create a record in Meals table before creating a Customers record or MealsLog record
+
+Example on every table
+
+Admin Table
+
+![image](https://github.com/ZoonAttack/Westry/assets/62998842/735d5828-934a-4a74-bd4f-ace6be0c49bf)
+
+Cashier Table
+
+![image](https://github.com/ZoonAttack/Westry/assets/62998842/d4b4c820-7a31-49f9-9275-49ceebf03201)
+
+Customer Table
+
+![image](https://github.com/ZoonAttack/Westry/assets/62998842/c736a4ce-df61-4b6f-9ae9-25532864d2b4)
+
+Notice that the counters changed becasue IT IS WORKING
+
+Meals Table
+
+![image](https://github.com/ZoonAttack/Westry/assets/62998842/ee30f7c1-5f15-4cd7-92d8-b812d866db58)
