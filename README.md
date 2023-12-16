@@ -27,7 +27,8 @@ Right click on the "cashier_id" and Set Primary key
 # Meals Table
 Right click on the "meal_id" and Set Primary key
 
-![image](https://github.com/ZoonAttack/Westry/assets/62998842/c09f9a70-c44e-472f-a2eb-3a8b0f6ba1f3)
+![image](https://github.com/ZoonAttack/Westry/assets/62998842/53a043b0-abc1-4432-bcda-1d60af025e08)
+
 
 
 
