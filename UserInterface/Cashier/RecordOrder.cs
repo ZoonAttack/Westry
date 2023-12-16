@@ -148,11 +148,19 @@ namespace Westry
 				{
 					customer.DinnerCounter--;
 				}
-				db.Update(customer);
-				db.SaveChanges();
-
-				MessageBox.Show("تم تسجيل الطلب بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				this.Close();
+				try
+				{
+					db.Update(customer);
+					db.SaveChanges();
+					MessageBox.Show("تم تسجيل الطلب بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					this.Close();
+				}
+				catch
+				{
+					MessageBox.Show("حدث خطأ ما", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+				
+				
 			}
 		}
 
