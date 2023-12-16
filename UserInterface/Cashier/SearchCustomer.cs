@@ -47,7 +47,10 @@ namespace Westry
 						DialogResult value = MessageBox.Show("العميل لم يعد لديه وجبات متبقيه\nهل تريد تجديد الاشتراك؟", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 						if (value == DialogResult.OK)
 						{
-							//TODO: finished registeration first and the comeback here
+							RegsisterNewClient form = new RegsisterNewClient(foundCustomer);
+							form.Show();
+							Hide();
+							Close();
 						}
 					}
 					else
@@ -92,7 +95,7 @@ namespace Westry
 
 		private void newUserButton_Click(object sender, EventArgs e)
 		{
-			RegsisterNewClient UserRegistrationPage = new RegsisterNewClient();
+			RegsisterNewClient UserRegistrationPage = new RegsisterNewClient(null);
 			UserRegistrationPage.Show();
 			Hide();
 			Close();
