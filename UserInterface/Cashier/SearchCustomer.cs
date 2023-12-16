@@ -42,6 +42,7 @@ namespace Westry
 
 				if (foundCustomer != null)
 				{
+					//TODO: Should check if customer's counter are all 0 to renew subscription
 					RecordOrder recordOrderPage = new RecordOrder(foundCustomer);
 					recordOrderPage.Show();
 					Hide();
