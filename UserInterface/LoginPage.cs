@@ -1,13 +1,19 @@
+using Westry.Models;
+
 namespace Westry
 {
 	public partial class LoginPage : Form
 	{
+
+		DevDbContext db;
+
+
 		bool isAdmin = false;
 		bool isCashier = false;
 		public LoginPage()
 		{
 			InitializeComponent();
-
+			db = new DevDbContext();
 		}
 
 		private void nameLabel_Click(object sender, EventArgs e)
@@ -22,28 +28,49 @@ namespace Westry
 			{
 
 
-				//TO DO :check name and password in data base and change isCashier or isAdmin state according to it
-				isCashier = true; //just for testing, delete it when finishing database code
+				foreach (Cashier cashier in db.Cashiers.ToList())
+				{
+					if (cashier.UserName == nameBox.Text && cashier.Password == passwordBox.Text)
+					{
+						isCashier = true;
+					}
+				}
+
+				foreach (Admin admin in db.Admins.ToList())
+				{
+					if (admin.UserName == nameBox.Text && admin.Password == passwordBox.Text)
+					{
+						isAdmin = true;
+					}
+				}
+
+
 
 				if (isAdmin)
 				{
 					AdminPanel adminPage = new AdminPanel();
 
 					adminPage.Show();
+					Hide();
+					Close();
 				}
 				else if (isCashier)
 				{
 					SearchCustomer CashierPage = new SearchCustomer();
 
 					CashierPage.Show();
+					Hide();
+					Close();
 				}
 				else
 				{
 
 					MessageBox.Show("Wrong username or password!");
 				}
-				Hide();
-				Close();
+				
+
+
+
 
 			}
 		}
@@ -70,7 +97,7 @@ namespace Westry
 
 		private void LoginPage_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			Application.Exit();
+			
 		}
 	}
 }
