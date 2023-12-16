@@ -26,6 +26,7 @@ Right click on the "cashier_id" and Set Primary key
 
 # Meals Table
 Right click on the "meal_id" and Set Primary key
+MUST BE "nvarchar(50)" FOR ARABIC TO WORK IN DATABASE
 
 ![image](https://github.com/ZoonAttack/Westry/assets/62998842/53a043b0-abc1-4432-bcda-1d60af025e08)
 
