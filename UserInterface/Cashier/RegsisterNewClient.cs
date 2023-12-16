@@ -14,21 +14,20 @@ namespace Westry
 	public partial class RegsisterNewClient : Form
 	{
 		private readonly DevDbContext db;
-		public RegsisterNewClient()
+		private Customer? oldCustomer;
+		public RegsisterNewClient(Customer? _oldCustomer)
 		{
+
 			InitializeComponent();
 			db = new DevDbContext();
+
+			if(_oldCustomer != null)
+			{
+				fillData(_oldCustomer);
+				oldCustomer = _oldCustomer;
+			}
 		}
 
-		private void mealsBox_Enter(object sender, EventArgs e)
-		{
-
-		}
-
-		private void nameBox_TextChanged(object sender, EventArgs e)
-		{
-
-		}
 
 		private void phoneBox_TextChanged(object sender, EventArgs e)
 		{
@@ -45,46 +44,88 @@ namespace Westry
 			else if (!oneMealRadioButton.Checked && !threeMealRadioButton.Checked && !twoMealRadioButton.Checked) {MessageBox.Show("choose a subscription type!"); }
 			else
 			{
-				Customer newCustomer = new Customer();
-				newCustomer.Name = nameBox.Text;
-				newCustomer.PhoneNumber = phoneBox.Text;
-				newCustomer.SubscriptionCount = 0;
-				if (oneMealRadioButton.Checked)
+				if(oldCustomer != null)
 				{
-					newCustomer.MealId = 1;
-					newCustomer.BreakfastCounter = 0;
-					newCustomer.LunchCounter = 22;
-					newCustomer.DinnerCounter = 0;
+					oldCustomer.SubscriptionCount += 1;
+					adjustCustomer(oldCustomer,true);
 				}
-				else if (twoMealRadioButton.Checked) {
-					newCustomer.MealId = 2;
-					newCustomer.BreakfastCounter = 22;
-					newCustomer.LunchCounter = 22;
-					newCustomer.DinnerCounter = 0;
-				}
-				else if (threeMealRadioButton.Checked)
+				else
 				{
-					newCustomer.MealId = 3;
-					newCustomer.BreakfastCounter = 22;
-					newCustomer.LunchCounter = 22;
-					newCustomer.DinnerCounter = 22;
+					Customer newCustomer = new Customer();
+					newCustomer.SubscriptionCount = 0;
+					adjustCustomer(newCustomer,false);
 				}
-
-				try
-				{
-					db.Customers.Add(newCustomer);
-					db.SaveChanges();
-					MessageBox.Show("تم تسجيل العميل بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					this.Close();
-				}
-				catch(Exception ex)
-				{
-					
-					MessageBox.Show("حدث خطأ ما", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				}
+			
 
 				
 			}
+		}
+
+		private void fillData(Customer oldCustomer)
+		{
+			nameBox.Text = oldCustomer.Name;
+			phoneBox.Text = oldCustomer.PhoneNumber;
+			switch(oldCustomer.MealId)
+			{
+				case 1:
+					oneMealRadioButton.Checked = true; break;
+				case 2:
+					twoMealRadioButton.Checked = true; break;
+				case 3:
+					threeMealRadioButton.Checked = true; break;
+			}
+		}
+
+		private void adjustCustomer(Customer customer,bool isOld)
+		{
+			customer.Name = nameBox.Text;
+			customer.PhoneNumber = phoneBox.Text;
+			
+			if (oneMealRadioButton.Checked)
+			{
+				customer.MealId = 1;
+				customer.BreakfastCounter = 0;
+				customer.LunchCounter = 22;
+				customer.DinnerCounter = 0;
+			}
+			else if (twoMealRadioButton.Checked)
+			{
+				customer.MealId = 2;
+				customer.BreakfastCounter = 22;
+				customer.LunchCounter = 22;
+				customer.DinnerCounter = 0;
+			}
+			else if (threeMealRadioButton.Checked)
+			{
+				customer.MealId = 3;
+				customer.BreakfastCounter = 22;
+				customer.LunchCounter = 22;
+				customer.DinnerCounter = 22;
+			}
+
+			try
+			{
+				if (isOld)
+				{
+					db.Customers.Update(customer);
+				}
+				else
+				{
+					db.Customers.Add(customer);
+				}
+				db.SaveChanges();
+
+				MessageBox.Show( isOld? "تم تحديث العميل بنجاح" : "تم تسجيل العميل بنجاح","", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				this.Close();
+			}
+			catch (Exception ex)
+			{
+				
+				MessageBox.Show("حدث خطأ ما", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				Hide();
+				Close();
+			}
+
 		}
 
 		private void nameLabel_Click(object sender, EventArgs e)

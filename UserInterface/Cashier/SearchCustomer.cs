@@ -42,11 +42,24 @@ namespace Westry
 
 				if (foundCustomer != null)
 				{
-					//TODO: Should check if customer's counter are all 0 to renew subscription
-					RecordOrder recordOrderPage = new RecordOrder(foundCustomer);
-					recordOrderPage.Show();
-					Hide();
-					Close();
+					if (foundCustomer.LunchCounter <= 0 && foundCustomer.DinnerCounter <= 0 && foundCustomer.BreakfastCounter <= 0)
+					{
+						DialogResult value = MessageBox.Show("العميل لم يعد لديه وجبات متبقيه\nهل تريد تجديد الاشتراك؟", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+						if (value == DialogResult.OK)
+						{
+							RegsisterNewClient form = new RegsisterNewClient(foundCustomer);
+							form.Show();
+							Hide();
+							Close();
+						}
+					}
+					else
+					{
+						RecordOrder recordOrderPage = new RecordOrder(foundCustomer);
+						recordOrderPage.Show();
+						Hide();
+						Close();
+					}
 				}
 				else
 				{
@@ -82,7 +95,7 @@ namespace Westry
 
 		private void newUserButton_Click(object sender, EventArgs e)
 		{
-			RegsisterNewClient UserRegistrationPage = new RegsisterNewClient();
+			RegsisterNewClient UserRegistrationPage = new RegsisterNewClient(null);
 			UserRegistrationPage.Show();
 			Hide();
 			Close();

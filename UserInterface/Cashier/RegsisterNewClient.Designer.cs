@@ -68,7 +68,6 @@
 			nameBox.Name = "nameBox";
 			nameBox.Size = new Size(154, 23);
 			nameBox.TabIndex = 13;
-			nameBox.TextChanged += nameBox_TextChanged;
 			nameBox.KeyPress += nameBox_KeyPress;
 			// 
 			// phoneLabel
@@ -106,7 +105,6 @@
 			mealsBox.TabIndex = 17;
 			mealsBox.TabStop = false;
 			mealsBox.Text = "نوع الاشتراك";
-			mealsBox.Enter += mealsBox_Enter;
 			// 
 			// threeMealRadioButton
 			// 
