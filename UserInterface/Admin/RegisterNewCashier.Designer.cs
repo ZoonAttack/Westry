@@ -1,6 +1,6 @@
 ﻿namespace Westry
 {
-    partial class AddCashierPage
+    partial class RegisterNewCashier
     {
         /// <summary>
         /// Required designer variable.

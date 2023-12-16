@@ -1,6 +1,6 @@
 ﻿namespace Westry
 {
-    partial class Clients
+    partial class ViewClients
     {
         /// <summary>
         /// Required designer variable.

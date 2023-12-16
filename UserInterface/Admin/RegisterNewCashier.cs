@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Westry
 {
-    public partial class AddCashierPage : Form
+    public partial class RegisterNewCashier : Form
     {
-        public AddCashierPage()
+        public RegisterNewCashier()
         {
             InitializeComponent();
         }

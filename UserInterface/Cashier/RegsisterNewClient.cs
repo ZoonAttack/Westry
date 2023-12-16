@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Westry
 {
-    public partial class userRegistrationPage : Form
+    public partial class RegsisterNewClient : Form
     {
-        public userRegistrationPage()
+        public RegsisterNewClient()
         {
             InitializeComponent();
         }

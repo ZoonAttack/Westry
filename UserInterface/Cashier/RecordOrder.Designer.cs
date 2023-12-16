@@ -1,6 +1,6 @@
 ﻿namespace Westry
 {
-    partial class RecordOrderPage
+    partial class RecordOrder
     {
         /// <summary>
         /// Required designer variable.

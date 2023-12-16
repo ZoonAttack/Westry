@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Westry
 {
-    public partial class Clients : Form
+    public partial class ViewClients : Form
     {
-        public Clients()
+        public ViewClients()
         {
             InitializeComponent();
             ClientsDataGridView.ReadOnly = true;

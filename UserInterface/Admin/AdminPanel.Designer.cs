@@ -1,6 +1,6 @@
 ﻿namespace Westry
 {
-    partial class AdminPage
+    partial class AdminPanel
     {
         /// <summary>
         /// Required designer variable.

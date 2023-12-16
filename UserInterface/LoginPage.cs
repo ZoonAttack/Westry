@@ -26,12 +26,12 @@ namespace Westry
 
                 if (isAdmin)
                 {
-                    AdminPage adminPage = new AdminPage();
+                    AdminPanel adminPage = new AdminPanel();
                     adminPage.Show();
                 }
                 else if (isCashier)
                 {
-                    cashierPage CashierPage = new cashierPage();
+                    SearchCustomer CashierPage = new SearchCustomer();
                     CashierPage.Show();
                 }
                 else

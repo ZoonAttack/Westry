@@ -1,6 +1,6 @@
 ﻿namespace Westry
 {
-    partial class Log
+    partial class MealLog
     {
         /// <summary>
         /// Required designer variable.

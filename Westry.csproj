@@ -8,4 +8,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Update="UserInterface\Admin\RegisterNewCashier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UserInterface\Admin\AdminPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

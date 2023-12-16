@@ -1,6 +1,6 @@
 ﻿namespace Westry
 {
-    partial class cashierPage
+    partial class SearchCustomer
     {
         /// <summary>
         /// Required designer variable.

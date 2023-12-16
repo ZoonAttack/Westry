@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Westry
 {
-    public partial class AdminPage : Form
+    public partial class AdminPanel : Form
     {
-        public AdminPage()
+        public AdminPanel()
         {
             InitializeComponent();
             cashierInfoDataGridView.ReadOnly = true;
@@ -27,20 +27,20 @@ namespace Westry
 
         private void addCashierButton_Click(object sender, EventArgs e)
         {
-            AddCashierPage addCashierPage = new AddCashierPage();
+            RegisterNewCashier addCashierPage = new RegisterNewCashier();
             addCashierPage.Show();
         }
 
         private void viewDailyButton_Click(object sender, EventArgs e)
         {
-            Log log = new Log();
+            MealLog log = new MealLog();
             log.Show();
 
         }
 
         private void viewClientsButton_Click(object sender, EventArgs e)
         {
-            Clients clients = new Clients();
+            ViewClients clients = new ViewClients();
             clients.Show();
 
         }

@@ -12,7 +12,7 @@ using System.Xml.Linq;
 
 namespace Westry
 {
-    public partial class cashierPage : Form
+    public partial class SearchCustomer : Form
     {
 
         private string clientName;
@@ -22,7 +22,7 @@ namespace Westry
         private int remainingLunch;
         private int remainingDinner;
         private int subscriptionType;
-        public cashierPage()
+        public SearchCustomer()
         {
             InitializeComponent();
         }
@@ -46,7 +46,7 @@ namespace Westry
                 remainingDinner = 20;
                 subscriptionType = 1;
 
-                RecordOrderPage recordOrderPage = new RecordOrderPage(clientName, clientPhoneNumber, clientPreviousSubscriptions, remainingBreakfast, remainingLunch, remainingDinner, subscriptionType);
+                RecordOrder recordOrderPage = new RecordOrder(clientName, clientPhoneNumber, clientPreviousSubscriptions, remainingBreakfast, remainingLunch, remainingDinner, subscriptionType);
                 recordOrderPage.Show();
 
             }
@@ -74,7 +74,7 @@ namespace Westry
 
         private void newUserButton_Click(object sender, EventArgs e)
         {
-            userRegistrationPage UserRegistrationPage = new userRegistrationPage();
+            RegsisterNewClient UserRegistrationPage = new RegsisterNewClient();
             UserRegistrationPage.Show();
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace Westry
 {
-    partial class userRegistrationPage
+    partial class RegsisterNewClient
     {
         /// <summary>
         /// Required designer variable.

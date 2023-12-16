@@ -12,7 +12,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Westry
 {
-    public partial class RecordOrderPage : Form
+    public partial class RecordOrder : Form
     {
 
         private string clientName; //got from the cashierPage form
@@ -23,7 +23,7 @@ namespace Westry
         private int remainingDinner;
         private int subscriptionType;
 
-        public RecordOrderPage(string name, string phoneNumber, int previousSubscriptions, int breakfast, int lunch, int dinner, int subType)
+        public RecordOrder(string name, string phoneNumber, int previousSubscriptions, int breakfast, int lunch, int dinner, int subType)
         {
             clientName = name;
             clientPhoneNumber = phoneNumber;

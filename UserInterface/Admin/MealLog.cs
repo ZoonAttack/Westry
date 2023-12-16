@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Westry
 {
-    public partial class Log : Form
+    public partial class MealLog : Form
     {
-        public Log()
+        public MealLog()
         {
             InitializeComponent();
             LogDataGridView.ReadOnly = true;
