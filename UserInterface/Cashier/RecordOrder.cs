@@ -150,8 +150,7 @@ namespace Westry
 				}
 				try
 				{
-					db.Update(customer);
-					db.SaveChanges();
+					RecordAndLogOrder();
 					MessageBox.Show("تم تسجيل الطلب بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					this.Close();
 				}
@@ -169,6 +168,14 @@ namespace Westry
 			
 			var SearchCust = new SearchCustomer();
 			SearchCust.Show();
+		}
+
+
+		private void RecordAndLogOrder()
+		{
+			db.Update(customer);
+			
+			db.SaveChanges();
 		}
 	}
 }

@@ -93,6 +93,7 @@
 			Name = "SearchCustomer";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Cashier Page";
+			FormClosed += SearchCustomer_FormClosed;
 			ResumeLayout(false);
 			PerformLayout();
 		}

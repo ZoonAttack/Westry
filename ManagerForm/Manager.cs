@@ -37,5 +37,16 @@ namespace Westry.ManagerForm
 		{
 
 		}
+
+		public void CloseApp()
+		{
+			//Check if only the manager form is opened
+			//If its the only form opened then clsoe the program
+			//This method should be called after the specific form closed
+			if(Application.OpenForms.Count <= 1)
+			{
+				Application.Exit();
+			}
+		}
 	}
 }
