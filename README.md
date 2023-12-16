@@ -6,6 +6,7 @@ Create a new Server and make sure that it's name is "localhost"
 ![image](https://github.com/ZoonAttack/Westry/assets/62998842/c58a428c-6fe9-43be-9dd2-90f8381909f4)
 
 Create a new database and make sure it's name is "Dev_DB"
+
 All the tables should have same name when creating it And I will explain every step
 
 ![image](https://github.com/ZoonAttack/Westry/assets/62998842/cacb56fb-4605-40d9-9fd3-3518e47a6454)
