@@ -151,13 +151,14 @@ namespace Westry
 				db.Update(customer);
 				db.SaveChanges();
 
+				MessageBox.Show("تم تسجيل الطلب بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				this.Close();
 			}
 		}
 
 		private void RecordOrder_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			MessageBox.Show("تم تسجيل الطلب بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			
 			var SearchCust = new SearchCustomer();
 			SearchCust.Show();
 		}
