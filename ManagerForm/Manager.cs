@@ -28,9 +28,6 @@ namespace Westry.ManagerForm
 		}
 
 
-		public void closeapp()
-		{
-			Application.Exit();
-		}
+		
 	}
 }

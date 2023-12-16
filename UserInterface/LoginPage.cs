@@ -68,7 +68,7 @@ namespace Westry
 
 		}
 
-		private void LoginPage_FormClosing_1(object sender, FormClosingEventArgs e)
+		private void LoginPage_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			Application.Exit();
 		}
