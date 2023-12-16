@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Westry.Models;
 
 namespace Westry
 {
@@ -22,32 +23,37 @@ namespace Westry
         private int remainingLunch;
         private int remainingDinner;
         private int subscriptionType;
+
+        private readonly DevDbContext db;
         public SearchCustomer()
         {
             InitializeComponent();
+            db = new DevDbContext();
+
         }
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            if (phoneBox.Text == "") { Console.Beep(500, 500); MessageBox.Show("enter phone number"); }
+            if (phoneBox.Text == "") {MessageBox.Show("enter phone number"); }
             else
             {
+                Customer? foundCustomer = db.Customers.SingleOrDefault(u => u.PhoneNumber == phoneBox.Text);
 
+                if(foundCustomer != null)
+                {
+                    RecordOrder recordOrderPage = new RecordOrder(foundCustomer);
+					recordOrderPage.Show();
+                    Hide();
+                    Close();
+				}
+                else
+                {
+                    MessageBox.Show("Customer not Found.","",MessageBoxButtons.OK,MessageBoxIcon.Error);
 
+				}
 
-
-                //TO DO: check phone number in data base and get these client's data below
-
-                clientName = "ahmed"; //dummy data
-                clientPhoneNumber = "01234567899";
-                clientPreviousSubscriptions = 3;
-                remainingBreakfast = 10;
-                remainingLunch = 15;
-                remainingDinner = 20;
-                subscriptionType = 1;
-
-                RecordOrder recordOrderPage = new RecordOrder(clientName, clientPhoneNumber, clientPreviousSubscriptions, remainingBreakfast, remainingLunch, remainingDinner, subscriptionType);
-                recordOrderPage.Show();
+             
+                
 
             }
         }
