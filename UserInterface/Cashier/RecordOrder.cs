@@ -131,7 +131,7 @@ namespace Westry
 		{
 
 			if (BreakfastComboBox.SelectedIndex == -1 && LaunchComboBox.SelectedIndex == -1 && DinnerComboBox.SelectedIndex == -1) { MessageBox.Show("please enter a valid order"); }
-			else if (specifyNotesLabel.Visible && notesTextBox.Text == "") { Console.Beep(500, 500); MessageBox.Show("please enter a proper note"); }
+			else if (specifyNotesLabel.Visible && notesTextBox.Text == "") {  MessageBox.Show("please enter a proper note"); }
 			else if (specifyBuffetLabel.Visible && buffetTextBox.Text == "") { MessageBox.Show("please enter a buffet order"); }
 
 			else
