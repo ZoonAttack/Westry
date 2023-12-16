@@ -14,6 +14,7 @@ namespace Westry
 		{
 			InitializeComponent();
 			db = new DevDbContext();
+			
 		}
 
 		private void nameLabel_Click(object sender, EventArgs e)

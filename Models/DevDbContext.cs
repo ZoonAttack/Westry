@@ -97,11 +97,11 @@ public partial class DevDbContext : DbContext
                 .HasColumnName("meal_id");
             entity.Property(e => e.Description)
                 .HasMaxLength(50)
-                .IsUnicode(false)
+                .IsUnicode(true)
                 .HasColumnName("description");
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
-                .IsUnicode(false)
+                .IsUnicode(true)
                 .HasColumnName("name");
         });
 
