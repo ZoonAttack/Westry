@@ -251,6 +251,7 @@
 			Controls.Add(subCountLabel);
 			Controls.Add(nameLabel);
 			Name = "RecordOrder";
+			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Record Order Page";
 			FormClosing += RecordOrder_FormClosing;
 			ResumeLayout(false);

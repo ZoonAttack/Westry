@@ -91,6 +91,7 @@
 			Controls.Add(phoneBox);
 			Controls.Add(phoneLabel);
 			Name = "SearchCustomer";
+			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Cashier Page";
 			ResumeLayout(false);
 			PerformLayout();
