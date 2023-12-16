@@ -84,6 +84,8 @@ namespace Westry
 		{
 			RegsisterNewClient UserRegistrationPage = new RegsisterNewClient();
 			UserRegistrationPage.Show();
+			Hide();
+			Close();
 		}
 
 		private void phoneBox_KeyPress(object sender, KeyPressEventArgs e)

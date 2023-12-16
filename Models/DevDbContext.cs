@@ -68,9 +68,8 @@ public partial class DevDbContext : DbContext
 
         modelBuilder.Entity<Customer>(entity =>
         {
-            entity.Property(e => e.CustomerId)
-                .ValueGeneratedNever()
-                .HasColumnName("customer_id");
+            entity.HasKey(e => e.PhoneNumber);
+
             entity.Property(e => e.BreakfastCounter).HasColumnName("breakfast_counter");
             entity.Property(e => e.DinnerCounter).HasColumnName("dinner_counter");
             entity.Property(e => e.LunchCounter).HasColumnName("lunch_counter");
@@ -80,7 +79,8 @@ public partial class DevDbContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("name");
             entity.Property(e => e.PhoneNumber)
-                .HasMaxLength(50)
+			    .ValueGeneratedNever()
+				.HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("phone_number");
             entity.Property(e => e.SubscriptionCount).HasColumnName("subscription_count");
