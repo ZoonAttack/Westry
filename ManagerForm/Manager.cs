@@ -10,6 +10,12 @@ using System.Windows.Forms;
 
 namespace Westry.ManagerForm
 {
+	//This manager form is a hidden form that is always there
+	//I created it because we dont want all the forms to be visiable at the same time
+	//When the user logins and enters his form the loginpage form should close not just hide
+	//so because it the main loop is at loginpage when you close it, it closes the whole program
+	//so I just created this manager form to stay running all the time and it stays hidden
+	//You can use it for global variabels or anything you want
 	public partial class Manager : Form
 	{
 		public static Manager? ManagerInstance;
@@ -27,7 +33,9 @@ namespace Westry.ManagerForm
 			loginPage.Show();
 		}
 
+		private void label1_Click(object sender, EventArgs e)
+		{
 
-		
+		}
 	}
 }
