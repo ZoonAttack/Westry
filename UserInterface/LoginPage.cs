@@ -30,20 +30,15 @@ namespace Westry
 				//"u => " is called the LINQ operator. search it
 				Cashier? loginCashier = db.Cashiers.SingleOrDefault(u => u.UserName.ToLower() == nameBox.Text);
 				Admin? loginAdmin = db.Admins.SingleOrDefault(u => u.UserName.ToLower() == nameBox.Text);
-				if (loginAdmin != null)
+
+				if (loginAdmin != null && loginAdmin.Password == passwordBox.Text)
 				{
-					if(loginAdmin.Password == passwordBox.Text)
-					{
-						isAdmin = true;
-					}
+					isAdmin = true;
 				}
 
-				if (loginCashier != null)
+				if (loginCashier != null && loginCashier.Password == passwordBox.Text)
 				{
-					if (loginCashier.Password == passwordBox.Text)
-					{
-						isCashier = true;
-					}
+					isCashier = true;
 				}
 
 
