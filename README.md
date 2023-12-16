@@ -61,11 +61,10 @@ Adjust as the photo and then OK
 
 Repeat the same steps for the primary key
 
-![image](https://github.com/ZoonAttack/Westry/assets/62998842/34eb34db-cd4c-4347-a60c-b968ec5f78f5)
-
-
+![image](https://github.com/ZoonAttack/Westry/assets/62998842/74fb5c3e-4530-4861-960b-d37dabe82635)
 
 and edit the meal_id relationship
+
 and adjust to be like this
 
 ![image](https://github.com/ZoonAttack/Westry/assets/62998842/54ff319f-d063-4f0e-87fc-d0d3d29b687d)
