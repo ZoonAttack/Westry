@@ -102,6 +102,7 @@
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Westry";
 			FormClosing += LoginPage_FormClosing;
+			FormClosed += LoginPage_FormClosed;
 			Load += LoginPage_Load;
 			ResumeLayout(false);
 			PerformLayout();

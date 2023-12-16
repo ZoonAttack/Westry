@@ -1,3 +1,4 @@
+using Westry.ManagerForm;
 using Westry.Models;
 
 namespace Westry
@@ -14,7 +15,7 @@ namespace Westry
 		{
 			InitializeComponent();
 			db = new DevDbContext();
-			
+
 		}
 
 		private void nameLabel_Click(object sender, EventArgs e)
@@ -66,7 +67,7 @@ namespace Westry
 
 					MessageBox.Show("Wrong username or password!");
 				}
-				
+
 
 
 
@@ -96,7 +97,12 @@ namespace Westry
 
 		private void LoginPage_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			
+
+		}
+
+		private void LoginPage_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			Manager.ManagerInstance.CloseApp();
 		}
 	}
 }
