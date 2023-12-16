@@ -26,23 +26,26 @@ namespace Westry
 			if (nameBox.Text == "" || passwordBox.Text == "") { MessageBox.Show("enter a valid username and password"); }
 			else
 			{
-
-
-				foreach (Cashier cashier in db.Cashiers.ToList())
+				//Return cashier if found. If not return null this is what "SingleOrDefault" does
+				//"u => " is called the LINQ operator. search it
+				Cashier? loginCashier = db.Cashiers.SingleOrDefault(u => u.UserName.ToLower() == nameBox.Text);
+				Admin? loginAdmin = db.Admins.SingleOrDefault(u => u.UserName.ToLower() == nameBox.Text);
+				if (loginAdmin != null)
 				{
-					if (cashier.UserName == nameBox.Text && cashier.Password == passwordBox.Text)
+					if(loginAdmin.Password == passwordBox.Text)
+					{
+						isAdmin = true;
+					}
+				}
+
+				if (loginCashier != null)
+				{
+					if (loginCashier.Password == passwordBox.Text)
 					{
 						isCashier = true;
 					}
 				}
 
-				foreach (Admin admin in db.Admins.ToList())
-				{
-					if (admin.UserName == nameBox.Text && admin.Password == passwordBox.Text)
-					{
-						isAdmin = true;
-					}
-				}
 
 
 
