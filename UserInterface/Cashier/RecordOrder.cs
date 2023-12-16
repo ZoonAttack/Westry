@@ -32,6 +32,7 @@ namespace Westry
 			db = new DevDbContext();
 
 			InitializeComponent();
+			subscriptionType = FoundCustomer.MealId;
 			ManageComboboxes(subscriptionType);
 			ShowData();
 
