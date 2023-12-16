@@ -58,8 +58,8 @@ namespace Westry
 		{
 			if (subtype == 1)
 			{
-				LaunchComboBox.Visible = false; DinnerComboBox.Visible = false;
-				launchRemLabel.Visible = false; dinnerRemLabel.Visible = false;
+				BreakfastComboBox.Visible = false; DinnerComboBox.Visible = false;
+				breakfastRemLabel.Visible = false; dinnerRemLabel.Visible = false;
 			}
 			else if (subtype == 2) { DinnerComboBox.Visible = false; dinnerRemLabel.Visible = false; }
 		}

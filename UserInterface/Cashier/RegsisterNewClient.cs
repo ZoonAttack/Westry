@@ -46,11 +46,13 @@ namespace Westry
 			{
 				if(oldCustomer != null)
 				{
+					oldCustomer.SubscriptionCount += 1;
 					adjustCustomer(oldCustomer,true);
 				}
 				else
 				{
 					Customer newCustomer = new Customer();
+					newCustomer.SubscriptionCount = 0;
 					adjustCustomer(newCustomer,false);
 				}
 			
@@ -78,7 +80,7 @@ namespace Westry
 		{
 			customer.Name = nameBox.Text;
 			customer.PhoneNumber = phoneBox.Text;
-			customer.SubscriptionCount = 0;
+			
 			if (oneMealRadioButton.Checked)
 			{
 				customer.MealId = 1;
@@ -112,12 +114,13 @@ namespace Westry
 					db.Customers.Add(customer);
 				}
 				db.SaveChanges();
-				MessageBox.Show("تم تسجيل العميل بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+				MessageBox.Show( isOld? "تم تحديث العميل بنجاح" : "تم تسجيل العميل بنجاح","", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				this.Close();
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(ex.InnerException.ToString());
+				
 				MessageBox.Show("حدث خطأ ما", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				Hide();
 				Close();
