@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Westry.Models;
 
 namespace Westry
 {
 	public partial class RegsisterNewClient : Form
 	{
+		private readonly DevDbContext db;
 		public RegsisterNewClient()
 		{
 			InitializeComponent();
+			db = new DevDbContext();
 		}
 
 		private void mealsBox_Enter(object sender, EventArgs e)
@@ -36,14 +39,51 @@ namespace Westry
 		{
 			if (phoneBox.Text == "" || nameBox.Text == "")
 			{
-				Console.Beep(500, 500);
+				
 				MessageBox.Show("Cannot leave phone or name fields empty!");
 			}
-			else if (!oneMealRadioButton.Checked && !threeMealRadioButton.Checked && !twoMealRadioButton.Checked) { Console.Beep(500, 500); MessageBox.Show("choose a subscription type!"); }
+			else if (!oneMealRadioButton.Checked && !threeMealRadioButton.Checked && !twoMealRadioButton.Checked) {MessageBox.Show("choose a subscription type!"); }
 			else
 			{
-				//To Do: register data to the database and allert the user if success
-				this.Close();
+				Customer newCustomer = new Customer();
+				newCustomer.Name = nameBox.Text;
+				newCustomer.PhoneNumber = phoneBox.Text;
+				newCustomer.SubscriptionCount = 0;
+				if (oneMealRadioButton.Checked)
+				{
+					newCustomer.MealId = 1;
+					newCustomer.BreakfastCounter = 0;
+					newCustomer.LunchCounter = 22;
+					newCustomer.DinnerCounter = 0;
+				}
+				else if (twoMealRadioButton.Checked) {
+					newCustomer.MealId = 2;
+					newCustomer.BreakfastCounter = 22;
+					newCustomer.LunchCounter = 22;
+					newCustomer.DinnerCounter = 0;
+				}
+				else if (threeMealRadioButton.Checked)
+				{
+					newCustomer.MealId = 3;
+					newCustomer.BreakfastCounter = 22;
+					newCustomer.LunchCounter = 22;
+					newCustomer.DinnerCounter = 22;
+				}
+
+				try
+				{
+					db.Customers.Add(newCustomer);
+					db.SaveChanges();
+					MessageBox.Show("تم تسجيل العميل بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					this.Close();
+				}
+				catch(Exception ex)
+				{
+					
+					MessageBox.Show("حدث خطأ ما", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+
+				
 			}
 		}
 
