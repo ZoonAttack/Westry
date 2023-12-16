@@ -174,7 +174,7 @@ namespace Westry
 		private void RecordAndLogOrder()
 		{
 			db.Update(customer);
-			
+			//TODO: Should Log Meal here and record it to DB
 			db.SaveChanges();
 		}
 	}
