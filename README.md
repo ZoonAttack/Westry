@@ -1,4 +1,4 @@
-![image](https://github.com/ZoonAttack/Westry/assets/62998842/ce1f7628-b723-4834-9a69-9f399bb5a63b)# Westry
+# Westry
 # VERY IMPORTANT DATABASE INFORMATION
 
 Create a new Server and make sure that it's name is "localhost"
