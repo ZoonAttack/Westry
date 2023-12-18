@@ -53,9 +53,9 @@ public partial class DevDbContext : DbContext
 
         modelBuilder.Entity<Cashier>(entity =>
         {
-            entity.Property(e => e.CashierId)
-                .ValueGeneratedNever()
-                .HasColumnName("cashier_id");
+
+            entity.HasKey(e => e.UserName);
+
             entity.Property(e => e.Password)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -65,6 +65,10 @@ public partial class DevDbContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("user_name");
         });
+
+        modelBuilder.Entity<Cashier>().HasData(
+            new Cashier { UserName = "test", Password = "123" }
+            );
 
         modelBuilder.Entity<Customer>(entity =>
         {
@@ -104,6 +108,12 @@ public partial class DevDbContext : DbContext
                 .IsUnicode(true)
                 .HasColumnName("name");
         });
+
+        modelBuilder.Entity<Meal>().HasData(
+            new Meal { MealId = 1, Name = "نظام الوجبه الواحده", Description = "كلام كتير عن نظام الوجبه الواحده" },
+            new Meal { MealId = 2, Name = "نظام الوجبتين", Description = "كلام كتير عن نظام الوجبتين" },
+            new Meal { MealId = 3, Name = "نظام الثلاث وجبات", Description = "كلام كتير عن نظام الثلاث وجبات" }
+            );
 
         modelBuilder.Entity<MealLog>(entity =>
         {

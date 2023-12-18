@@ -5,7 +5,6 @@ namespace Westry.Models;
 
 public partial class Cashier
 {
-    public int CashierId { get; set; }
 
     public string? UserName { get; set; }
 
