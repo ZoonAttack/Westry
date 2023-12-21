@@ -24,6 +24,7 @@ namespace Westry.ManagerForm
 			ManagerInstance = this;
 
 			WindowState = FormWindowState.Minimized;
+			this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
 			ShowInTaskbar = false;
 			Visible = false;
 
