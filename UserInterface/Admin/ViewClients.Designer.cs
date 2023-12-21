@@ -20,42 +20,123 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+		#region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-            ClientsDataGridView = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)ClientsDataGridView).BeginInit();
-            SuspendLayout();
-            // 
-            // ClientsDataGridView
-            // 
-            ClientsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ClientsDataGridView.Location = new Point(12, 12);
-            ClientsDataGridView.Name = "ClientsDataGridView";
-            ClientsDataGridView.RowTemplate.Height = 25;
-            ClientsDataGridView.Size = new Size(580, 660);
-            ClientsDataGridView.TabIndex = 0;
-            // 
-            // Clients
-            // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.AliceBlue;
-            ClientSize = new Size(604, 684);
-            Controls.Add(ClientsDataGridView);
-            Name = "Clients";
-            Text = "Clients";
-            ((System.ComponentModel.ISupportInitialize)ClientsDataGridView).EndInit();
-            ResumeLayout(false);
-        }
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
+			components = new System.ComponentModel.Container();
+			ClientsDataGridView = new DataGridView();
+			nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+			phoneNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+			mealIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+			subscriptionCountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+			breakfastCounterDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+			lunchCounterDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+			dinnerCounterDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+			customerBindingSource = new BindingSource(components);
+			((System.ComponentModel.ISupportInitialize)ClientsDataGridView).BeginInit();
+			((System.ComponentModel.ISupportInitialize)customerBindingSource).BeginInit();
+			SuspendLayout();
+			// 
+			// ClientsDataGridView
+			// 
+			ClientsDataGridView.AllowUserToAddRows = false;
+			ClientsDataGridView.AllowUserToDeleteRows = false;
+			ClientsDataGridView.AutoGenerateColumns = false;
+			ClientsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			ClientsDataGridView.Columns.AddRange(new DataGridViewColumn[] { nameDataGridViewTextBoxColumn, phoneNumberDataGridViewTextBoxColumn, mealIdDataGridViewTextBoxColumn, subscriptionCountDataGridViewTextBoxColumn, breakfastCounterDataGridViewTextBoxColumn, lunchCounterDataGridViewTextBoxColumn, dinnerCounterDataGridViewTextBoxColumn });
+			ClientsDataGridView.DataSource = customerBindingSource;
+			ClientsDataGridView.Location = new Point(12, 12);
+			ClientsDataGridView.Name = "ClientsDataGridView";
+			ClientsDataGridView.ReadOnly = true;
+			ClientsDataGridView.RowTemplate.Height = 25;
+			ClientsDataGridView.Size = new Size(743, 660);
+			ClientsDataGridView.TabIndex = 0;
+			// 
+			// nameDataGridViewTextBoxColumn
+			// 
+			nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+			nameDataGridViewTextBoxColumn.HeaderText = "Name";
+			nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+			nameDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// phoneNumberDataGridViewTextBoxColumn
+			// 
+			phoneNumberDataGridViewTextBoxColumn.DataPropertyName = "PhoneNumber";
+			phoneNumberDataGridViewTextBoxColumn.HeaderText = "PhoneNumber";
+			phoneNumberDataGridViewTextBoxColumn.Name = "phoneNumberDataGridViewTextBoxColumn";
+			phoneNumberDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// mealIdDataGridViewTextBoxColumn
+			// 
+			mealIdDataGridViewTextBoxColumn.DataPropertyName = "MealId";
+			mealIdDataGridViewTextBoxColumn.HeaderText = "MealId";
+			mealIdDataGridViewTextBoxColumn.Name = "mealIdDataGridViewTextBoxColumn";
+			mealIdDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// subscriptionCountDataGridViewTextBoxColumn
+			// 
+			subscriptionCountDataGridViewTextBoxColumn.DataPropertyName = "SubscriptionCount";
+			subscriptionCountDataGridViewTextBoxColumn.HeaderText = "SubscriptionCount";
+			subscriptionCountDataGridViewTextBoxColumn.Name = "subscriptionCountDataGridViewTextBoxColumn";
+			subscriptionCountDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// breakfastCounterDataGridViewTextBoxColumn
+			// 
+			breakfastCounterDataGridViewTextBoxColumn.DataPropertyName = "BreakfastCounter";
+			breakfastCounterDataGridViewTextBoxColumn.HeaderText = "BreakfastCounter";
+			breakfastCounterDataGridViewTextBoxColumn.Name = "breakfastCounterDataGridViewTextBoxColumn";
+			breakfastCounterDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// lunchCounterDataGridViewTextBoxColumn
+			// 
+			lunchCounterDataGridViewTextBoxColumn.DataPropertyName = "LunchCounter";
+			lunchCounterDataGridViewTextBoxColumn.HeaderText = "LunchCounter";
+			lunchCounterDataGridViewTextBoxColumn.Name = "lunchCounterDataGridViewTextBoxColumn";
+			lunchCounterDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// dinnerCounterDataGridViewTextBoxColumn
+			// 
+			dinnerCounterDataGridViewTextBoxColumn.DataPropertyName = "DinnerCounter";
+			dinnerCounterDataGridViewTextBoxColumn.HeaderText = "DinnerCounter";
+			dinnerCounterDataGridViewTextBoxColumn.Name = "dinnerCounterDataGridViewTextBoxColumn";
+			dinnerCounterDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// customerBindingSource
+			// 
+			customerBindingSource.DataSource = typeof(Models.Customer);
+			// 
+			// ViewClients
+			// 
+			AutoScaleDimensions = new SizeF(7F, 15F);
+			AutoScaleMode = AutoScaleMode.Font;
+			BackColor = Color.AliceBlue;
+			ClientSize = new Size(765, 684);
+			Controls.Add(ClientsDataGridView);
+			Name = "ViewClients";
+			StartPosition = FormStartPosition.CenterScreen;
+			Text = "Clients";
+			FormClosed += ViewClients_FormClosed;
+			Load += ViewClients_Load;
+			((System.ComponentModel.ISupportInitialize)ClientsDataGridView).EndInit();
+			((System.ComponentModel.ISupportInitialize)customerBindingSource).EndInit();
+			ResumeLayout(false);
+		}
 
-        #endregion
+		#endregion
 
-        private DataGridView ClientsDataGridView;
-    }
+		private DataGridView ClientsDataGridView;
+		private BindingSource customerBindingSource;
+		private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+		private DataGridViewTextBoxColumn phoneNumberDataGridViewTextBoxColumn;
+		private DataGridViewTextBoxColumn mealIdDataGridViewTextBoxColumn;
+		private DataGridViewTextBoxColumn subscriptionCountDataGridViewTextBoxColumn;
+		private DataGridViewTextBoxColumn breakfastCounterDataGridViewTextBoxColumn;
+		private DataGridViewTextBoxColumn lunchCounterDataGridViewTextBoxColumn;
+		private DataGridViewTextBoxColumn dinnerCounterDataGridViewTextBoxColumn;
+	}
 }

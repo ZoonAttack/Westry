@@ -7,46 +7,64 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Westry.Models;
 
 namespace Westry
 {
-    public partial class RegisterNewCashier : Form
-    {
-        public RegisterNewCashier()
-        {
-            InitializeComponent();
-        }
+	public partial class RegisterNewCashier : Form
+	{
+		AdminPanel adminPanel;
+		DevDbContext _db;
+		public RegisterNewCashier()
+		{
+			InitializeComponent();
+			_db = new DevDbContext();
+			adminPanel = new AdminPanel();
+		}
 
-        private void addButton_Click(object sender, EventArgs e)
-        {
+		private void addButton_Click(object sender, EventArgs e)
+		{
+			Cashier cashier = new Cashier();
+			if (nameBox.Text == "" || passwordBox.Text == "")
+			{
+				Console.Beep(500, 500);
+				MessageBox.Show("You cannot leave name or password fields empty");
+			}
+			else
+			{
+				cashier.UserName = nameBox.Text;
+				cashier.Password = passwordBox.Text;
+				_db.Cashiers.Add(cashier);
+				MessageBox.Show($"Added cashier with username: {cashier.UserName}");
+				_db.SaveChanges();
+				this.Close();
+			}
+		}
 
-            if (nameBox.Text == "" || passwordBox.Text == "")
-            {
-                Console.Beep(500, 500);
-                MessageBox.Show("You cannot leave name or password fields empty");
-            }
-            //TO DO: Add Cashir name and password to the database
+		private void nameBox_TextChanged(object sender, EventArgs e)
+		{
 
-        }
+		}
 
-        private void nameBox_TextChanged(object sender, EventArgs e)
-        {
+		private void passwordBox_TextChanged(object sender, EventArgs e)
+		{
 
-        }
+		}
 
-        private void passwordBox_TextChanged(object sender, EventArgs e)
-        {
+		private void nameLabel_Click(object sender, EventArgs e)
+		{
 
-        }
+		}
 
-        private void nameLabel_Click(object sender, EventArgs e)
-        {
+		private void passwordLabel_Click(object sender, EventArgs e)
+		{
 
-        }
+		}
 
-        private void passwordLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-    }
+		private void RegisterNewCashier_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			AdminPanel adminPanel = new AdminPanel();
+			adminPanel.Show();
+		}
+	}
 }

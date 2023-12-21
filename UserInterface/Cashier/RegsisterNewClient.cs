@@ -118,7 +118,7 @@ namespace Westry
 				MessageBox.Show( isOld? "تم تحديث العميل بنجاح" : "تم تسجيل العميل بنجاح","", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				this.Close();
 			}
-			catch (Exception ex)
+			catch 
 			{
 				
 				MessageBox.Show("حدث خطأ ما", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
