@@ -69,7 +69,7 @@ namespace Westry
 			LaunchComboBox.Enabled = false;
 			DinnerComboBox.Enabled = false;
 
-			string selectedmeal;
+			string? selectedmeal;
 			if (BreakfastComboBox.SelectedItem != null)
 			{
 				selectedmeal = BreakfastComboBox.SelectedItem.ToString();
@@ -83,7 +83,7 @@ namespace Westry
 			BreakfastComboBox.Enabled = false;
 			DinnerComboBox.Enabled = false;
 
-			string selectedmeal;
+			string? selectedmeal;
 			if (LaunchComboBox.SelectedItem != null)
 			{
 				selectedmeal = LaunchComboBox.SelectedItem.ToString();
@@ -97,7 +97,7 @@ namespace Westry
 			BreakfastComboBox.Enabled = false;
 			LaunchComboBox.Enabled = false;
 
-			string selectedmeal;
+			string? selectedmeal;
 			if (DinnerComboBox.SelectedItem != null)
 			{
 				selectedmeal = DinnerComboBox.SelectedItem.ToString();
