@@ -104,6 +104,7 @@
 			FormClosing += LoginPage_FormClosing;
 			FormClosed += LoginPage_FormClosed;
 			Load += LoginPage_Load;
+			KeyDown += LoginPage_KeyDown;
 			ResumeLayout(false);
 			PerformLayout();
 		}

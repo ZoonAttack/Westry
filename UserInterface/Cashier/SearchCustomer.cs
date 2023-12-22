@@ -120,9 +120,23 @@ namespace Westry
 			}
 		}
 
+
+		private void SearchCustomer_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+				searchButton.PerformClick();
+			}
+		}
+
 		private void SearchCustomer_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			Manager.ManagerInstance.CloseApp();
+		}
+
+		private void SearchCustomer_Load(object sender, EventArgs e)
+		{
+			KeyPreview = true;
 		}
 	}
 }

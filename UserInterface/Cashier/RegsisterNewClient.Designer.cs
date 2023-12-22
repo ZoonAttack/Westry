@@ -158,6 +158,8 @@
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "userRegistrationPage";
 			FormClosing += RegsisterNewClient_FormClosing;
+			Load += RegsisterNewClient_Load;
+			KeyDown += RegsisterNewClient_KeyDown;
 			mealsBox.ResumeLayout(false);
 			mealsBox.PerformLayout();
 			ResumeLayout(false);

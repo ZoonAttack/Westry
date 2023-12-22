@@ -21,7 +21,7 @@ namespace Westry
 			InitializeComponent();
 			db = new DevDbContext();
 
-			if(_oldCustomer != null)
+			if (_oldCustomer != null)
 			{
 				fillData(_oldCustomer);
 				oldCustomer = _oldCustomer;
@@ -38,26 +38,26 @@ namespace Westry
 		{
 			if (phoneBox.Text == "" || nameBox.Text == "")
 			{
-				
+
 				MessageBox.Show("Cannot leave phone or name fields empty!");
 			}
-			else if (!oneMealRadioButton.Checked && !threeMealRadioButton.Checked && !twoMealRadioButton.Checked) {MessageBox.Show("choose a subscription type!"); }
+			else if (!oneMealRadioButton.Checked && !threeMealRadioButton.Checked && !twoMealRadioButton.Checked) { MessageBox.Show("choose a subscription type!"); }
 			else
 			{
-				if(oldCustomer != null)
+				if (oldCustomer != null)
 				{
 					oldCustomer.SubscriptionCount += 1;
-					adjustCustomer(oldCustomer,true);
+					adjustCustomer(oldCustomer, true);
 				}
 				else
 				{
 					Customer newCustomer = new Customer();
 					newCustomer.SubscriptionCount = 0;
-					adjustCustomer(newCustomer,false);
+					adjustCustomer(newCustomer, false);
 				}
-			
 
-				
+
+
 			}
 		}
 
@@ -65,7 +65,7 @@ namespace Westry
 		{
 			nameBox.Text = oldCustomer.Name;
 			phoneBox.Text = oldCustomer.PhoneNumber;
-			switch(oldCustomer.MealId)
+			switch (oldCustomer.MealId)
 			{
 				case 1:
 					oneMealRadioButton.Checked = true; break;
@@ -76,11 +76,11 @@ namespace Westry
 			}
 		}
 
-		private void adjustCustomer(Customer customer,bool isOld)
+		private void adjustCustomer(Customer customer, bool isOld)
 		{
 			customer.Name = nameBox.Text;
 			customer.PhoneNumber = phoneBox.Text;
-			
+
 			if (oneMealRadioButton.Checked)
 			{
 				customer.MealId = 1;
@@ -115,14 +115,14 @@ namespace Westry
 				}
 				db.SaveChanges();
 
-				MessageBox.Show( isOld? "تم تحديث العميل بنجاح" : "تم تسجيل العميل بنجاح","", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show(isOld ? "تم تحديث العميل بنجاح" : "تم تسجيل العميل بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				this.Close();
 			}
-			catch 
+			catch
 			{
-				
+
 				MessageBox.Show("رقم الهاتف مسجل من قبل", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				
+
 			}
 
 		}
@@ -175,6 +175,19 @@ namespace Westry
 		{
 			var SearchCust = new SearchCustomer();
 			SearchCust.Show();
+		}
+
+		private void RegsisterNewClient_Load(object sender, EventArgs e)
+		{
+			KeyPreview = true;
+		}
+
+		private void RegsisterNewClient_KeyDown(object sender, KeyEventArgs e)
+		{
+			if(e.KeyCode == Keys.Enter)
+			{
+				registerButton.PerformClick();
+			}
 		}
 	}
 }

@@ -94,6 +94,8 @@
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Cashier Page";
 			FormClosed += SearchCustomer_FormClosed;
+			Load += SearchCustomer_Load;
+			KeyDown += SearchCustomer_KeyDown;
 			ResumeLayout(false);
 			PerformLayout();
 		}

@@ -92,7 +92,7 @@ namespace Westry
 
 		private void LoginPage_Load(object sender, EventArgs e)
 		{
-
+			KeyPreview = true;
 		}
 
 		private void LoginPage_FormClosing(object sender, FormClosingEventArgs e)
@@ -103,6 +103,14 @@ namespace Westry
 		private void LoginPage_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			Manager.ManagerInstance.CloseApp();
+		}
+
+		private void LoginPage_KeyDown(object sender, KeyEventArgs e)
+		{
+			if(e.KeyCode == Keys.Enter)
+			{
+				loginButton.PerformClick();
+			}
 		}
 	}
 }
