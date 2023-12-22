@@ -121,9 +121,8 @@ namespace Westry
 			catch 
 			{
 				
-				MessageBox.Show("حدث خطأ ما", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				Hide();
-				Close();
+				MessageBox.Show("رقم الهاتف مسجل من قبل", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				
 			}
 
 		}
