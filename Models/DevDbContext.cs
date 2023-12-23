@@ -23,7 +23,7 @@ public partial class DevDbContext : DbContext
 
     public virtual DbSet<Meal> Meals { get; set; }
 
-    public virtual DbSet<MealLog> MealLogs { get; set; }
+    public virtual DbSet<MealLog> MealLog { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -114,14 +114,14 @@ public partial class DevDbContext : DbContext
 
         modelBuilder.Entity<MealLog>(entity =>
         {
-            entity.HasKey(e => e.RecordId);
+            entity.HasKey(e => e.PhoneNumber);
 
             entity.ToTable("MealLog");
 
-            entity.Property(e => e.RecordId)
+            entity.Property(e => e.PhoneNumber)
                 .ValueGeneratedNever()
-                .HasColumnName("record_id");
-            entity.Property(e => e.Count).HasColumnName("count");
+                .HasColumnName("phone_number");
+            entity.Property(e => e.choosen_meal).HasColumnName("choosen_meal");
             entity.Property(e => e.MealId).HasColumnName("meal_id");
 
             entity.HasOne(d => d.Meal).WithMany(p => p.MealLogs)

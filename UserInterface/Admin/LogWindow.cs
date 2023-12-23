@@ -12,10 +12,10 @@ using Westry.Models;
 
 namespace Westry
 {
-	public partial class MealLog : Form
+	public partial class LogWindow : Form
 	{
 
-		public MealLog()
+		public LogWindow()
 		{
 			InitializeComponent();
 			LogDataGridView.ReadOnly = true;
@@ -30,7 +30,7 @@ namespace Westry
 		private void Log_Load(object sender, EventArgs e)
 		{
 			LogDataGridView.DataBindings.Clear();
-			var dt = Utility.db.MealLogs.ToList();
+			var dt = Utility.db.MealLog.ToList();
 			LogDataGridView.DataSource = Utility.ToDataTable(dt);
 		}
 

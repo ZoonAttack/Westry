@@ -175,7 +175,24 @@ namespace Westry
 		private void RecordAndLogOrder()
 		{
 			db.Update(customer);
-			//TODO: Should Log Meal here and record it to DB
+			MealLog newlog = new MealLog();
+			newlog.PhoneNumber = customer.PhoneNumber;
+			newlog.MealId = customer.MealId;
+			if (BreakfastComboBox.SelectedIndex != -1)
+			{
+				newlog.choosen_meal = BreakfastComboBox.SelectedItem.ToString();
+			}
+			if (LaunchComboBox.SelectedIndex != -1)
+			{
+				newlog.choosen_meal = LaunchComboBox.SelectedItem.ToString();
+			}
+			if (DinnerComboBox.SelectedIndex != -1)
+			{
+				newlog.choosen_meal = DinnerComboBox.SelectedItem.ToString();
+			}
+
+			db.MealLog.Add(newlog);
+			
 			db.SaveChanges();
 		}
 

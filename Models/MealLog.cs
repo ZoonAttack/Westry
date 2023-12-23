@@ -5,11 +5,11 @@ namespace Westry.Models;
 
 public partial class MealLog
 {
-    public int RecordId { get; set; }
+    public string PhoneNumber { get; set; }
 
     public int? MealId { get; set; }
 
-    public int? Count { get; set; }
+    public string? choosen_meal { get; set; }
 
     public virtual Meal? Meal { get; set; }
 }

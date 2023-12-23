@@ -40,7 +40,7 @@ namespace Westry
 
 		private void viewDailyButton_Click(object sender, EventArgs e)
 		{
-			MealLog log = new MealLog();
+			LogWindow log = new LogWindow();
 			log.Show();
 
 		}
