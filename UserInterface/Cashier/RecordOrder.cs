@@ -193,6 +193,11 @@ namespace Westry
 				newlog.choosen_meal = DinnerComboBox.SelectedItem.ToString();
 			}
 
+			if (buffetCheckBox.Checked)
+			{
+				newlog.choosen_meal = buffetTextBox.Text;
+			}
+
 			db.MealLog.Add(newlog);
 			
 			db.SaveChanges();

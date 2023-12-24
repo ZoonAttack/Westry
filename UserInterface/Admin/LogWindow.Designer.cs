@@ -113,6 +113,7 @@
 			Name = "LogWindow";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Log";
+			FormClosed += LogWindow_FormClosed;
 			Load += Log_Load;
 			((System.ComponentModel.ISupportInitialize)LogDataGridView).EndInit();
 			((System.ComponentModel.ISupportInitialize)mealLogBindingSource).EndInit();
