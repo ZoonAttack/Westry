@@ -45,12 +45,12 @@ namespace Westry
 		{
 
 			// add data to labels
-			nameLabel.Text = $"Name: {customer.Name}";
-			phoneLabel.Text = $"Phone Number: {customer.PhoneNumber}";
-			subCountLabel.Text = $"Previous Subscriptions: {customer.SubscriptionCount}";
-			breakfastRemLabel.Text = $"Remaining Breakfast Meals: {customer.BreakfastCounter}";
-			launchRemLabel.Text = $"Remaining Lunch Meals: {customer.LunchCounter}";
-			dinnerRemLabel.Text = $"Remaining Dinner Meals: {customer.DinnerCounter}";
+			nameLabel.Text = $"اسم العميل: {customer.Name}";
+			phoneLabel.Text = $"رقم الهاتف: {customer.PhoneNumber}";
+			subCountLabel.Text = $"عدد مرات الاشتراك السابقه: {customer.SubscriptionCount}";
+			breakfastRemLabel.Text = $"عدد وجبات الافطار المتبقيه: {customer.BreakfastCounter}";
+			launchRemLabel.Text = $"عدد وجبات الغداء المتبقيه: {customer.LunchCounter}";
+			dinnerRemLabel.Text = $"عدد وجبات العشاء المتبقيه: {customer.DinnerCounter}";
 
 		}
 
@@ -68,6 +68,8 @@ namespace Westry
 		{
 			LaunchComboBox.Enabled = false;
 			DinnerComboBox.Enabled = false;
+			buffetCheckBox.Visible = false;
+			specifyBuffetLabel.Visible = false;
 
 			string? selectedmeal;
 			if (BreakfastComboBox.SelectedItem != null)
@@ -82,7 +84,8 @@ namespace Westry
 		{
 			BreakfastComboBox.Enabled = false;
 			DinnerComboBox.Enabled = false;
-
+			buffetCheckBox.Visible = false;
+			specifyBuffetLabel.Visible = false;
 			string? selectedmeal;
 			if (LaunchComboBox.SelectedItem != null)
 			{
@@ -96,6 +99,8 @@ namespace Westry
 		{
 			BreakfastComboBox.Enabled = false;
 			LaunchComboBox.Enabled = false;
+			buffetCheckBox.Visible = false;
+			specifyBuffetLabel.Visible = false;
 
 			string? selectedmeal;
 			if (DinnerComboBox.SelectedItem != null)
@@ -110,6 +115,11 @@ namespace Westry
 		{
 			buffetTextBox.Visible = buffetCheckBox.Checked;
 			specifyBuffetLabel.Visible = buffetCheckBox.Checked;
+
+			BreakfastComboBox.Enabled = !buffetCheckBox.Checked;
+			LaunchComboBox.Enabled = !buffetCheckBox.Checked;
+			DinnerComboBox.Enabled = !buffetCheckBox.Checked;
+
 		}
 
 		private void resetButton_Click(object sender, EventArgs e)
@@ -119,6 +129,8 @@ namespace Westry
 			DinnerComboBox.SelectedIndex = -1;
 			specifyBuffetLabel.Visible = false;
 			specifyNotesLabel.Visible = false;
+
+			buffetCheckBox.Visible = true;
 			buffetTextBox.Visible = false;
 			buffetCheckBox.Checked = false;
 			BreakfastComboBox.Enabled = true;
@@ -131,9 +143,9 @@ namespace Westry
 		private void recordOrderButton_Click(object sender, EventArgs e)
 		{
 
-			if (BreakfastComboBox.SelectedIndex == -1 && LaunchComboBox.SelectedIndex == -1 && DinnerComboBox.SelectedIndex == -1) { MessageBox.Show("please enter a valid order"); }
-			else if (specifyNotesLabel.Visible && notesTextBox.Text == "") { MessageBox.Show("please enter a proper note"); }
-			else if (specifyBuffetLabel.Visible && buffetTextBox.Text == "") { MessageBox.Show("please enter a buffet order"); }
+			if (BreakfastComboBox.SelectedIndex == -1 && LaunchComboBox.SelectedIndex == -1 && DinnerComboBox.SelectedIndex == -1 && !buffetCheckBox.Checked) { MessageBox.Show("الرجاء اختيار طلب"); }
+			else if (specifyNotesLabel.Visible && notesTextBox.Text == "") { MessageBox.Show("الرجاء ادخال ملاحظه صحيحه"); }
+			else if (specifyBuffetLabel.Visible && buffetTextBox.Text == "") { MessageBox.Show("الرجاء ادخال طلب البوفيه"); }
 
 			else
 			{
@@ -155,9 +167,9 @@ namespace Westry
 					MessageBox.Show("تم تسجيل الطلب بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					this.Close();
 				}
-				catch(Exception ex)
+				catch (Exception ex)
 				{
-					
+
 					MessageBox.Show("حدث خطأ ما", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 
@@ -199,9 +211,13 @@ namespace Westry
 			}
 
 			db.MealLog.Add(newlog);
-			
+
 			db.SaveChanges();
 		}
 
+		private void nameLabel_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

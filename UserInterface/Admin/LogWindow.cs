@@ -55,8 +55,12 @@ namespace Westry
 
 		private void generatePDF()
 		{
-			string desktopDire = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-			string pdfFilePath = Path.Combine(desktopDire, $"{DateTime.Now.ToString("yyyy-MM-dd-HH-mm")}-MealLog.pdf");
+			string LogsdesktopDire = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),"Logs");
+			if (!Directory.Exists(LogsdesktopDire))
+			{
+				Directory.CreateDirectory(LogsdesktopDire);
+			}
+			string pdfFilePath = Path.Combine(LogsdesktopDire, $"{DateTime.Now.ToString("yyyy-MM-dd-HH-mm")}-MealLog.pdf");
 
 			
 
@@ -91,6 +95,7 @@ namespace Westry
 
 			pdfRenderer.RenderDocument();
 			pdfRenderer.PdfDocument.Save(pdfFilePath);
+			MessageBox.Show("تم صنع ملف \nPDF\nعلى سطح المكتب");
 			this.Close();
 
 		}

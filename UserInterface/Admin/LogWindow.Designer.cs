@@ -44,11 +44,11 @@
 			// 
 			pdfButton.BackColor = Color.AntiqueWhite;
 			pdfButton.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
-			pdfButton.Location = new Point(316, 573);
+			pdfButton.Location = new Point(321, 573);
 			pdfButton.Name = "pdfButton";
-			pdfButton.Size = new Size(146, 79);
+			pdfButton.Size = new Size(141, 79);
 			pdfButton.TabIndex = 8;
-			pdfButton.Text = "Export PDF";
+			pdfButton.Text = "طباعة ملف PDF";
 			pdfButton.UseVisualStyleBackColor = false;
 			pdfButton.Click += pdfButton_Click;
 			// 

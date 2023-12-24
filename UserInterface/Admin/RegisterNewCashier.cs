@@ -27,15 +27,15 @@ namespace Westry
 			Cashier cashier = new Cashier();
 			if (nameBox.Text == "" || passwordBox.Text == "")
 			{
-				Console.Beep(500, 500);
-				MessageBox.Show("You cannot leave name or password fields empty");
+				
+				MessageBox.Show("الرجاء ادخال اسم المستخدم وكلمة المرور");
 			}
 			else
 			{
 				cashier.UserName = nameBox.Text;
 				cashier.Password = passwordBox.Text;
 				_db.Cashiers.Add(cashier);
-				MessageBox.Show($"Added cashier with username: {cashier.UserName}");
+				MessageBox.Show($"تم اضافه الكاشير: {cashier.UserName}");
 				_db.SaveChanges();
 				this.Close();
 			}

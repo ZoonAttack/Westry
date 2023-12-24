@@ -39,9 +39,9 @@ namespace Westry
 			if (phoneBox.Text == "" || nameBox.Text == "")
 			{
 
-				MessageBox.Show("Cannot leave phone or name fields empty!");
+				MessageBox.Show("الرجاء ادخال اسم العميل ورقم الهاتف");
 			}
-			else if (!oneMealRadioButton.Checked && !threeMealRadioButton.Checked && !twoMealRadioButton.Checked) { MessageBox.Show("choose a subscription type!"); }
+			else if (!oneMealRadioButton.Checked && !threeMealRadioButton.Checked && !twoMealRadioButton.Checked) { MessageBox.Show("الرجاء اختيار نوع الاشتراك"); }
 			else
 			{
 				if (oldCustomer != null)
@@ -122,6 +122,7 @@ namespace Westry
 			{
 
 				MessageBox.Show("رقم الهاتف مسجل من قبل", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				this.Close();
 
 			}
 

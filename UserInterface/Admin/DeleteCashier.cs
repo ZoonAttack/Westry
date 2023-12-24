@@ -25,8 +25,8 @@ namespace Westry
 		{
 			if (cashierNameTextBox.Text == "")
 			{
-				Console.Beep(500, 500);
-				MessageBox.Show("Cannot leave phone or name fields empty!");
+				
+				MessageBox.Show("الرجاء ادخال اسم الحساب المراد حذفه");
 			}
 			else
 			{
@@ -34,13 +34,13 @@ namespace Westry
 				if (oldCashier != null)
 				{
 					_dbContext.Cashiers.Remove(oldCashier);
-					MessageBox.Show($"Deleted Cashier: {cashierNameTextBox.Text}");
+					MessageBox.Show($"تم حذف الكاشير: {cashierNameTextBox.Text}");
 					_dbContext.SaveChanges();
 					this.Close();
 				}
 				else
 				{
-					MessageBox.Show("Cashier does not exist!");
+					MessageBox.Show("هذا الحساب غير موجود");
 				}
 			}
 		}

@@ -35,7 +35,7 @@ namespace Westry
 
 		private void searchButton_Click(object sender, EventArgs e)
 		{
-			if (phoneBox.Text == "") { MessageBox.Show("enter phone number"); }
+			if (phoneBox.Text == "") { MessageBox.Show("الرجاء ادخال رقم الهاتف"); }
 			else
 			{
 				Customer? foundCustomer = db.Customers.SingleOrDefault(u => u.PhoneNumber == phoneBox.Text);
@@ -63,7 +63,7 @@ namespace Westry
 				}
 				else
 				{
-					MessageBox.Show("Customer not Found.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("لم يتم العثور على عميل مسجل برقم الهاتف هذا", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
 				}
 
