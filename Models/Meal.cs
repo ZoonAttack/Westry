@@ -13,5 +13,4 @@ public partial class Meal
 
     public virtual ICollection<Customer> Customers { get; } = new List<Customer>();
 
-    public virtual ICollection<MealLog> MealLogs { get; } = new List<MealLog>();
 }

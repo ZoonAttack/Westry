@@ -114,9 +114,13 @@ public partial class DevDbContext : DbContext
 
         modelBuilder.Entity<MealLog>(entity =>
         {
-            entity.HasKey(e => e.PhoneNumber);
 
+            entity.HasKey(e => e.TimeTaken);
             entity.ToTable("MealLog");
+
+            entity.Property(e => e.TimeTaken)
+                .HasColumnName("time_taken")
+                .ValueGeneratedNever();
 
             entity.Property(e => e.PhoneNumber)
                 .ValueGeneratedNever()
@@ -124,9 +128,6 @@ public partial class DevDbContext : DbContext
             entity.Property(e => e.choosen_meal).HasColumnName("choosen_meal");
             entity.Property(e => e.MealId).HasColumnName("meal_id");
 
-            entity.HasOne(d => d.Meal).WithMany(p => p.MealLogs)
-                .HasForeignKey(d => d.MealId)
-                .HasConstraintName("FK_MealLog_Meals");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -155,8 +155,9 @@ namespace Westry
 					MessageBox.Show("تم تسجيل الطلب بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					this.Close();
 				}
-				catch
+				catch(Exception ex)
 				{
+					MessageBox.Show(ex.Message);
 					MessageBox.Show("حدث خطأ ما", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 
@@ -176,6 +177,7 @@ namespace Westry
 		{
 			db.Update(customer);
 			MealLog newlog = new MealLog();
+			newlog.TimeTaken = DateTime.Now;
 			newlog.PhoneNumber = customer.PhoneNumber;
 			newlog.MealId = customer.MealId;
 			if (BreakfastComboBox.SelectedIndex != -1)

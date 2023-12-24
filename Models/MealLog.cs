@@ -11,5 +11,5 @@ public partial class MealLog
 
     public string? choosen_meal { get; set; }
 
-    public virtual Meal? Meal { get; set; }
+    public DateTime TimeTaken { get; set; }
 }
