@@ -157,7 +157,7 @@ namespace Westry
 				}
 				catch(Exception ex)
 				{
-					MessageBox.Show(ex.Message);
+					
 					MessageBox.Show("حدث خطأ ما", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 
