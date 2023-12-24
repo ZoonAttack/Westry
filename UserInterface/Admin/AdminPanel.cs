@@ -56,13 +56,10 @@ namespace Westry
 		{
 		}
 
-		private void AdminPanel_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			Manager.ManagerInstance?.CloseApp();
-		}
+		
 		private void AdminPanel_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			Manager.ManagerInstance?.CloseApp();
+			Manager.ManagerInstance.CloseApp();
 		}
 
 		private void AdminPanel_Load(object sender, EventArgs e)

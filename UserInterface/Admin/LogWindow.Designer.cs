@@ -31,10 +31,11 @@
 			components = new System.ComponentModel.Container();
 			pdfButton = new Button();
 			LogDataGridView = new DataGridView();
-			mealLogBindingSource = new BindingSource(components);
 			phoneNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 			mealIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 			choosenmealDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+			TimeTaken = new DataGridViewTextBoxColumn();
+			mealLogBindingSource = new BindingSource(components);
 			((System.ComponentModel.ISupportInitialize)LogDataGridView).BeginInit();
 			((System.ComponentModel.ISupportInitialize)mealLogBindingSource).BeginInit();
 			SuspendLayout();
@@ -43,11 +44,11 @@
 			// 
 			pdfButton.BackColor = Color.AntiqueWhite;
 			pdfButton.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
-			pdfButton.Location = new Point(316, 573);
+			pdfButton.Location = new Point(321, 573);
 			pdfButton.Name = "pdfButton";
-			pdfButton.Size = new Size(146, 79);
+			pdfButton.Size = new Size(141, 79);
 			pdfButton.TabIndex = 8;
-			pdfButton.Text = "Export PDF";
+			pdfButton.Text = "طباعة ملف PDF";
 			pdfButton.UseVisualStyleBackColor = false;
 			pdfButton.Click += pdfButton_Click;
 			// 
@@ -57,18 +58,14 @@
 			LogDataGridView.AllowUserToDeleteRows = false;
 			LogDataGridView.AutoGenerateColumns = false;
 			LogDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			LogDataGridView.Columns.AddRange(new DataGridViewColumn[] { phoneNumberDataGridViewTextBoxColumn, mealIdDataGridViewTextBoxColumn, choosenmealDataGridViewTextBoxColumn });
+			LogDataGridView.Columns.AddRange(new DataGridViewColumn[] { phoneNumberDataGridViewTextBoxColumn, mealIdDataGridViewTextBoxColumn, choosenmealDataGridViewTextBoxColumn, TimeTaken });
 			LogDataGridView.DataSource = mealLogBindingSource;
-			LogDataGridView.Location = new Point(12, 12);
+			LogDataGridView.Location = new Point(27, 12);
 			LogDataGridView.Name = "LogDataGridView";
 			LogDataGridView.ReadOnly = true;
 			LogDataGridView.RowTemplate.Height = 25;
-			LogDataGridView.Size = new Size(776, 555);
+			LogDataGridView.Size = new Size(743, 555);
 			LogDataGridView.TabIndex = 9;
-			// 
-			// mealLogBindingSource
-			// 
-			mealLogBindingSource.DataSource = typeof(Models.MealLog);
 			// 
 			// phoneNumberDataGridViewTextBoxColumn
 			// 
@@ -76,6 +73,7 @@
 			phoneNumberDataGridViewTextBoxColumn.HeaderText = "PhoneNumber";
 			phoneNumberDataGridViewTextBoxColumn.Name = "phoneNumberDataGridViewTextBoxColumn";
 			phoneNumberDataGridViewTextBoxColumn.ReadOnly = true;
+			phoneNumberDataGridViewTextBoxColumn.Width = 150;
 			// 
 			// mealIdDataGridViewTextBoxColumn
 			// 
@@ -90,6 +88,19 @@
 			choosenmealDataGridViewTextBoxColumn.HeaderText = "choosen_meal";
 			choosenmealDataGridViewTextBoxColumn.Name = "choosenmealDataGridViewTextBoxColumn";
 			choosenmealDataGridViewTextBoxColumn.ReadOnly = true;
+			choosenmealDataGridViewTextBoxColumn.Width = 300;
+			// 
+			// TimeTaken
+			// 
+			TimeTaken.DataPropertyName = "TimeTaken";
+			TimeTaken.HeaderText = "TimeTaken";
+			TimeTaken.Name = "TimeTaken";
+			TimeTaken.ReadOnly = true;
+			TimeTaken.Width = 150;
+			// 
+			// mealLogBindingSource
+			// 
+			mealLogBindingSource.DataSource = typeof(Models.MealLog);
 			// 
 			// LogWindow
 			// 
@@ -102,6 +113,7 @@
 			Name = "LogWindow";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Log";
+			FormClosed += LogWindow_FormClosed;
 			Load += Log_Load;
 			((System.ComponentModel.ISupportInitialize)LogDataGridView).EndInit();
 			((System.ComponentModel.ISupportInitialize)mealLogBindingSource).EndInit();
@@ -112,9 +124,10 @@
 
 		private Button pdfButton;
         private DataGridView LogDataGridView;
+		private BindingSource mealLogBindingSource;
 		private DataGridViewTextBoxColumn phoneNumberDataGridViewTextBoxColumn;
 		private DataGridViewTextBoxColumn mealIdDataGridViewTextBoxColumn;
 		private DataGridViewTextBoxColumn choosenmealDataGridViewTextBoxColumn;
-		private BindingSource mealLogBindingSource;
+		private DataGridViewTextBoxColumn TimeTaken;
 	}
 }

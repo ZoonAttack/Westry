@@ -1,4 +1,4 @@
-using Westry.ManagerForm;
+﻿using Westry.ManagerForm;
 using Westry.Models;
 
 namespace Westry
@@ -25,7 +25,7 @@ namespace Westry
 
 		private void loginButton_Click(object sender, EventArgs e)
 		{
-			if (nameBox.Text == "" || passwordBox.Text == "") { MessageBox.Show("enter a valid username and password"); }
+			if (nameBox.Text == "" || passwordBox.Text == "") { MessageBox.Show("الرجاء ادخال اسم الحساب وكلمة السر"); }
 			else
 			{
 				//Return cashier if found. If not return null this is what "SingleOrDefault" does
@@ -65,7 +65,7 @@ namespace Westry
 				else
 				{
 
-					MessageBox.Show("Wrong username or password!");
+					MessageBox.Show("اسم الحساب او كلمة السر خطأ");
 				}
 
 

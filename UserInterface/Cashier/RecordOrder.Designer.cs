@@ -53,9 +53,10 @@
 			nameLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
 			nameLabel.Location = new Point(12, 25);
 			nameLabel.Name = "nameLabel";
-			nameLabel.Size = new Size(59, 25);
+			nameLabel.Size = new Size(101, 25);
 			nameLabel.TabIndex = 0;
-			nameLabel.Text = "name";
+			nameLabel.Text = "اسم العميل";
+			nameLabel.Click += nameLabel_Click;
 			// 
 			// subCountLabel
 			// 
@@ -63,39 +64,39 @@
 			subCountLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
 			subCountLabel.Location = new Point(12, 99);
 			subCountLabel.Name = "subCountLabel";
-			subCountLabel.Size = new Size(168, 25);
+			subCountLabel.Size = new Size(157, 25);
 			subCountLabel.TabIndex = 1;
-			subCountLabel.Text = "subscription count";
+			subCountLabel.Text = "عدد مرات الاشتراك";
 			// 
 			// dinnerRemLabel
 			// 
 			dinnerRemLabel.AutoSize = true;
-			dinnerRemLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			dinnerRemLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
 			dinnerRemLabel.Location = new Point(12, 135);
 			dinnerRemLabel.Name = "dinnerRemLabel";
-			dinnerRemLabel.Size = new Size(214, 25);
+			dinnerRemLabel.Size = new Size(182, 25);
 			dinnerRemLabel.TabIndex = 2;
-			dinnerRemLabel.Text = "Dinner remaining meals";
+			dinnerRemLabel.Text = "وجبات العشاء المتبقيه";
 			// 
 			// launchRemLabel
 			// 
 			launchRemLabel.AutoSize = true;
-			launchRemLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			launchRemLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
 			launchRemLabel.Location = new Point(531, 135);
 			launchRemLabel.Name = "launchRemLabel";
-			launchRemLabel.Size = new Size(218, 25);
+			launchRemLabel.Size = new Size(212, 25);
 			launchRemLabel.TabIndex = 3;
-			launchRemLabel.Text = "Launch remaining meals";
+			launchRemLabel.Text = "عدد وحبات الغداء المتبقيه";
 			// 
 			// breakfastRemLabel
 			// 
 			breakfastRemLabel.AutoSize = true;
-			breakfastRemLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			breakfastRemLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
 			breakfastRemLabel.Location = new Point(983, 135);
 			breakfastRemLabel.Name = "breakfastRemLabel";
-			breakfastRemLabel.Size = new Size(234, 25);
+			breakfastRemLabel.Size = new Size(222, 25);
 			breakfastRemLabel.TabIndex = 4;
-			breakfastRemLabel.Text = "Breakfast remaining meals";
+			breakfastRemLabel.Text = "عدد وحبات الافطاء المتبقيه";
 			// 
 			// phoneLabel
 			// 
@@ -103,9 +104,9 @@
 			phoneLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
 			phoneLabel.Location = new Point(12, 60);
 			phoneLabel.Name = "phoneLabel";
-			phoneLabel.Size = new Size(66, 25);
+			phoneLabel.Size = new Size(95, 25);
 			phoneLabel.TabIndex = 5;
-			phoneLabel.Text = "phone";
+			phoneLabel.Text = "رقم الهاتف";
 			// 
 			// BreakfastComboBox
 			// 
@@ -219,11 +220,11 @@
 			// 
 			resetButton.BackColor = Color.AntiqueWhite;
 			resetButton.Font = new Font("Times New Roman", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-			resetButton.Location = new Point(1194, 637);
+			resetButton.Location = new Point(1063, 637);
 			resetButton.Name = "resetButton";
-			resetButton.Size = new Size(108, 45);
+			resetButton.Size = new Size(239, 45);
 			resetButton.TabIndex = 16;
-			resetButton.Text = "reset";
+			resetButton.Text = "اعادة ادخال البيانات";
 			resetButton.UseVisualStyleBackColor = false;
 			resetButton.Click += resetButton_Click;
 			// 
