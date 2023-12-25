@@ -189,9 +189,10 @@
 			specifyNotesLabel.ForeColor = Color.Red;
 			specifyNotesLabel.Location = new Point(763, 275);
 			specifyNotesLabel.Name = "specifyNotesLabel";
-			specifyNotesLabel.Size = new Size(134, 25);
+			specifyNotesLabel.Size = new Size(166, 25);
 			specifyNotesLabel.TabIndex = 13;
-			specifyNotesLabel.Text = "اكتب الطلب هنا";
+			specifyNotesLabel.Text = "اكتب الملاحظات هنا";
+			specifyNotesLabel.Click += specifyNotesLabel_Click;
 			// 
 			// specifyBuffetLabel
 			// 

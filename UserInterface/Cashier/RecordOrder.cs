@@ -75,7 +75,7 @@ namespace Westry
 			if (BreakfastComboBox.SelectedItem != null)
 			{
 				selectedmeal = BreakfastComboBox.SelectedItem.ToString();
-				if (selectedmeal == "آخر") { specifyNotesLabel.Visible = true; }
+				if (selectedmeal == "آخر") { specifyNotesLabel.Visible = true; buffetCheckBox.Visible = true; }
 				else { specifyNotesLabel.Visible = false; }
 			}
 		}
@@ -90,7 +90,7 @@ namespace Westry
 			if (LaunchComboBox.SelectedItem != null)
 			{
 				selectedmeal = LaunchComboBox.SelectedItem.ToString();
-				if (selectedmeal == "آخر") { specifyNotesLabel.Visible = true; }
+				if (selectedmeal == "آخر") { specifyNotesLabel.Visible = true; buffetCheckBox.Visible = true; }
 				else { specifyNotesLabel.Visible = false; }
 			}
 		}
@@ -106,7 +106,7 @@ namespace Westry
 			if (DinnerComboBox.SelectedItem != null)
 			{
 				selectedmeal = DinnerComboBox.SelectedItem.ToString();
-				if (selectedmeal == "آخر") { specifyNotesLabel.Visible = true; }
+				if (selectedmeal == "آخر") { specifyNotesLabel.Visible = true; buffetCheckBox.Visible = true; }
 				else { specifyNotesLabel.Visible = false; }
 			}
 		}
@@ -119,6 +119,18 @@ namespace Westry
 			BreakfastComboBox.Enabled = !buffetCheckBox.Checked;
 			LaunchComboBox.Enabled = !buffetCheckBox.Checked;
 			DinnerComboBox.Enabled = !buffetCheckBox.Checked;
+			if (buffetCheckBox.Checked)
+			{
+				BreakfastComboBox.SelectedItem = BreakfastComboBox.Items[BreakfastComboBox.Items.Count - 1];
+				LaunchComboBox.SelectedItem = LaunchComboBox.Items[LaunchComboBox.Items.Count - 1];
+				DinnerComboBox.SelectedItem = DinnerComboBox.Items[DinnerComboBox.Items.Count - 1];
+			}
+			else
+			{
+				BreakfastComboBox.SelectedItem = -1;
+				LaunchComboBox.SelectedItem = -1;
+				DinnerComboBox.SelectedItem = -1;
+			}
 
 		}
 
@@ -144,7 +156,7 @@ namespace Westry
 		{
 
 			if (BreakfastComboBox.SelectedIndex == -1 && LaunchComboBox.SelectedIndex == -1 && DinnerComboBox.SelectedIndex == -1 && !buffetCheckBox.Checked) { MessageBox.Show("الرجاء اختيار طلب"); }
-			else if (specifyNotesLabel.Visible && notesTextBox.Text == "") { MessageBox.Show("الرجاء ادخال ملاحظه صحيحه"); }
+			
 			else if (specifyBuffetLabel.Visible && buffetTextBox.Text == "") { MessageBox.Show("الرجاء ادخال طلب البوفيه"); }
 
 			else
@@ -216,6 +228,11 @@ namespace Westry
 		}
 
 		private void nameLabel_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void specifyNotesLabel_Click(object sender, EventArgs e)
 		{
 
 		}
