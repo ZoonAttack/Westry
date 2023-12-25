@@ -101,6 +101,8 @@
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "AddCashierPage";
 			FormClosed += RegisterNewCashier_FormClosed;
+			Load += RegisterNewCashier_Load;
+			KeyDown += RegisterNewCashier_KeyDown;
 			ResumeLayout(false);
 			PerformLayout();
 		}

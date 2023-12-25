@@ -25,7 +25,7 @@ namespace Westry
 		{
 			if (cashierNameTextBox.Text == "")
 			{
-				
+
 				MessageBox.Show("الرجاء ادخال اسم الحساب المراد حذفه");
 			}
 			else
@@ -59,6 +59,19 @@ namespace Westry
 		private void DeleteCashierPage_Load(object sender, EventArgs e)
 		{
 
+		}
+
+		private void DeleteCashierPage_Load_1(object sender, EventArgs e)
+		{
+			KeyPreview = true;
+		}
+
+		private void DeleteCashierPage_KeyDown(object sender, KeyEventArgs e)
+		{
+			if(e.KeyCode == Keys.Enter)
+			{
+				deleteCashierButton.PerformClick();
+			}
 		}
 	}
 }

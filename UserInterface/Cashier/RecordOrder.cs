@@ -156,7 +156,7 @@ namespace Westry
 		{
 
 			if (BreakfastComboBox.SelectedIndex == -1 && LaunchComboBox.SelectedIndex == -1 && DinnerComboBox.SelectedIndex == -1 && !buffetCheckBox.Checked) { MessageBox.Show("الرجاء اختيار طلب"); }
-			
+
 			else if (specifyBuffetLabel.Visible && buffetTextBox.Text == "") { MessageBox.Show("الرجاء ادخال طلب البوفيه"); }
 
 			else
@@ -235,6 +235,19 @@ namespace Westry
 		private void specifyNotesLabel_Click(object sender, EventArgs e)
 		{
 
+		}
+
+		private void RecordOrder_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+				recordOrderButton.PerformClick();
+			}
+		}
+
+		private void RecordOrder_Load(object sender, EventArgs e)
+		{
+			KeyPreview = true;
 		}
 	}
 }

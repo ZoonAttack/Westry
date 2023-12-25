@@ -38,11 +38,12 @@ namespace Westry
 		{
 
 			generatePDF();
-			
+
 		}
 
 		private void Log_Load(object sender, EventArgs e)
 		{
+			KeyPreview = true;
 			LogDataGridView.DataBindings.Clear();
 			var dt = Utility.db.MealLog.ToList();
 			LogDataGridView.DataSource = Utility.ToDataTable(dt);
@@ -55,20 +56,20 @@ namespace Westry
 
 		private void generatePDF()
 		{
-			string LogsdesktopDire = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),"Logs");
+			string LogsdesktopDire = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Logs");
 			if (!Directory.Exists(LogsdesktopDire))
 			{
 				Directory.CreateDirectory(LogsdesktopDire);
 			}
 			string pdfFilePath = Path.Combine(LogsdesktopDire, $"{DateTime.Now.ToString("yyyy-MM-dd-HH-mm")}-MealLog.pdf");
 
-			
 
 
-			
+
+
 			Document doc = new Document();
 			Section section = doc.AddSection();
-		
+
 
 			// 1. Date and Time Section
 			Paragraph dateAndTime = section.AddParagraph();
@@ -83,11 +84,11 @@ namespace Westry
 
 
 
-			
+
 
 
 			PdfDocumentRenderer pdfRenderer = new PdfDocumentRenderer();
-			
+
 			// Associate the document with the renderer
 			pdfRenderer.Document = doc;
 
@@ -99,11 +100,11 @@ namespace Westry
 			this.Close();
 
 		}
-			
+
 
 		static void CreateTable(Section section)
 		{
-			
+
 
 			// Create the table
 			Table table = section.AddTable();
@@ -157,7 +158,7 @@ namespace Westry
 			//char[] charArray = mealType.ToCharArray();
 			//Array.Reverse(charArray);
 
-			
+
 			string finalTxt = ArabicGlyphConverter.ConvertToArabicGlyphs(mealType);
 			finalTxt = new string(finalTxt.Reverse().ToArray());
 
@@ -172,6 +173,14 @@ namespace Westry
 		private void LogWindow_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			Manager.ManagerInstance.CloseApp();
+		}
+
+		private void LogWindow_KeyDown(object sender, KeyEventArgs e)
+		{
+			if(e.KeyCode == Keys.Enter)
+			{
+				pdfButton.PerformClick();
+			}
 		}
 	}
 }

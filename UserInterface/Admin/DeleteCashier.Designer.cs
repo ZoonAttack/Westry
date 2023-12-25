@@ -75,6 +75,8 @@
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Delete Cashier";
 			FormClosed += DeleteCashierPage_FormClosed;
+			Load += DeleteCashierPage_Load_1;
+			KeyDown += DeleteCashierPage_KeyDown;
 			ResumeLayout(false);
 			PerformLayout();
 		}

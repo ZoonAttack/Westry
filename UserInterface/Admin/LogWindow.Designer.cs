@@ -115,6 +115,7 @@
 			Text = "Log";
 			FormClosed += LogWindow_FormClosed;
 			Load += Log_Load;
+			KeyDown += LogWindow_KeyDown;
 			((System.ComponentModel.ISupportInitialize)LogDataGridView).EndInit();
 			((System.ComponentModel.ISupportInitialize)mealLogBindingSource).EndInit();
 			ResumeLayout(false);

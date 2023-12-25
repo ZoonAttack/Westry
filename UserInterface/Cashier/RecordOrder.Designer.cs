@@ -96,7 +96,7 @@
 			breakfastRemLabel.Name = "breakfastRemLabel";
 			breakfastRemLabel.Size = new Size(222, 25);
 			breakfastRemLabel.TabIndex = 4;
-			breakfastRemLabel.Text = "عدد وحبات الافطاء المتبقيه";
+			breakfastRemLabel.Text = "عدد وحبات الافطار المتبقيه";
 			// 
 			// phoneLabel
 			// 
@@ -256,6 +256,8 @@
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Record Order Page";
 			FormClosing += RecordOrder_FormClosing;
+			Load += RecordOrder_Load;
+			KeyDown += RecordOrder_KeyDown;
 			ResumeLayout(false);
 			PerformLayout();
 		}

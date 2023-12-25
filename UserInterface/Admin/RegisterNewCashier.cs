@@ -27,7 +27,7 @@ namespace Westry
 			Cashier cashier = new Cashier();
 			if (nameBox.Text == "" || passwordBox.Text == "")
 			{
-				
+
 				MessageBox.Show("الرجاء ادخال اسم المستخدم وكلمة المرور");
 			}
 			else
@@ -65,6 +65,19 @@ namespace Westry
 		{
 			AdminPanel adminPanel = new AdminPanel();
 			adminPanel.Show();
+		}
+
+		private void RegisterNewCashier_Load(object sender, EventArgs e)
+		{
+			KeyPreview = true;
+		}
+
+		private void RegisterNewCashier_KeyDown(object sender, KeyEventArgs e)
+		{
+			if(e.KeyCode == Keys.Enter)
+			{
+				addButton.PerformClick();
+			}
 		}
 	}
 }
