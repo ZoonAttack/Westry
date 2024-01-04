@@ -34,9 +34,7 @@
 			phoneLabel = new Label();
 			nameLabel = new Label();
 			mealsBox = new GroupBox();
-			threeMealRadioButton = new RadioButton();
-			twoMealRadioButton = new RadioButton();
-			oneMealRadioButton = new RadioButton();
+			mealTypeComboBox = new ComboBox();
 			mealsBox.SuspendLayout();
 			SuspendLayout();
 			// 
@@ -79,7 +77,6 @@
 			phoneLabel.Size = new Size(107, 31);
 			phoneLabel.TabIndex = 12;
 			phoneLabel.Text = "رقم الهاتف";
-			phoneLabel.Click += phoneLabel_Click;
 			// 
 			// nameLabel
 			// 
@@ -90,57 +87,26 @@
 			nameLabel.Size = new Size(105, 31);
 			nameLabel.TabIndex = 11;
 			nameLabel.Text = "اسم العميل";
-			nameLabel.Click += nameLabel_Click;
 			// 
 			// mealsBox
 			// 
-			mealsBox.Controls.Add(threeMealRadioButton);
-			mealsBox.Controls.Add(twoMealRadioButton);
-			mealsBox.Controls.Add(oneMealRadioButton);
+			mealsBox.Controls.Add(mealTypeComboBox);
 			mealsBox.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
 			mealsBox.ForeColor = SystemColors.ControlText;
 			mealsBox.Location = new Point(97, 126);
 			mealsBox.Name = "mealsBox";
-			mealsBox.Size = new Size(200, 117);
+			mealsBox.Size = new Size(200, 79);
 			mealsBox.TabIndex = 17;
 			mealsBox.TabStop = false;
 			mealsBox.Text = "نوع الاشتراك";
 			// 
-			// threeMealRadioButton
+			// mealTypeComboBox
 			// 
-			threeMealRadioButton.AutoSize = true;
-			threeMealRadioButton.Location = new Point(51, 81);
-			threeMealRadioButton.Name = "threeMealRadioButton";
-			threeMealRadioButton.Size = new Size(143, 25);
-			threeMealRadioButton.TabIndex = 2;
-			threeMealRadioButton.TabStop = true;
-			threeMealRadioButton.Text = "نظام الثلاث وجبات";
-			threeMealRadioButton.UseVisualStyleBackColor = true;
-			threeMealRadioButton.CheckedChanged += threeMealRadioButton_CheckedChanged;
-			// 
-			// twoMealRadioButton
-			// 
-			twoMealRadioButton.AutoSize = true;
-			twoMealRadioButton.Location = new Point(51, 50);
-			twoMealRadioButton.Name = "twoMealRadioButton";
-			twoMealRadioButton.Size = new Size(110, 25);
-			twoMealRadioButton.TabIndex = 1;
-			twoMealRadioButton.TabStop = true;
-			twoMealRadioButton.Text = "نظام الوجبتين";
-			twoMealRadioButton.UseVisualStyleBackColor = true;
-			twoMealRadioButton.CheckedChanged += twoMealRadioButton_CheckedChanged;
-			// 
-			// oneMealRadioButton
-			// 
-			oneMealRadioButton.AutoSize = true;
-			oneMealRadioButton.Location = new Point(51, 19);
-			oneMealRadioButton.Name = "oneMealRadioButton";
-			oneMealRadioButton.Size = new Size(143, 25);
-			oneMealRadioButton.TabIndex = 0;
-			oneMealRadioButton.TabStop = true;
-			oneMealRadioButton.Text = "نظام الوجبة الواحدة";
-			oneMealRadioButton.UseVisualStyleBackColor = true;
-			oneMealRadioButton.CheckedChanged += oneMealRadioButton_CheckedChanged;
+			mealTypeComboBox.FormattingEnabled = true;
+			mealTypeComboBox.Location = new Point(6, 38);
+			mealTypeComboBox.Name = "mealTypeComboBox";
+			mealTypeComboBox.Size = new Size(188, 29);
+			mealTypeComboBox.TabIndex = 0;
 			// 
 			// RegsisterNewClient
 			// 
@@ -161,7 +127,6 @@
 			Load += RegsisterNewClient_Load;
 			KeyDown += RegsisterNewClient_KeyDown;
 			mealsBox.ResumeLayout(false);
-			mealsBox.PerformLayout();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -174,8 +139,6 @@
         private Label phoneLabel;
         private Label nameLabel;
         private GroupBox mealsBox;
-        private RadioButton threeMealRadioButton;
-        private RadioButton twoMealRadioButton;
-        private RadioButton oneMealRadioButton;
-    }
+		private ComboBox mealTypeComboBox;
+	}
 }

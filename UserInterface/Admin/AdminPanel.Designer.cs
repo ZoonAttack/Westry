@@ -37,6 +37,7 @@
 			userNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 			passwordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 			cashierBindingSource = new BindingSource(components);
+			editMeals = new Button();
 			((System.ComponentModel.ISupportInitialize)cashierInfoDataGridView).BeginInit();
 			((System.ComponentModel.ISupportInitialize)cashierBindingSource).BeginInit();
 			SuspendLayout();
@@ -57,7 +58,7 @@
 			// 
 			deleteCashierButton.BackColor = Color.AntiqueWhite;
 			deleteCashierButton.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
-			deleteCashierButton.Location = new Point(565, 345);
+			deleteCashierButton.Location = new Point(266, 345);
 			deleteCashierButton.Name = "deleteCashierButton";
 			deleteCashierButton.Size = new Size(146, 79);
 			deleteCashierButton.TabIndex = 2;
@@ -81,7 +82,7 @@
 			// 
 			viewDailyButton.BackColor = Color.AntiqueWhite;
 			viewDailyButton.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
-			viewDailyButton.Location = new Point(565, 449);
+			viewDailyButton.Location = new Point(266, 449);
 			viewDailyButton.Name = "viewDailyButton";
 			viewDailyButton.Size = new Size(146, 79);
 			viewDailyButton.TabIndex = 4;
@@ -122,12 +123,25 @@
 			// 
 			cashierBindingSource.DataSource = typeof(Models.Cashier);
 			// 
+			// editMeals
+			// 
+			editMeals.BackColor = Color.AntiqueWhite;
+			editMeals.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
+			editMeals.Location = new Point(565, 345);
+			editMeals.Name = "editMeals";
+			editMeals.Size = new Size(146, 79);
+			editMeals.TabIndex = 6;
+			editMeals.Text = "تعديل الوجبات";
+			editMeals.UseVisualStyleBackColor = false;
+			editMeals.Click += editMeals_Click;
+			// 
 			// AdminPanel
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.AliceBlue;
 			ClientSize = new Size(800, 540);
+			Controls.Add(editMeals);
 			Controls.Add(cashierInfoDataGridView);
 			Controls.Add(viewDailyButton);
 			Controls.Add(viewClientsButton);
@@ -152,5 +166,6 @@
 		private DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn;
 		private DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
 		private BindingSource cashierBindingSource;
+		private Button editMeals;
 	}
 }

@@ -39,6 +39,7 @@ namespace Westry
 			specifyBuffetLabel.Visible = false;
 			specifyNotesLabel.Visible = false;
 			buffetTextBox.Visible = false;
+			buffetCheckBox.Visible = true;
 		}
 
 		private void ShowData()
@@ -66,70 +67,65 @@ namespace Westry
 
 		private void BreakfastComboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			LaunchComboBox.Enabled = false;
-			DinnerComboBox.Enabled = false;
-			buffetCheckBox.Visible = false;
-			specifyBuffetLabel.Visible = false;
-
-			string? selectedmeal;
-			if (BreakfastComboBox.SelectedItem != null)
+			if(BreakfastComboBox.SelectedIndex != -1)
 			{
-				selectedmeal = BreakfastComboBox.SelectedItem.ToString();
-				if (selectedmeal == "آخر") { specifyNotesLabel.Visible = true; buffetCheckBox.Visible = true; }
-				else { specifyNotesLabel.Visible = false; }
+				LaunchComboBox.Enabled = false;
+				DinnerComboBox.Enabled = false;
+			}
+			else
+			{
+				LaunchComboBox.Enabled = true;
+				DinnerComboBox.Enabled = true;
 			}
 		}
 
 		private void LaunchComboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			BreakfastComboBox.Enabled = false;
-			DinnerComboBox.Enabled = false;
-			buffetCheckBox.Visible = false;
-			specifyBuffetLabel.Visible = false;
-			string? selectedmeal;
-			if (LaunchComboBox.SelectedItem != null)
+			if (LaunchComboBox.SelectedIndex != -1)
 			{
-				selectedmeal = LaunchComboBox.SelectedItem.ToString();
-				if (selectedmeal == "آخر") { specifyNotesLabel.Visible = true; buffetCheckBox.Visible = true; }
-				else { specifyNotesLabel.Visible = false; }
+				BreakfastComboBox.Enabled = false;
+				DinnerComboBox.Enabled = false;
+			}
+			else
+			{
+				BreakfastComboBox.Enabled = true;
+				DinnerComboBox.Enabled = true;
 			}
 		}
 
 		private void DinnerComboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			BreakfastComboBox.Enabled = false;
-			LaunchComboBox.Enabled = false;
-			buffetCheckBox.Visible = false;
-			specifyBuffetLabel.Visible = false;
-
-			string? selectedmeal;
-			if (DinnerComboBox.SelectedItem != null)
+			if (DinnerComboBox.SelectedIndex != -1)
 			{
-				selectedmeal = DinnerComboBox.SelectedItem.ToString();
-				if (selectedmeal == "آخر") { specifyNotesLabel.Visible = true; buffetCheckBox.Visible = true; }
-				else { specifyNotesLabel.Visible = false; }
+				LaunchComboBox.Enabled = false;
+				BreakfastComboBox.Enabled = false;
+			}
+			else
+			{
+				LaunchComboBox.Enabled = true;
+				BreakfastComboBox.Enabled = true;
 			}
 		}
 
 		private void buffetCheckBox_CheckedChanged(object sender, EventArgs e)
 		{
-			buffetTextBox.Visible = buffetCheckBox.Checked;
-			specifyBuffetLabel.Visible = buffetCheckBox.Checked;
-
-			BreakfastComboBox.Enabled = !buffetCheckBox.Checked;
-			LaunchComboBox.Enabled = !buffetCheckBox.Checked;
-			DinnerComboBox.Enabled = !buffetCheckBox.Checked;
-			if (buffetCheckBox.Checked)
+			if(buffetCheckBox.Checked)
 			{
-				BreakfastComboBox.SelectedItem = BreakfastComboBox.Items[BreakfastComboBox.Items.Count - 1];
-				LaunchComboBox.SelectedItem = LaunchComboBox.Items[LaunchComboBox.Items.Count - 1];
-				DinnerComboBox.SelectedItem = DinnerComboBox.Items[DinnerComboBox.Items.Count - 1];
+				buffetTextBox.Visible = true;
+				specifyBuffetLabel.Visible = true;
+				BreakfastComboBox.Enabled = false;
+				LaunchComboBox.Enabled =false;
+				DinnerComboBox.Enabled=false;
+				
+
 			}
 			else
 			{
-				BreakfastComboBox.SelectedItem = -1;
-				LaunchComboBox.SelectedItem = -1;
-				DinnerComboBox.SelectedItem = -1;
+				buffetTextBox.Visible = false;
+				specifyBuffetLabel.Visible = false;
+				BreakfastComboBox.Enabled = true;
+				LaunchComboBox.Enabled = true;
+				DinnerComboBox.Enabled = true;
 			}
 
 		}
@@ -204,17 +200,17 @@ namespace Westry
 			newlog.TimeTaken = DateTime.Now;
 			newlog.PhoneNumber = customer.PhoneNumber;
 			newlog.MealId = customer.MealId;
-			if (BreakfastComboBox.SelectedIndex != -1)
+			if (BreakfastComboBox.SelectedIndex != -1 && BreakfastComboBox.SelectedItem is BreakFastOption breakfastOption)
 			{
-				newlog.choosen_meal = BreakfastComboBox.SelectedItem.ToString();
+				newlog.choosen_meal = breakfastOption.optionName;
 			}
-			if (LaunchComboBox.SelectedIndex != -1)
+			if (LaunchComboBox.SelectedIndex != -1 && LaunchComboBox.SelectedItem is LunchOption launchOption)
 			{
-				newlog.choosen_meal = LaunchComboBox.SelectedItem.ToString();
+				newlog.choosen_meal = launchOption.optionName;
 			}
-			if (DinnerComboBox.SelectedIndex != -1)
+			if (DinnerComboBox.SelectedIndex != -1 && DinnerComboBox.SelectedItem is DinnerOption dinnerOption)
 			{
-				newlog.choosen_meal = DinnerComboBox.SelectedItem.ToString();
+				newlog.choosen_meal = dinnerOption.optionName;
 			}
 
 			if (buffetCheckBox.Checked)
@@ -247,7 +243,28 @@ namespace Westry
 
 		private void RecordOrder_Load(object sender, EventArgs e)
 		{
+			buffetCheckBox.Checked = false;
+
+			
+
 			KeyPreview = true;
+			var breakfastOps = db.BreakFastOptions.Where(e => e.MealId == customer.MealId).ToList();
+			var lunchOps = db.LunchOptions.Where(e => e.MealId == customer.MealId).ToList();
+			var dinnerOps = db.DinnerOptions.Where(e => e.MealId == customer.MealId).ToList();
+
+
+			BreakfastComboBox.DisplayMember = "optionName";
+			LaunchComboBox.DisplayMember = "optionName";
+			DinnerComboBox.DisplayMember = "optionName";
+
+
+			BreakfastComboBox.DataSource = breakfastOps;
+			LaunchComboBox.DataSource = lunchOps;
+			DinnerComboBox.DataSource = dinnerOps;
+
+			BreakfastComboBox.SelectedIndex = -1;
+			LaunchComboBox.SelectedIndex = -1;
+			DinnerComboBox.SelectedIndex = -1;
 		}
 	}
 }

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Westry.ManagerForm;
 using Westry.Models;
+using Westry.UserInterface.Admin;
 
 namespace Westry
 {
@@ -56,7 +57,7 @@ namespace Westry
 		{
 		}
 
-		
+
 		private void AdminPanel_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			Manager.ManagerInstance.CloseApp();
@@ -69,5 +70,11 @@ namespace Westry
 			cashierInfoDataGridView.DataSource = Utility.ToDataTable(dt);
 		}
 
+		private void editMeals_Click(object sender, EventArgs e)
+		{
+			EditMeals editMeals = new EditMeals();
+			editMeals.Show();
+			this.Close();
+		}
 	}
 }
