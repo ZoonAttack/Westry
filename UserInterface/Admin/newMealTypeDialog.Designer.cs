@@ -124,9 +124,6 @@
 			Name = "newMealTypeDialog";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "newMealTypeDialog";
-			FormClosed += newMealTypeDialog_FormClosed;
-			Load += newMealTypeDialog_Load;
-			Shown += newMealTypeDialog_Shown;
 			ResumeLayout(false);
 			PerformLayout();
 		}

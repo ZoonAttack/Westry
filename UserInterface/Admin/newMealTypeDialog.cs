@@ -24,21 +24,6 @@ namespace Westry.UserInterface.Admin
 			InitializeComponent();
 		}
 
-		private void newMealTypeDialog_Load(object sender, EventArgs e)
-		{
-
-		}
-
-		private void newMealTypeDialog_FormClosed(object sender, FormClosedEventArgs e)
-		{
-
-		}
-
-		private void newMealTypeDialog_Shown(object sender, EventArgs e)
-		{
-			//Focus();
-		}
-
 		private void ConfirmBTN_Click(object sender, EventArgs e)
 		{
 			if(mealNameTB.Text.Trim() == "")
