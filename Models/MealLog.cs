@@ -12,4 +12,6 @@ public partial class MealLog
     public string? choosen_meal { get; set; }
 
     public DateTime TimeTaken { get; set; }
+
+    public string? CashierName { get; set; }
 }

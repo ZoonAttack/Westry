@@ -143,6 +143,7 @@ public partial class DevDbContext : DbContext
                 .HasColumnName("phone_number");
             entity.Property(e => e.choosen_meal).HasColumnName("choosen_meal");
             entity.Property(e => e.MealId).HasColumnName("meal_id");
+            entity.Property(e => e.CashierName).HasColumnName("Cashier");
 
         });
 
