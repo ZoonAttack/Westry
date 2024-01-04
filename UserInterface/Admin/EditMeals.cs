@@ -23,18 +23,39 @@ namespace Westry.UserInterface.Admin
 		List<LunchOption> lunchtobeadded = new List<LunchOption>();
 		List<DinnerOption> dinnertobeadded = new List<DinnerOption>();
 
+		List<BreakFastOption> bftoberemoved = new List<BreakFastOption>();
+		List<LunchOption> lunchtoberemoved = new List<LunchOption>();
+		List<DinnerOption> dinnertoberemoved = new List<DinnerOption>();
+
 		private bool isFirstTime = true;
 		Meal mealToBeEdited;
 		public EditMeals()
 		{
 			InitializeComponent();
 		}
+		private void EditMeals_Load(object sender, EventArgs e)
+		{
+			KeyPreview = true;
+
+
+			hideBF();
+			hideDinner();
+			hideLunch();
+
+			mealTypes = Utility.db.Meals.ToList();
+			refreshComboBox();
+		}
 
 		private void EditMeals_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			AdminPanel adminPanel = new AdminPanel();
 			adminPanel.Show();
+			clearChanges();
 
+		}
+
+		private void clearChanges()
+		{
 			foreach (var entity in bftobeadded)
 			{
 				var entry = Utility.db.Entry(entity);
@@ -57,21 +78,28 @@ namespace Westry.UserInterface.Admin
 					entry.State = EntityState.Detached;
 			}
 
+			foreach (var entity in bftoberemoved)
+			{
+				var entry = Utility.db.Entry(entity);
+
+				if (entry.State == EntityState.Deleted)
+					entry.State = EntityState.Detached;
+			}
+			foreach (var entity in lunchtoberemoved)
+			{
+				var entry = Utility.db.Entry(entity);
+
+				if (entry.State == EntityState.Deleted)
+					entry.State = EntityState.Detached;
+			}
+			foreach (var entity in dinnertoberemoved)
+			{
+				var entry = Utility.db.Entry(entity);
+
+				if (entry.State == EntityState.Deleted)
+					entry.State = EntityState.Detached;
+			}
 		}
-
-		private void EditMeals_Load(object sender, EventArgs e)
-		{
-			KeyPreview = true;
-
-
-			hideBF();
-			hideDinner();
-			hideLunch();
-
-			mealTypes = Utility.db.Meals.ToList();
-			refreshComboBox();
-		}
-
 		private void refreshComboBox()
 		{
 			ChooseMealComboBox.DataSource = null;
@@ -79,7 +107,6 @@ namespace Westry.UserInterface.Admin
 			ChooseMealComboBox.DataSource = mealTypes;
 			ChooseMealComboBox.SelectedIndex = -1;
 		}
-
 		private void refreshBFLB()
 		{
 			BFLB.DataSource = null;
@@ -98,21 +125,18 @@ namespace Westry.UserInterface.Admin
 			DinnerLB.DataSource = dinneropts;
 			DinnerLB.DisplayMember = "optionName";
 		}
-
 		private void hideControls()
 		{
 			EditMealBTN.Visible = false;
 			mealDLEBTN.Visible = false;
 
 		}
-
 		private void showControls()
 		{
 			EditMealBTN.Visible = true;
 			mealDLEBTN.Visible = true;
 			saveChangesBTN.Visible = true;
 		}
-
 		private void hideBF()
 		{
 			BFLBL.Visible = false;
@@ -141,7 +165,6 @@ namespace Westry.UserInterface.Admin
 			LunchADD.Visible = true;
 			LunchDLE.Visible = true;
 		}
-
 		private void hideDinner()
 		{
 			DinnerLBL.Visible = false;
@@ -212,7 +235,6 @@ namespace Westry.UserInterface.Admin
 			{
 				Meal? selectedMeal = ChooseMealComboBox.SelectedItem as Meal;
 				Utility.db.Meals.Remove(selectedMeal);
-				MessageBox.Show(mealTypes.Remove(selectedMeal).ToString());
 				refreshComboBox();
 			}
 			catch
@@ -335,6 +357,50 @@ namespace Westry.UserInterface.Admin
 
 		}
 
+
+		private void BFDLE_Click(object sender, EventArgs e)
+		{
+			removeOldOptFromMeal(0);
+		}
+
+		private void LunchDLE_Click(object sender, EventArgs e)
+		{
+			removeOldOptFromMeal(1);
+		}
+
+		private void DinnerDLE_Click(object sender, EventArgs e)
+		{
+			removeOldOptFromMeal(2);
+		}
+
+		private void removeOldOptFromMeal(int type)
+		{
+			if (type == 0)
+			{
+				BreakFastOption oldOptBF = BFLB.SelectedItem as BreakFastOption;
+				Utility.db.BreakFastOptions.Remove(oldOptBF);
+				breakfastopts.Remove(oldOptBF);
+				refreshBFLB();
+				bftoberemoved.Add(oldOptBF);
+			}
+			else if (type == 1)
+			{
+				LunchOption oldOptLunch = LunchLB.SelectedItem as LunchOption;
+				Utility.db.LunchOptions.Remove(oldOptLunch);
+				lunchopts.Remove(oldOptLunch);
+				refreshLunchLB();
+				lunchtoberemoved.Add(oldOptLunch);
+			}
+			else if (type == 2)
+			{
+				DinnerOption oldOptDinner = DinnerLB.SelectedItem as DinnerOption;
+				Utility.db.DinnerOptions.Remove(oldOptDinner);
+				dinneropts.Remove(oldOptDinner);
+				refreshDinnerLB();
+				dinnertoberemoved.Add(oldOptDinner);
+			}
+
+		}
 
 	}
 }

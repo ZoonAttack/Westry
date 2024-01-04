@@ -125,7 +125,7 @@
 			// 
 			DinnerLBL.AutoSize = true;
 			DinnerLBL.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-			DinnerLBL.Location = new Point(122, 132);
+			DinnerLBL.Location = new Point(143, 132);
 			DinnerLBL.Name = "DinnerLBL";
 			DinnerLBL.Size = new Size(129, 25);
 			DinnerLBL.TabIndex = 21;
@@ -135,7 +135,7 @@
 			// 
 			LunchLBL.AutoSize = true;
 			LunchLBL.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-			LunchLBL.Location = new Point(562, 132);
+			LunchLBL.Location = new Point(577, 132);
 			LunchLBL.Name = "LunchLBL";
 			LunchLBL.Size = new Size(123, 25);
 			LunchLBL.TabIndex = 22;
@@ -145,7 +145,7 @@
 			// 
 			BFLBL.AutoSize = true;
 			BFLBL.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-			BFLBL.Location = new Point(1009, 132);
+			BFLBL.Location = new Point(1017, 132);
 			BFLBL.Name = "BFLBL";
 			BFLBL.Size = new Size(133, 25);
 			BFLBL.TabIndex = 23;
@@ -161,6 +161,7 @@
 			DinnerDLE.TabIndex = 24;
 			DinnerDLE.Text = "حذف";
 			DinnerDLE.UseVisualStyleBackColor = false;
+			DinnerDLE.Click += DinnerDLE_Click;
 			// 
 			// DinnerADD
 			// 
@@ -196,6 +197,7 @@
 			LunchDLE.TabIndex = 27;
 			LunchDLE.Text = "حذف";
 			LunchDLE.UseVisualStyleBackColor = false;
+			LunchDLE.Click += LunchDLE_Click;
 			// 
 			// BFDLE
 			// 
@@ -207,6 +209,7 @@
 			BFDLE.TabIndex = 28;
 			BFDLE.Text = "حذف";
 			BFDLE.UseVisualStyleBackColor = false;
+			BFDLE.Click += BFDLE_Click;
 			// 
 			// BFADD
 			// 
@@ -228,7 +231,7 @@
 			EditMealBTN.Name = "EditMealBTN";
 			EditMealBTN.Size = new Size(171, 100);
 			EditMealBTN.TabIndex = 30;
-			EditMealBTN.Text = "تعديل الوجبه";
+			EditMealBTN.Text = "تعديل الاختيارات";
 			EditMealBTN.UseVisualStyleBackColor = false;
 			EditMealBTN.Click += EditMealBTN_Click;
 			// 
