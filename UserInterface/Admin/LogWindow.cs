@@ -162,17 +162,14 @@ namespace Westry
 				TimeSpan ts = new TimeSpan(11, 59, 0);
 				toDate = toDate.AddHours(23.9999);
 
-				cmd = new SqlCommand("SELECT MAX(choosen_meal) AS taken_meal, COUNT(*) AS meal_count " +
-								"FROM MealLog " +
-								"WHERE time_taken BETWEEN @StartTime AND @EndTime " +
-								"GROUP BY choosen_meal", conn);
-
+				cmd = new SqlCommand("SELECT   choosen_meal AS taken_meal,    COUNT(*) AS meal_count,  CASE    WHEN MAX(CAST(is_buffet AS INT)) = 1 THEN '1'       WHEN MAX(CAST(is_kitchen AS INT)) = 1 THEN '2'    ELSE 'unknown'   END AS meal_type FROM MealLog WHERE time_taken BETWEEN @StartTime AND @EndTime GROUP BY   choosen_meal;", conn);
+				
 				cmd.Parameters.AddWithValue("@StartTime", fromDate);
 				cmd.Parameters.AddWithValue("@EndTime", toDate);
 			}
 			else
 			{
-				 cmd = new SqlCommand("SELECT taken_meal, COUNT(*) AS meal_count, CASE WHEN MAX(is_buffet) = 1 THEN '1'  WHEN MAX(is_kitchen) = 1 THEN '2' ELSE 'unknown' END AS meal_type FROM (SELECT  choosen_meal AS taken_meal,  COUNT(*) AS meal_count,   MAX(CAST(is_buffet AS INT)) AS is_buffet, MAX(CAST(is_kitchen AS INT)) AS is_kitchen FROM MealLog GROUP BY choosen_meal ) AS subquery GROUP BY   taken_meal;", conn);
+				 cmd = new SqlCommand("SELECT   choosen_meal AS taken_meal,    COUNT(*) AS meal_count,  CASE    WHEN MAX(CAST(is_buffet AS INT)) = 1 THEN '1'       WHEN MAX(CAST(is_kitchen AS INT)) = 1 THEN '2'    ELSE 'unknown'   END AS meal_type FROM MealLog GROUP BY   choosen_meal;", conn);
 			}
 
 			conn.Open();

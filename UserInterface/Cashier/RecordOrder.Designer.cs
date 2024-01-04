@@ -153,6 +153,7 @@
 			notesLabel.Size = new Size(179, 32);
 			notesLabel.TabIndex = 9;
 			notesLabel.Text = "ملاحظات إضافية";
+			notesLabel.Visible = false;
 			// 
 			// notesTextBox
 			// 
@@ -161,6 +162,7 @@
 			notesTextBox.Name = "notesTextBox";
 			notesTextBox.Size = new Size(594, 117);
 			notesTextBox.TabIndex = 10;
+			notesTextBox.Visible = false;
 			// 
 			// buffetCheckBox
 			// 
@@ -192,6 +194,7 @@
 			specifyNotesLabel.Size = new Size(166, 25);
 			specifyNotesLabel.TabIndex = 13;
 			specifyNotesLabel.Text = "اكتب الملاحظات هنا";
+			specifyNotesLabel.Visible = false;
 			specifyNotesLabel.Click += specifyNotesLabel_Click;
 			// 
 			// specifyBuffetLabel
