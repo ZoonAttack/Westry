@@ -20,5 +20,7 @@ public partial class Customer
 
     public int? DinnerCounter { get; set; }
 
+    public string? createdBy { get; set; }
+
     public virtual Meal? Meal { get; set; }
 }

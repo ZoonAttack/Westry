@@ -97,6 +97,7 @@ public partial class DevDbContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("phone_number");
             entity.Property(e => e.SubscriptionCount).HasColumnName("subscription_count");
+            entity.Property(e => e.createdBy).HasColumnName("created_by");
 
             entity.HasOne(d => d.Meal).WithMany(p => p.Customers)
                 .HasForeignKey(d => d.MealId)
