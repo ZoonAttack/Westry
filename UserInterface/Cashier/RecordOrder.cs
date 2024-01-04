@@ -219,7 +219,7 @@ namespace Westry
 			{
 				newlog.choosen_meal = buffetTextBox.Text;
 			}
-
+			newlog.CashierName = Manager.currentLoggedCashier.UserName;
 			db.MealLog.Add(newlog);
 			Manager.currentLoggedCashier.ordersServied += 1;
 			db.Cashiers.Update(Manager.currentLoggedCashier);

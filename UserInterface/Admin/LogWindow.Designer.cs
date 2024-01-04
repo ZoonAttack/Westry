@@ -35,6 +35,7 @@
 			mealIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 			choosenmealDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 			TimeTaken = new DataGridViewTextBoxColumn();
+			CashierName = new DataGridViewTextBoxColumn();
 			mealLogBindingSource = new BindingSource(components);
 			specificTimeFrom = new DateTimePicker();
 			specificTimeTo = new DateTimePicker();
@@ -64,13 +65,13 @@
 			LogDataGridView.AllowUserToDeleteRows = false;
 			LogDataGridView.AutoGenerateColumns = false;
 			LogDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			LogDataGridView.Columns.AddRange(new DataGridViewColumn[] { phoneNumberDataGridViewTextBoxColumn, mealIdDataGridViewTextBoxColumn, choosenmealDataGridViewTextBoxColumn, TimeTaken });
+			LogDataGridView.Columns.AddRange(new DataGridViewColumn[] { phoneNumberDataGridViewTextBoxColumn, mealIdDataGridViewTextBoxColumn, choosenmealDataGridViewTextBoxColumn, TimeTaken, CashierName });
 			LogDataGridView.DataSource = mealLogBindingSource;
 			LogDataGridView.Location = new Point(27, 12);
 			LogDataGridView.Name = "LogDataGridView";
 			LogDataGridView.ReadOnly = true;
 			LogDataGridView.RowTemplate.Height = 25;
-			LogDataGridView.Size = new Size(743, 555);
+			LogDataGridView.Size = new Size(857, 555);
 			LogDataGridView.TabIndex = 9;
 			// 
 			// phoneNumberDataGridViewTextBoxColumn
@@ -104,13 +105,20 @@
 			TimeTaken.ReadOnly = true;
 			TimeTaken.Width = 150;
 			// 
+			// CashierName
+			// 
+			CashierName.DataPropertyName = "CashierName";
+			CashierName.HeaderText = "CashierName";
+			CashierName.Name = "CashierName";
+			CashierName.ReadOnly = true;
+			// 
 			// mealLogBindingSource
 			// 
 			mealLogBindingSource.DataSource = typeof(Models.MealLog);
 			// 
 			// specificTimeFrom
 			// 
-			specificTimeFrom.Location = new Point(414, 582);
+			specificTimeFrom.Location = new Point(498, 582);
 			specificTimeFrom.Name = "specificTimeFrom";
 			specificTimeFrom.RightToLeft = RightToLeft.No;
 			specificTimeFrom.Size = new Size(200, 23);
@@ -118,7 +126,7 @@
 			// 
 			// specificTimeTo
 			// 
-			specificTimeTo.Location = new Point(414, 623);
+			specificTimeTo.Location = new Point(498, 623);
 			specificTimeTo.Name = "specificTimeTo";
 			specificTimeTo.Size = new Size(200, 23);
 			specificTimeTo.TabIndex = 11;
@@ -127,7 +135,7 @@
 			// 
 			FromLabel.AutoSize = true;
 			FromLabel.Font = new Font("Times New Roman", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-			FromLabel.Location = new Point(640, 582);
+			FromLabel.Location = new Point(717, 582);
 			FromLabel.Name = "FromLabel";
 			FromLabel.Size = new Size(39, 31);
 			FromLabel.TabIndex = 12;
@@ -137,7 +145,7 @@
 			// 
 			ToLabel.AutoSize = true;
 			ToLabel.Font = new Font("Times New Roman", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-			ToLabel.Location = new Point(640, 617);
+			ToLabel.Location = new Point(714, 617);
 			ToLabel.Name = "ToLabel";
 			ToLabel.Size = new Size(42, 31);
 			ToLabel.TabIndex = 13;
@@ -147,7 +155,7 @@
 			// 
 			specificTimeBTN.BackColor = Color.AntiqueWhite;
 			specificTimeBTN.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
-			specificTimeBTN.Location = new Point(267, 573);
+			specificTimeBTN.Location = new Point(341, 573);
 			specificTimeBTN.Name = "specificTimeBTN";
 			specificTimeBTN.Size = new Size(141, 79);
 			specificTimeBTN.TabIndex = 14;
@@ -159,7 +167,7 @@
 			// 
 			specificPeriodCB.AutoSize = true;
 			specificPeriodCB.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			specificPeriodCB.Location = new Point(696, 603);
+			specificPeriodCB.Location = new Point(779, 603);
 			specificPeriodCB.Name = "specificPeriodCB";
 			specificPeriodCB.Size = new Size(92, 25);
 			specificPeriodCB.TabIndex = 15;
@@ -172,7 +180,7 @@
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.AliceBlue;
-			ClientSize = new Size(800, 664);
+			ClientSize = new Size(906, 664);
 			Controls.Add(specificPeriodCB);
 			Controls.Add(specificTimeBTN);
 			Controls.Add(ToLabel);
@@ -198,15 +206,16 @@
 		private Button pdfButton;
         private DataGridView LogDataGridView;
 		private BindingSource mealLogBindingSource;
-		private DataGridViewTextBoxColumn phoneNumberDataGridViewTextBoxColumn;
-		private DataGridViewTextBoxColumn mealIdDataGridViewTextBoxColumn;
-		private DataGridViewTextBoxColumn choosenmealDataGridViewTextBoxColumn;
-		private DataGridViewTextBoxColumn TimeTaken;
 		private DateTimePicker specificTimeFrom;
 		private DateTimePicker specificTimeTo;
 		private Label FromLabel;
 		private Label ToLabel;
 		private Button specificTimeBTN;
 		private CheckBox specificPeriodCB;
+		private DataGridViewTextBoxColumn phoneNumberDataGridViewTextBoxColumn;
+		private DataGridViewTextBoxColumn mealIdDataGridViewTextBoxColumn;
+		private DataGridViewTextBoxColumn choosenmealDataGridViewTextBoxColumn;
+		private DataGridViewTextBoxColumn TimeTaken;
+		private DataGridViewTextBoxColumn CashierName;
 	}
 }
