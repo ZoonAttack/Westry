@@ -55,6 +55,7 @@
 			ChooseMealComboBox.Name = "ChooseMealComboBox";
 			ChooseMealComboBox.Size = new Size(310, 23);
 			ChooseMealComboBox.TabIndex = 0;
+			ChooseMealComboBox.SelectedIndexChanged += ChooseMealComboBox_SelectedIndexChanged;
 			// 
 			// mealLBL
 			// 
@@ -80,44 +81,45 @@
 			// 
 			// DinnerLB
 			// 
-			DinnerLB.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+			DinnerLB.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
 			DinnerLB.FormattingEnabled = true;
-			DinnerLB.ItemHeight = 21;
+			DinnerLB.ItemHeight = 17;
 			DinnerLB.Location = new Point(50, 169);
 			DinnerLB.Name = "DinnerLB";
-			DinnerLB.Size = new Size(326, 340);
+			DinnerLB.Size = new Size(352, 327);
 			DinnerLB.TabIndex = 17;
 			// 
 			// LunchLB
 			// 
-			LunchLB.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+			LunchLB.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
 			LunchLB.FormattingEnabled = true;
-			LunchLB.ItemHeight = 21;
+			LunchLB.ItemHeight = 17;
 			LunchLB.Location = new Point(472, 169);
 			LunchLB.Name = "LunchLB";
-			LunchLB.Size = new Size(340, 340);
+			LunchLB.Size = new Size(352, 327);
 			LunchLB.TabIndex = 18;
 			// 
 			// BFLB
 			// 
-			BFLB.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+			BFLB.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
 			BFLB.FormattingEnabled = true;
-			BFLB.ItemHeight = 21;
-			BFLB.Location = new Point(930, 169);
+			BFLB.ItemHeight = 17;
+			BFLB.Location = new Point(916, 169);
 			BFLB.Name = "BFLB";
-			BFLB.Size = new Size(340, 340);
+			BFLB.Size = new Size(352, 327);
 			BFLB.TabIndex = 19;
 			// 
 			// saveChangesBTN
 			// 
 			saveChangesBTN.BackColor = Color.AntiqueWhite;
 			saveChangesBTN.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-			saveChangesBTN.Location = new Point(520, 582);
+			saveChangesBTN.Location = new Point(549, 582);
 			saveChangesBTN.Name = "saveChangesBTN";
 			saveChangesBTN.Size = new Size(203, 100);
 			saveChangesBTN.TabIndex = 20;
 			saveChangesBTN.Text = "حفظ التغيرات";
 			saveChangesBTN.UseVisualStyleBackColor = false;
+			saveChangesBTN.Click += saveChangesBTN_Click;
 			// 
 			// DinnerLBL
 			// 
@@ -164,7 +166,7 @@
 			// 
 			DinnerADD.BackColor = Color.AntiqueWhite;
 			DinnerADD.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-			DinnerADD.Location = new Point(267, 515);
+			DinnerADD.Location = new Point(293, 515);
 			DinnerADD.Name = "DinnerADD";
 			DinnerADD.Size = new Size(109, 48);
 			DinnerADD.TabIndex = 25;
@@ -175,7 +177,7 @@
 			// 
 			LunchADD.BackColor = Color.AntiqueWhite;
 			LunchADD.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-			LunchADD.Location = new Point(703, 515);
+			LunchADD.Location = new Point(715, 515);
 			LunchADD.Name = "LunchADD";
 			LunchADD.Size = new Size(109, 48);
 			LunchADD.TabIndex = 26;
@@ -197,7 +199,7 @@
 			// 
 			BFDLE.BackColor = Color.AntiqueWhite;
 			BFDLE.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-			BFDLE.Location = new Point(930, 515);
+			BFDLE.Location = new Point(916, 515);
 			BFDLE.Name = "BFDLE";
 			BFDLE.Size = new Size(109, 48);
 			BFDLE.TabIndex = 28;
@@ -208,7 +210,7 @@
 			// 
 			BFADD.BackColor = Color.AntiqueWhite;
 			BFADD.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-			BFADD.Location = new Point(1161, 515);
+			BFADD.Location = new Point(1159, 515);
 			BFADD.Name = "BFADD";
 			BFADD.Size = new Size(109, 48);
 			BFADD.TabIndex = 29;
@@ -221,21 +223,23 @@
 			EditMealBTN.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
 			EditMealBTN.Location = new Point(211, 26);
 			EditMealBTN.Name = "EditMealBTN";
-			EditMealBTN.Size = new Size(156, 100);
+			EditMealBTN.Size = new Size(171, 100);
 			EditMealBTN.TabIndex = 30;
-			EditMealBTN.Text = "تعديل وجبه";
+			EditMealBTN.Text = "تعديل الوجبه";
 			EditMealBTN.UseVisualStyleBackColor = false;
+			EditMealBTN.Click += EditMealBTN_Click;
 			// 
 			// mealDLEBTN
 			// 
 			mealDLEBTN.BackColor = Color.AntiqueWhite;
 			mealDLEBTN.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-			mealDLEBTN.Location = new Point(50, 26);
+			mealDLEBTN.Location = new Point(42, 26);
 			mealDLEBTN.Name = "mealDLEBTN";
-			mealDLEBTN.Size = new Size(155, 100);
+			mealDLEBTN.Size = new Size(163, 100);
 			mealDLEBTN.TabIndex = 31;
-			mealDLEBTN.Text = "حذف وجبه";
+			mealDLEBTN.Text = "حذف الوجبه";
 			mealDLEBTN.UseVisualStyleBackColor = false;
+			mealDLEBTN.Click += mealDLEBTN_Click;
 			// 
 			// EditMeals
 			// 

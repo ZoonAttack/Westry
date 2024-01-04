@@ -142,7 +142,6 @@ public partial class DevDbContext : DbContext
         {
             entity.HasKey(e => e.optionID);
             entity.Property(e => e.optionID)
-                .ValueGeneratedNever()
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("optionID");
@@ -157,7 +156,6 @@ public partial class DevDbContext : DbContext
 		{
 			entity.HasKey(e => e.optionID);
 			entity.Property(e => e.optionID)
-				.ValueGeneratedNever()
 				.HasMaxLength(50)
 				.IsUnicode(false)
 				.HasColumnName("optionID");
@@ -172,7 +170,6 @@ public partial class DevDbContext : DbContext
 		{
 			entity.HasKey(e => e.optionID);
 			entity.Property(e => e.optionID)
-				.ValueGeneratedNever()
 				.HasMaxLength(50)
 				.IsUnicode(false)
 				.HasColumnName("optionID");
