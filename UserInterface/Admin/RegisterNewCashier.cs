@@ -43,7 +43,7 @@ namespace Westry
 				}
 				catch
 				{
-					MessageBox.Show("الرقم السري مسحل لكاشير من قبل");
+					MessageBox.Show("الرقم السري مسجل لكاشير من قبل");
 				}
 				this.Close();
 			}
