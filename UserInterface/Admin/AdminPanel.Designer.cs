@@ -34,11 +34,16 @@
 			viewClientsButton = new Button();
 			viewDailyButton = new Button();
 			cashierInfoDataGridView = new DataGridView();
-			userNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-			passwordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+			cashierBindingSource1 = new BindingSource(components);
 			cashierBindingSource = new BindingSource(components);
 			editMeals = new Button();
+			userNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+			passwordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+			ordersServied = new DataGridViewTextBoxColumn();
+			loggedInTime = new DataGridViewTextBoxColumn();
+			loggedOutTime = new DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)cashierInfoDataGridView).BeginInit();
+			((System.ComponentModel.ISupportInitialize)cashierBindingSource1).BeginInit();
 			((System.ComponentModel.ISupportInitialize)cashierBindingSource).BeginInit();
 			SuspendLayout();
 			// 
@@ -96,8 +101,8 @@
 			cashierInfoDataGridView.AllowUserToDeleteRows = false;
 			cashierInfoDataGridView.AutoGenerateColumns = false;
 			cashierInfoDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			cashierInfoDataGridView.Columns.AddRange(new DataGridViewColumn[] { userNameDataGridViewTextBoxColumn, passwordDataGridViewTextBoxColumn });
-			cashierInfoDataGridView.DataSource = cashierBindingSource;
+			cashierInfoDataGridView.Columns.AddRange(new DataGridViewColumn[] { userNameDataGridViewTextBoxColumn, passwordDataGridViewTextBoxColumn, ordersServied, loggedInTime, loggedOutTime });
+			cashierInfoDataGridView.DataSource = cashierBindingSource1;
 			cashierInfoDataGridView.Location = new Point(71, 12);
 			cashierInfoDataGridView.Name = "cashierInfoDataGridView";
 			cashierInfoDataGridView.ReadOnly = true;
@@ -105,19 +110,9 @@
 			cashierInfoDataGridView.Size = new Size(640, 303);
 			cashierInfoDataGridView.TabIndex = 5;
 			// 
-			// userNameDataGridViewTextBoxColumn
+			// cashierBindingSource1
 			// 
-			userNameDataGridViewTextBoxColumn.DataPropertyName = "UserName";
-			userNameDataGridViewTextBoxColumn.HeaderText = "UserName";
-			userNameDataGridViewTextBoxColumn.Name = "userNameDataGridViewTextBoxColumn";
-			userNameDataGridViewTextBoxColumn.ReadOnly = true;
-			// 
-			// passwordDataGridViewTextBoxColumn
-			// 
-			passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
-			passwordDataGridViewTextBoxColumn.HeaderText = "Password";
-			passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
-			passwordDataGridViewTextBoxColumn.ReadOnly = true;
+			cashierBindingSource1.DataSource = typeof(Models.Cashier);
 			// 
 			// cashierBindingSource
 			// 
@@ -134,6 +129,41 @@
 			editMeals.Text = "تعديل الوجبات";
 			editMeals.UseVisualStyleBackColor = false;
 			editMeals.Click += editMeals_Click;
+			// 
+			// userNameDataGridViewTextBoxColumn
+			// 
+			userNameDataGridViewTextBoxColumn.DataPropertyName = "UserName";
+			userNameDataGridViewTextBoxColumn.HeaderText = "UserName";
+			userNameDataGridViewTextBoxColumn.Name = "userNameDataGridViewTextBoxColumn";
+			userNameDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// passwordDataGridViewTextBoxColumn
+			// 
+			passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
+			passwordDataGridViewTextBoxColumn.HeaderText = "Password";
+			passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
+			passwordDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// ordersServied
+			// 
+			ordersServied.DataPropertyName = "ordersServied";
+			ordersServied.HeaderText = "ordersServied";
+			ordersServied.Name = "ordersServied";
+			ordersServied.ReadOnly = true;
+			// 
+			// loggedInTime
+			// 
+			loggedInTime.DataPropertyName = "loggedInTime";
+			loggedInTime.HeaderText = "loggedInTime";
+			loggedInTime.Name = "loggedInTime";
+			loggedInTime.ReadOnly = true;
+			// 
+			// loggedOutTime
+			// 
+			loggedOutTime.DataPropertyName = "loggedOutTime";
+			loggedOutTime.HeaderText = "loggedOutTime";
+			loggedOutTime.Name = "loggedOutTime";
+			loggedOutTime.ReadOnly = true;
 			// 
 			// AdminPanel
 			// 
@@ -153,6 +183,7 @@
 			FormClosed += AdminPanel_FormClosed;
 			Load += AdminPanel_Load;
 			((System.ComponentModel.ISupportInitialize)cashierInfoDataGridView).EndInit();
+			((System.ComponentModel.ISupportInitialize)cashierBindingSource1).EndInit();
 			((System.ComponentModel.ISupportInitialize)cashierBindingSource).EndInit();
 			ResumeLayout(false);
 		}
@@ -163,9 +194,13 @@
         private Button viewClientsButton;
         private Button viewDailyButton;
         private DataGridView cashierInfoDataGridView;
-		private DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn;
-		private DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
 		private BindingSource cashierBindingSource;
 		private Button editMeals;
+		private BindingSource cashierBindingSource1;
+		private DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn;
+		private DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
+		private DataGridViewTextBoxColumn ordersServied;
+		private DataGridViewTextBoxColumn loggedInTime;
+		private DataGridViewTextBoxColumn loggedOutTime;
 	}
 }
