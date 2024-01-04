@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Westry.Models;
 
 namespace Westry.ManagerForm
 {
@@ -19,6 +20,7 @@ namespace Westry.ManagerForm
 	public partial class Manager : Form
 	{
 		public static Manager? ManagerInstance;
+		public static Cashier? currentLoggedCashier;
 		public Manager()
 		{
 			ManagerInstance = this;

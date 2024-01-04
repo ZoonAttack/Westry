@@ -41,6 +41,7 @@ namespace Westry
 				if (loginCashier != null && loginCashier.UserName == nameBox.Text)
 				{
 					isCashier = true;
+					Manager.currentLoggedCashier = loginCashier;
 				}
 
 
