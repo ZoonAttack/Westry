@@ -36,8 +36,6 @@ namespace Westry
 			
 
 			InitializeComponent();
-			subscriptionType = FoundCustomer.MealId;
-			//ManageComboboxes(subscriptionType);
 			ShowData();
 
 			specifyBuffetLabel.Visible = false;
@@ -87,16 +85,6 @@ namespace Westry
 			w.Text = $"عدد وجبات العشاء المتبقيه: {customer.DinnerCounter}";
 
 		}
-
-		//private void ManageComboboxes(int? subtype)
-		//{
-		//	if (subtype == 1)
-		//	{
-		//		BreakfastComboBox.Visible = false; DinnerComboBox.Visible = false;
-		//		breakfastRemLabel.Visible = false; w.Visible = false;
-		//	}
-		//	else if (subtype == 2) { DinnerComboBox.Visible = false; w.Visible = false; }
-		//}
 
 		private void BreakfastComboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -257,12 +245,10 @@ namespace Westry
 
 		private void RecordOrder_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			if (!sameCustomer)
-			{
-				var SearchCust = new SearchCustomer();
-				SearchCust.Show();
-			}
+			var SearchCust = new SearchCustomer();
+			SearchCust.Show();
 			Utility.db.Entry(customer).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+			
 		}
 
 
@@ -352,12 +338,17 @@ namespace Westry
 			{
 				if(dialog.ShowDialog() == DialogResult.OK)
 				{
-					customer.BreakfastCounter = 22;
-					Utility.db.Customers.Update(customer);
-					Utility.db.SaveChanges();
-					RecordOrder newform = new RecordOrder(customer);
-					newform.Show();
-					sameCustomer = true;
+					try
+					{
+						customer.BreakfastCounter = 22;
+						Utility.db.Customers.Update(customer);
+						Utility.db.SaveChanges();
+						MessageBox.Show("تم التجديد بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					}
+					catch 
+					{
+						MessageBox.Show("حدث خطأ ما", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
 					this.Close();
 				}
 			}
@@ -369,12 +360,18 @@ namespace Westry
 			{
 				if (dialog.ShowDialog() == DialogResult.OK)
 				{
-					customer.LunchCounter = 22;
-					Utility.db.Customers.Update(customer);
-					Utility.db.SaveChanges();
-					RecordOrder newform = new RecordOrder(customer);
-					newform.Show();
-					sameCustomer = true;
+					try
+					{
+						customer.LunchCounter = 22;
+						Utility.db.Customers.Update(customer);
+						Utility.db.SaveChanges();
+						MessageBox.Show("تم التجديد بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+						
+					}
+					catch
+					{
+						MessageBox.Show("حدث خطأ ما", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
 					this.Close();
 				}
 			}
@@ -386,12 +383,17 @@ namespace Westry
 			{
 				if (dialog.ShowDialog() == DialogResult.OK)
 				{
-					customer.DinnerCounter = 22;
-					Utility.db.Customers.Update(customer);
-					Utility.db.SaveChanges();
-					RecordOrder newform = new RecordOrder(customer);
-					newform.Show();
-					sameCustomer= true;
+					try 
+					{
+						customer.DinnerCounter = 22;
+						Utility.db.Customers.Update(customer);
+						Utility.db.SaveChanges();
+						MessageBox.Show("تم التجديد بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					}
+					catch
+					{
+						MessageBox.Show("حدث خطأ ما", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
 					this.Close();
 				}
 			}
