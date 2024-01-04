@@ -202,9 +202,12 @@ namespace Westry
 			newlog.TimeTaken = DateTime.Now;
 			newlog.PhoneNumber = customer.PhoneNumber;
 			newlog.MealId = customer.MealId;
+			newlog.isBuffet = false;
+			newlog.isKitchen = true;
 			if (BreakfastComboBox.SelectedIndex != -1 && BreakfastComboBox.SelectedItem is BreakFastOption breakfastOption)
 			{
 				newlog.choosen_meal = breakfastOption.optionName;
+
 			}
 			if (LaunchComboBox.SelectedIndex != -1 && LaunchComboBox.SelectedItem is LunchOption launchOption)
 			{
@@ -218,6 +221,8 @@ namespace Westry
 			if (buffetCheckBox.Checked)
 			{
 				newlog.choosen_meal = buffetTextBox.Text;
+				newlog.isBuffet = true;
+				newlog.isKitchen = false;
 			}
 			newlog.CashierName = Manager.currentLoggedCashier.UserName;
 			db.MealLog.Add(newlog);
