@@ -51,7 +51,7 @@ public partial class DevDbContext : DbContext
         modelBuilder.Entity<Cashier>(entity =>
         {
 
-            entity.HasKey(e => e.UserName);
+            entity.HasKey(e => e.Password);
 
             entity.Property(e => e.Password)
                 .HasMaxLength(50)

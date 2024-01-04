@@ -30,7 +30,7 @@ namespace Westry
 			{
 				//Return cashier if found. If not return null this is what "SingleOrDefault" does
 				//"u => " is called the LINQ operator. search it
-				Cashier? loginCashier = db.Cashiers.SingleOrDefault(u => u.UserName.ToLower() == nameBox.Text);
+				Cashier? loginCashier = db.Cashiers.SingleOrDefault(u => u.Password.ToLower() == passwordBox.Text);
 				Admin? loginAdmin = db.Admins.SingleOrDefault(u => u.UserName.ToLower() == nameBox.Text);
 
 				if (loginAdmin != null && loginAdmin.Password == passwordBox.Text)
@@ -38,7 +38,7 @@ namespace Westry
 					isAdmin = true;
 				}
 
-				if (loginCashier != null && loginCashier.Password == passwordBox.Text)
+				if (loginCashier != null && loginCashier.UserName == nameBox.Text)
 				{
 					isCashier = true;
 				}

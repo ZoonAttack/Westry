@@ -35,8 +35,15 @@ namespace Westry
 				cashier.UserName = nameBox.Text;
 				cashier.Password = passwordBox.Text;
 				_db.Cashiers.Add(cashier);
-				MessageBox.Show($"تم اضافه الكاشير: {cashier.UserName}");
-				_db.SaveChanges();
+				try
+				{
+					_db.SaveChanges();
+					MessageBox.Show($"تم اضافه الكاشير: {cashier.UserName}");
+				}
+				catch
+				{
+					MessageBox.Show("الرقم السري مسحل لكاشير من قبل");
+				}
 				this.Close();
 			}
 		}
