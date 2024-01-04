@@ -31,11 +31,6 @@
 			components = new System.ComponentModel.Container();
 			pdfButton = new Button();
 			LogDataGridView = new DataGridView();
-			phoneNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-			mealIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-			choosenmealDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-			TimeTaken = new DataGridViewTextBoxColumn();
-			CashierName = new DataGridViewTextBoxColumn();
 			mealLogBindingSource = new BindingSource(components);
 			specificTimeFrom = new DateTimePicker();
 			specificTimeTo = new DateTimePicker();
@@ -43,6 +38,13 @@
 			ToLabel = new Label();
 			specificTimeBTN = new Button();
 			specificPeriodCB = new CheckBox();
+			phoneNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+			mealIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+			choosenmealDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+			isKitchen = new DataGridViewTextBoxColumn();
+			isBuffet = new DataGridViewTextBoxColumn();
+			TimeTaken = new DataGridViewTextBoxColumn();
+			CashierName = new DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)LogDataGridView).BeginInit();
 			((System.ComponentModel.ISupportInitialize)mealLogBindingSource).BeginInit();
 			SuspendLayout();
@@ -65,14 +67,77 @@
 			LogDataGridView.AllowUserToDeleteRows = false;
 			LogDataGridView.AutoGenerateColumns = false;
 			LogDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			LogDataGridView.Columns.AddRange(new DataGridViewColumn[] { phoneNumberDataGridViewTextBoxColumn, mealIdDataGridViewTextBoxColumn, choosenmealDataGridViewTextBoxColumn, TimeTaken, CashierName });
+			LogDataGridView.Columns.AddRange(new DataGridViewColumn[] { phoneNumberDataGridViewTextBoxColumn, mealIdDataGridViewTextBoxColumn, choosenmealDataGridViewTextBoxColumn, isKitchen, isBuffet, TimeTaken, CashierName });
 			LogDataGridView.DataSource = mealLogBindingSource;
 			LogDataGridView.Location = new Point(27, 12);
 			LogDataGridView.Name = "LogDataGridView";
 			LogDataGridView.ReadOnly = true;
 			LogDataGridView.RowTemplate.Height = 25;
-			LogDataGridView.Size = new Size(857, 555);
+			LogDataGridView.Size = new Size(1055, 555);
 			LogDataGridView.TabIndex = 9;
+			// 
+			// mealLogBindingSource
+			// 
+			mealLogBindingSource.DataSource = typeof(Models.MealLog);
+			// 
+			// specificTimeFrom
+			// 
+			specificTimeFrom.Location = new Point(702, 585);
+			specificTimeFrom.Name = "specificTimeFrom";
+			specificTimeFrom.RightToLeft = RightToLeft.No;
+			specificTimeFrom.Size = new Size(200, 23);
+			specificTimeFrom.TabIndex = 10;
+			// 
+			// specificTimeTo
+			// 
+			specificTimeTo.Location = new Point(702, 626);
+			specificTimeTo.Name = "specificTimeTo";
+			specificTimeTo.Size = new Size(200, 23);
+			specificTimeTo.TabIndex = 11;
+			// 
+			// FromLabel
+			// 
+			FromLabel.AutoSize = true;
+			FromLabel.Font = new Font("Times New Roman", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+			FromLabel.Location = new Point(921, 585);
+			FromLabel.Name = "FromLabel";
+			FromLabel.Size = new Size(39, 31);
+			FromLabel.TabIndex = 12;
+			FromLabel.Text = "من";
+			// 
+			// ToLabel
+			// 
+			ToLabel.AutoSize = true;
+			ToLabel.Font = new Font("Times New Roman", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+			ToLabel.Location = new Point(918, 620);
+			ToLabel.Name = "ToLabel";
+			ToLabel.Size = new Size(42, 31);
+			ToLabel.TabIndex = 13;
+			ToLabel.Text = "إلى";
+			// 
+			// specificTimeBTN
+			// 
+			specificTimeBTN.BackColor = Color.AntiqueWhite;
+			specificTimeBTN.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
+			specificTimeBTN.Location = new Point(482, 573);
+			specificTimeBTN.Name = "specificTimeBTN";
+			specificTimeBTN.Size = new Size(141, 79);
+			specificTimeBTN.TabIndex = 14;
+			specificTimeBTN.Text = "بحث";
+			specificTimeBTN.UseVisualStyleBackColor = false;
+			specificTimeBTN.Click += specificTimeBTN_Click;
+			// 
+			// specificPeriodCB
+			// 
+			specificPeriodCB.AutoSize = true;
+			specificPeriodCB.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			specificPeriodCB.Location = new Point(990, 603);
+			specificPeriodCB.Name = "specificPeriodCB";
+			specificPeriodCB.Size = new Size(92, 25);
+			specificPeriodCB.TabIndex = 15;
+			specificPeriodCB.Text = "فترة محدده";
+			specificPeriodCB.UseVisualStyleBackColor = true;
+			specificPeriodCB.CheckedChanged += specificPeriodCB_CheckedChanged;
 			// 
 			// phoneNumberDataGridViewTextBoxColumn
 			// 
@@ -97,6 +162,20 @@
 			choosenmealDataGridViewTextBoxColumn.ReadOnly = true;
 			choosenmealDataGridViewTextBoxColumn.Width = 300;
 			// 
+			// isKitchen
+			// 
+			isKitchen.DataPropertyName = "isKitchen";
+			isKitchen.HeaderText = "isKitchen";
+			isKitchen.Name = "isKitchen";
+			isKitchen.ReadOnly = true;
+			// 
+			// isBuffet
+			// 
+			isBuffet.DataPropertyName = "isBuffet";
+			isBuffet.HeaderText = "isBuffet";
+			isBuffet.Name = "isBuffet";
+			isBuffet.ReadOnly = true;
+			// 
 			// TimeTaken
 			// 
 			TimeTaken.DataPropertyName = "TimeTaken";
@@ -112,75 +191,12 @@
 			CashierName.Name = "CashierName";
 			CashierName.ReadOnly = true;
 			// 
-			// mealLogBindingSource
-			// 
-			mealLogBindingSource.DataSource = typeof(Models.MealLog);
-			// 
-			// specificTimeFrom
-			// 
-			specificTimeFrom.Location = new Point(498, 582);
-			specificTimeFrom.Name = "specificTimeFrom";
-			specificTimeFrom.RightToLeft = RightToLeft.No;
-			specificTimeFrom.Size = new Size(200, 23);
-			specificTimeFrom.TabIndex = 10;
-			// 
-			// specificTimeTo
-			// 
-			specificTimeTo.Location = new Point(498, 623);
-			specificTimeTo.Name = "specificTimeTo";
-			specificTimeTo.Size = new Size(200, 23);
-			specificTimeTo.TabIndex = 11;
-			// 
-			// FromLabel
-			// 
-			FromLabel.AutoSize = true;
-			FromLabel.Font = new Font("Times New Roman", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-			FromLabel.Location = new Point(717, 582);
-			FromLabel.Name = "FromLabel";
-			FromLabel.Size = new Size(39, 31);
-			FromLabel.TabIndex = 12;
-			FromLabel.Text = "من";
-			// 
-			// ToLabel
-			// 
-			ToLabel.AutoSize = true;
-			ToLabel.Font = new Font("Times New Roman", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-			ToLabel.Location = new Point(714, 617);
-			ToLabel.Name = "ToLabel";
-			ToLabel.Size = new Size(42, 31);
-			ToLabel.TabIndex = 13;
-			ToLabel.Text = "إلى";
-			// 
-			// specificTimeBTN
-			// 
-			specificTimeBTN.BackColor = Color.AntiqueWhite;
-			specificTimeBTN.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
-			specificTimeBTN.Location = new Point(341, 573);
-			specificTimeBTN.Name = "specificTimeBTN";
-			specificTimeBTN.Size = new Size(141, 79);
-			specificTimeBTN.TabIndex = 14;
-			specificTimeBTN.Text = "بحث";
-			specificTimeBTN.UseVisualStyleBackColor = false;
-			specificTimeBTN.Click += specificTimeBTN_Click;
-			// 
-			// specificPeriodCB
-			// 
-			specificPeriodCB.AutoSize = true;
-			specificPeriodCB.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			specificPeriodCB.Location = new Point(779, 603);
-			specificPeriodCB.Name = "specificPeriodCB";
-			specificPeriodCB.Size = new Size(92, 25);
-			specificPeriodCB.TabIndex = 15;
-			specificPeriodCB.Text = "فترة محدده";
-			specificPeriodCB.UseVisualStyleBackColor = true;
-			specificPeriodCB.CheckedChanged += specificPeriodCB_CheckedChanged;
-			// 
 			// LogWindow
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.AliceBlue;
-			ClientSize = new Size(906, 664);
+			ClientSize = new Size(1097, 664);
 			Controls.Add(specificPeriodCB);
 			Controls.Add(specificTimeBTN);
 			Controls.Add(ToLabel);
@@ -215,6 +231,8 @@
 		private DataGridViewTextBoxColumn phoneNumberDataGridViewTextBoxColumn;
 		private DataGridViewTextBoxColumn mealIdDataGridViewTextBoxColumn;
 		private DataGridViewTextBoxColumn choosenmealDataGridViewTextBoxColumn;
+		private DataGridViewTextBoxColumn isKitchen;
+		private DataGridViewTextBoxColumn isBuffet;
 		private DataGridViewTextBoxColumn TimeTaken;
 		private DataGridViewTextBoxColumn CashierName;
 	}

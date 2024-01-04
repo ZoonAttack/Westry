@@ -145,6 +145,8 @@ public partial class DevDbContext : DbContext
             entity.Property(e => e.choosen_meal).HasColumnName("choosen_meal");
             entity.Property(e => e.MealId).HasColumnName("meal_id");
             entity.Property(e => e.CashierName).HasColumnName("Cashier");
+            entity.Property(e => e.isBuffet).HasColumnName("is_buffet");
+            entity.Property(e => e.isKitchen).HasColumnName("is_kitchen");
 
         });
 

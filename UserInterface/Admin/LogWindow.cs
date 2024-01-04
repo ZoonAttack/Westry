@@ -128,13 +128,14 @@ namespace Westry
 			table.Borders.Width = 0.75;
 
 			// Define the columns
-			Column column1 = table.AddColumn(Unit.FromCentimeter(13));
+			Column column1 = table.AddColumn(Unit.FromCentimeter(10));
 			Column column2 = table.AddColumn(Unit.FromCentimeter(5));
+			Column column3 = table.AddColumn(Unit.FromCentimeter(3));
 
 			// Create the header row
 			Row headerRow = table.AddRow();
 			headerRow.Shading.Color = Colors.LightGray;
-			string finalTxt = "نوع الوجبه";
+			string finalTxt = "اسم الوجبه";
 			finalTxt = ArabicGlyphConverter.ConvertToArabicGlyphs(finalTxt);
 			finalTxt = new string(finalTxt.Reverse().ToArray());
 
@@ -145,6 +146,12 @@ namespace Westry
 			finalTxt = new string(finalTxt.Reverse().ToArray());
 
 			headerRow.Cells[1].AddParagraph(finalTxt);
+
+			finalTxt = "نوع الوجبه";
+			finalTxt = ArabicGlyphConverter.ConvertToArabicGlyphs(finalTxt);
+			finalTxt = new string(finalTxt.Reverse().ToArray());
+
+			headerRow.Cells[2].AddParagraph(finalTxt);
 
 			// Add sample data to the table (replace with your actual data)
 			SqlConnection conn = new SqlConnection(db.Database.GetConnectionString());
@@ -165,14 +172,14 @@ namespace Westry
 			}
 			else
 			{
-				 cmd = new SqlCommand("SELECT    MAX(choosen_meal) AS taken_meal,  COUNT(*) AS meal_count FROM  MealLog GROUP BY   choosen_meal", conn);
+				 cmd = new SqlCommand("SELECT taken_meal, COUNT(*) AS meal_count, CASE WHEN MAX(is_buffet) = 1 THEN '1'  WHEN MAX(is_kitchen) = 1 THEN '2' ELSE 'unknown' END AS meal_type FROM (SELECT  choosen_meal AS taken_meal,  COUNT(*) AS meal_count,   MAX(CAST(is_buffet AS INT)) AS is_buffet, MAX(CAST(is_kitchen AS INT)) AS is_kitchen FROM MealLog GROUP BY choosen_meal ) AS subquery GROUP BY   taken_meal;", conn);
 			}
 
 			conn.Open();
 			SqlDataReader reader = cmd.ExecuteReader();
 			while (reader.Read())
 			{
-				AddTableRow(table, reader["taken_meal"].ToString(), reader["meal_count"].ToString());
+				AddTableRow(table, reader["taken_meal"].ToString(), reader["meal_count"].ToString(), reader["meal_type"].ToString());
 
 			}
 			conn.Close();
@@ -187,7 +194,7 @@ namespace Westry
 			table.Style = "Table";
 		}
 
-		static void AddTableRow(Table table, string mealType, string orderCount)
+		static void AddTableRow(Table table, string mealType, string orderCount, string mealKind)
 		{
 			Row row = table.AddRow();
 			//char[] charArray = mealType.ToCharArray();
@@ -197,8 +204,21 @@ namespace Westry
 			string finalTxt = ArabicGlyphConverter.ConvertToArabicGlyphs(mealType);
 			finalTxt = new string(finalTxt.Reverse().ToArray());
 
+			string secondFintalText;
+			if (mealKind == "1")
+			{
+				secondFintalText = "بوفيه";
+			}
+			else
+			{
+				secondFintalText = "مطبخ";
+			}
+			secondFintalText= ArabicGlyphConverter.ConvertToArabicGlyphs(secondFintalText);
+			secondFintalText = new string(secondFintalText.Reverse().ToArray());
+
 			row.Cells[0].AddParagraph(finalTxt);
 			row.Cells[1].AddParagraph(orderCount);
+			row.Cells[2].AddParagraph(secondFintalText);
 		}
 
 
