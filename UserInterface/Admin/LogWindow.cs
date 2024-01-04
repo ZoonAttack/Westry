@@ -51,10 +51,6 @@ namespace Westry
 			hideTimePeriod();
 		}
 
-		private void LogDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-		{
-
-		}
 
 		private void generatePDF()
 		{
