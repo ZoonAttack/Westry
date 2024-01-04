@@ -65,7 +65,15 @@ public partial class DevDbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("user_name");
-        });
+
+            entity.Property(e => e.ordersServied)
+                .HasColumnName("orders_servied");
+
+            entity.Property(e => e.loggedInTime)
+                .HasColumnName("loggedIn_time");
+			entity.Property(e => e.loggedOutTime)
+				.HasColumnName("LoggedOut_time");
+		});
 
         modelBuilder.Entity<Cashier>().HasData(
             new Cashier { UserName = "test", Password = "123" }
