@@ -113,7 +113,6 @@
 			BreakfastComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 			BreakfastComboBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
 			BreakfastComboBox.FormattingEnabled = true;
-			BreakfastComboBox.Items.AddRange(new object[] { "عصير -برش مربه- برشن عسل -نوع جبنه - بيضه مسلوقه -معيش الطازج", "اختيار اي 3 سندوتشات من فيل الفينو", "قطعتين من الباتيه او الكرواسون مع الشاي او النسكافيه", "آخر" });
 			BreakfastComboBox.Location = new Point(887, 210);
 			BreakfastComboBox.Name = "BreakfastComboBox";
 			BreakfastComboBox.Size = new Size(415, 25);
@@ -125,7 +124,6 @@
 			DinnerComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 			DinnerComboBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
 			DinnerComboBox.FormattingEnabled = true;
-			DinnerComboBox.Items.AddRange(new object[] { "( البيتزا): مرجريتا -- او بيتزا الخضار -- او بيتزا الهوت دوج", "البرجر مع الكلوسلو سلاط والبوم فريت", "4 سندوتشات من فيل افينو", "قطع 3من دجاج الاستربس مع البوم فريت", "آخر" });
 			DinnerComboBox.Location = new Point(12, 210);
 			DinnerComboBox.Name = "DinnerComboBox";
 			DinnerComboBox.Size = new Size(420, 25);
@@ -137,7 +135,6 @@
 			LaunchComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 			LaunchComboBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
 			LaunchComboBox.FormattingEnabled = true;
-			LaunchComboBox.Items.AddRange(new object[] { "وجبة البوفتيك والأرز والبوم فريت", "وجبة الاستربس مع الأرز والبوم فريت", "وجبة الكفته والأرز والبوم الفريت", "وجبة الفراخ المشوية مع الأرز والبوم فريت", "آخر" });
 			LaunchComboBox.Location = new Point(438, 210);
 			LaunchComboBox.Name = "LaunchComboBox";
 			LaunchComboBox.Size = new Size(443, 25);
