@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Westry.ManagerForm;
 using Westry.Models;
 
 namespace Westry
@@ -99,6 +100,7 @@ namespace Westry
 				}
 				else
 				{
+					customer.createdBy = Manager.currentLoggedCashier.UserName;
 					db.Customers.Add(customer);
 				}
 				db.SaveChanges();

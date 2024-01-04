@@ -30,6 +30,7 @@
 		{
 			components = new System.ComponentModel.Container();
 			ClientsDataGridView = new DataGridView();
+			customerBindingSource = new BindingSource(components);
 			nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 			phoneNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 			mealIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -37,7 +38,7 @@
 			breakfastCounterDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 			lunchCounterDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 			dinnerCounterDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-			customerBindingSource = new BindingSource(components);
+			createdBy = new DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)ClientsDataGridView).BeginInit();
 			((System.ComponentModel.ISupportInitialize)customerBindingSource).BeginInit();
 			SuspendLayout();
@@ -48,14 +49,18 @@
 			ClientsDataGridView.AllowUserToDeleteRows = false;
 			ClientsDataGridView.AutoGenerateColumns = false;
 			ClientsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			ClientsDataGridView.Columns.AddRange(new DataGridViewColumn[] { nameDataGridViewTextBoxColumn, phoneNumberDataGridViewTextBoxColumn, mealIdDataGridViewTextBoxColumn, subscriptionCountDataGridViewTextBoxColumn, breakfastCounterDataGridViewTextBoxColumn, lunchCounterDataGridViewTextBoxColumn, dinnerCounterDataGridViewTextBoxColumn });
+			ClientsDataGridView.Columns.AddRange(new DataGridViewColumn[] { nameDataGridViewTextBoxColumn, phoneNumberDataGridViewTextBoxColumn, mealIdDataGridViewTextBoxColumn, subscriptionCountDataGridViewTextBoxColumn, breakfastCounterDataGridViewTextBoxColumn, lunchCounterDataGridViewTextBoxColumn, dinnerCounterDataGridViewTextBoxColumn, createdBy });
 			ClientsDataGridView.DataSource = customerBindingSource;
 			ClientsDataGridView.Location = new Point(12, 12);
 			ClientsDataGridView.Name = "ClientsDataGridView";
 			ClientsDataGridView.ReadOnly = true;
 			ClientsDataGridView.RowTemplate.Height = 25;
-			ClientsDataGridView.Size = new Size(743, 660);
+			ClientsDataGridView.Size = new Size(861, 660);
 			ClientsDataGridView.TabIndex = 0;
+			// 
+			// customerBindingSource
+			// 
+			customerBindingSource.DataSource = typeof(Models.Customer);
 			// 
 			// nameDataGridViewTextBoxColumn
 			// 
@@ -84,10 +89,12 @@
 			subscriptionCountDataGridViewTextBoxColumn.HeaderText = "SubscriptionCount";
 			subscriptionCountDataGridViewTextBoxColumn.Name = "subscriptionCountDataGridViewTextBoxColumn";
 			subscriptionCountDataGridViewTextBoxColumn.ReadOnly = true;
+			subscriptionCountDataGridViewTextBoxColumn.Width = 110;
 			// 
 			// breakfastCounterDataGridViewTextBoxColumn
 			// 
 			breakfastCounterDataGridViewTextBoxColumn.DataPropertyName = "BreakfastCounter";
+			breakfastCounterDataGridViewTextBoxColumn.FillWeight = 110F;
 			breakfastCounterDataGridViewTextBoxColumn.HeaderText = "BreakfastCounter";
 			breakfastCounterDataGridViewTextBoxColumn.Name = "breakfastCounterDataGridViewTextBoxColumn";
 			breakfastCounterDataGridViewTextBoxColumn.ReadOnly = true;
@@ -106,16 +113,19 @@
 			dinnerCounterDataGridViewTextBoxColumn.Name = "dinnerCounterDataGridViewTextBoxColumn";
 			dinnerCounterDataGridViewTextBoxColumn.ReadOnly = true;
 			// 
-			// customerBindingSource
+			// createdBy
 			// 
-			customerBindingSource.DataSource = typeof(Models.Customer);
+			createdBy.DataPropertyName = "createdBy";
+			createdBy.HeaderText = "createdBy";
+			createdBy.Name = "createdBy";
+			createdBy.ReadOnly = true;
 			// 
 			// ViewClients
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.AliceBlue;
-			ClientSize = new Size(765, 684);
+			ClientSize = new Size(885, 684);
 			Controls.Add(ClientsDataGridView);
 			Name = "ViewClients";
 			StartPosition = FormStartPosition.CenterScreen;
@@ -138,5 +148,6 @@
 		private DataGridViewTextBoxColumn breakfastCounterDataGridViewTextBoxColumn;
 		private DataGridViewTextBoxColumn lunchCounterDataGridViewTextBoxColumn;
 		private DataGridViewTextBoxColumn dinnerCounterDataGridViewTextBoxColumn;
+		private DataGridViewTextBoxColumn createdBy;
 	}
 }
