@@ -27,6 +27,7 @@ namespace Westry
 	{
 		private static DevDbContext db;
 
+
 		public LogWindow()
 		{
 			InitializeComponent();
@@ -47,6 +48,7 @@ namespace Westry
 			LogDataGridView.DataBindings.Clear();
 			var dt = Utility.db.MealLog.ToList();
 			LogDataGridView.DataSource = Utility.ToDataTable(dt);
+			hideTimePeriod();
 		}
 
 		private void LogDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -61,7 +63,7 @@ namespace Westry
 			{
 				Directory.CreateDirectory(LogsdesktopDire);
 			}
-			string pdfFilePath = Path.Combine(LogsdesktopDire, $"{DateTime.Now.ToString("yyyy-MM-dd-HH-mm")}-MealLog.pdf");
+			string pdfFilePath = Path.Combine(LogsdesktopDire, $"{DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")}-MealLog.pdf");
 
 
 
@@ -73,18 +75,33 @@ namespace Westry
 
 			// 1. Date and Time Section
 			Paragraph dateAndTime = section.AddParagraph();
-			string finalTxt = "التاريخ";
+			string finalTxt = "تاريخ السجل";
 			finalTxt = ArabicGlyphConverter.ConvertToArabicGlyphs(finalTxt);
 			finalTxt = new string(finalTxt.Reverse().ToArray());
-			dateAndTime.AddFormattedText($"{finalTxt}: {DateTime.Now}");
+			dateAndTime.AddFormattedText($"{DateTime.Now.ToString("dd/MM/yyyy")}:{finalTxt}");
+
+			if(specificPeriodCB.Checked)
+			{
+				Paragraph fromDateToDate = section.AddParagraph();
+				string fromText = "من";
+				fromText = ArabicGlyphConverter.ConvertToArabicGlyphs(fromText);
+				fromText = new string(fromText.Reverse().ToArray());
+
+				string toText = "إلى";
+				toText = ArabicGlyphConverter.ConvertToArabicGlyphs(toText);
+				toText = new string(toText.Reverse().ToArray());
+
+
+				DateTime fromDate = specificTimeFrom.Value.Date;
+				DateTime toDate = specificTimeTo.Value.Date;
+				TimeSpan ts = new TimeSpan(11, 59, 0);
+				toDate = toDate.AddHours(23.9999);
+
+				fromDateToDate.AddFormattedText($"{toDate.ToString("dd/MM/yyyy")}: {toText} {fromDate.ToString("dd/MM/yyyy")}: {fromText}");
+			}
 
 			section.AddParagraph();
-
 			CreateTable(section);
-
-
-
-
 
 
 			PdfDocumentRenderer pdfRenderer = new PdfDocumentRenderer();
@@ -102,7 +119,7 @@ namespace Westry
 		}
 
 
-		static void CreateTable(Section section)
+		private void CreateTable(Section section)
 		{
 
 
@@ -131,7 +148,25 @@ namespace Westry
 
 			// Add sample data to the table (replace with your actual data)
 			SqlConnection conn = new SqlConnection(db.Database.GetConnectionString());
-			SqlCommand cmd = new SqlCommand("SELECT    MAX(choosen_meal) AS taken_meal,  COUNT(*) AS meal_count FROM  MealLog GROUP BY   choosen_meal", conn);
+			SqlCommand cmd;
+			if (specificPeriodCB.Checked) {
+				DateTime fromDate = specificTimeFrom.Value.Date;
+				DateTime toDate = specificTimeTo.Value.Date;
+				TimeSpan ts = new TimeSpan(11, 59, 0);
+				toDate = toDate.AddHours(23.9999);
+
+				cmd = new SqlCommand("SELECT MAX(choosen_meal) AS taken_meal, COUNT(*) AS meal_count " +
+								"FROM MealLog " +
+								"WHERE time_taken BETWEEN @StartTime AND @EndTime " +
+								"GROUP BY choosen_meal", conn);
+
+				cmd.Parameters.AddWithValue("@StartTime", fromDate);
+				cmd.Parameters.AddWithValue("@EndTime", toDate);
+			}
+			else
+			{
+				 cmd = new SqlCommand("SELECT    MAX(choosen_meal) AS taken_meal,  COUNT(*) AS meal_count FROM  MealLog GROUP BY   choosen_meal", conn);
+			}
 
 			conn.Open();
 			SqlDataReader reader = cmd.ExecuteReader();
@@ -177,10 +212,51 @@ namespace Westry
 
 		private void LogWindow_KeyDown(object sender, KeyEventArgs e)
 		{
-			if(e.KeyCode == Keys.Enter)
+			if (e.KeyCode == Keys.Enter)
 			{
 				pdfButton.PerformClick();
 			}
+		}
+
+		private void specificPeriodCB_CheckedChanged(object sender, EventArgs e)
+		{
+			if (specificPeriodCB.Checked)
+			{
+				specificTimeBTN.Visible = true;
+				specificTimeTo.Visible = true;
+				specificTimeFrom.Visible = true;
+				ToLabel.Visible = true;
+				FromLabel.Visible = true;
+			}
+			else
+			{
+				hideTimePeriod();
+				LogDataGridView.DataBindings.Clear();
+				var dt = Utility.db.MealLog.ToList();
+				LogDataGridView.DataSource = Utility.ToDataTable(dt);
+			}
+		}
+
+		private void hideTimePeriod()
+		{
+			specificTimeBTN.Visible = false;
+			specificTimeTo.Visible = false;
+			specificTimeFrom.Visible = false;
+			ToLabel.Visible = false;
+			FromLabel.Visible = false;
+		}
+
+		private void specificTimeBTN_Click(object sender, EventArgs e)
+		{
+			DateTime fromDate = specificTimeFrom.Value.Date;
+			DateTime toDate = specificTimeTo.Value.Date;
+			TimeSpan ts = new TimeSpan(11, 59, 0);
+			toDate = toDate.AddHours(23.9999);
+			var query = Utility.db.MealLog.AsQueryable();
+			LogDataGridView.DataBindings.Clear();
+			query = query.Where(u => u.TimeTaken >= fromDate && u.TimeTaken <= toDate);
+			var dt = query.ToList();
+			LogDataGridView.DataSource = Utility.ToDataTable(dt);
 		}
 	}
 }

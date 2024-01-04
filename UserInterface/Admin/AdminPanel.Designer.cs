@@ -85,7 +85,7 @@
 			viewDailyButton.Name = "viewDailyButton";
 			viewDailyButton.Size = new Size(146, 79);
 			viewDailyButton.TabIndex = 4;
-			viewDailyButton.Text = "سجل الطلبات اليومي";
+			viewDailyButton.Text = "سجل الطلبات";
 			viewDailyButton.UseVisualStyleBackColor = false;
 			viewDailyButton.Click += viewDailyButton_Click;
 			// 

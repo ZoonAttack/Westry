@@ -36,6 +36,12 @@
 			choosenmealDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 			TimeTaken = new DataGridViewTextBoxColumn();
 			mealLogBindingSource = new BindingSource(components);
+			specificTimeFrom = new DateTimePicker();
+			specificTimeTo = new DateTimePicker();
+			FromLabel = new Label();
+			ToLabel = new Label();
+			specificTimeBTN = new Button();
+			specificPeriodCB = new CheckBox();
 			((System.ComponentModel.ISupportInitialize)LogDataGridView).BeginInit();
 			((System.ComponentModel.ISupportInitialize)mealLogBindingSource).BeginInit();
 			SuspendLayout();
@@ -44,7 +50,7 @@
 			// 
 			pdfButton.BackColor = Color.AntiqueWhite;
 			pdfButton.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
-			pdfButton.Location = new Point(321, 573);
+			pdfButton.Location = new Point(56, 573);
 			pdfButton.Name = "pdfButton";
 			pdfButton.Size = new Size(141, 79);
 			pdfButton.TabIndex = 8;
@@ -102,12 +108,77 @@
 			// 
 			mealLogBindingSource.DataSource = typeof(Models.MealLog);
 			// 
+			// specificTimeFrom
+			// 
+			specificTimeFrom.Location = new Point(414, 582);
+			specificTimeFrom.Name = "specificTimeFrom";
+			specificTimeFrom.RightToLeft = RightToLeft.No;
+			specificTimeFrom.Size = new Size(200, 23);
+			specificTimeFrom.TabIndex = 10;
+			// 
+			// specificTimeTo
+			// 
+			specificTimeTo.Location = new Point(414, 623);
+			specificTimeTo.Name = "specificTimeTo";
+			specificTimeTo.Size = new Size(200, 23);
+			specificTimeTo.TabIndex = 11;
+			// 
+			// FromLabel
+			// 
+			FromLabel.AutoSize = true;
+			FromLabel.Font = new Font("Times New Roman", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+			FromLabel.Location = new Point(640, 582);
+			FromLabel.Name = "FromLabel";
+			FromLabel.Size = new Size(39, 31);
+			FromLabel.TabIndex = 12;
+			FromLabel.Text = "من";
+			// 
+			// ToLabel
+			// 
+			ToLabel.AutoSize = true;
+			ToLabel.Font = new Font("Times New Roman", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+			ToLabel.Location = new Point(640, 617);
+			ToLabel.Name = "ToLabel";
+			ToLabel.Size = new Size(42, 31);
+			ToLabel.TabIndex = 13;
+			ToLabel.Text = "إلى";
+			// 
+			// specificTimeBTN
+			// 
+			specificTimeBTN.BackColor = Color.AntiqueWhite;
+			specificTimeBTN.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
+			specificTimeBTN.Location = new Point(267, 573);
+			specificTimeBTN.Name = "specificTimeBTN";
+			specificTimeBTN.Size = new Size(141, 79);
+			specificTimeBTN.TabIndex = 14;
+			specificTimeBTN.Text = "بحث";
+			specificTimeBTN.UseVisualStyleBackColor = false;
+			specificTimeBTN.Click += specificTimeBTN_Click;
+			// 
+			// specificPeriodCB
+			// 
+			specificPeriodCB.AutoSize = true;
+			specificPeriodCB.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			specificPeriodCB.Location = new Point(696, 603);
+			specificPeriodCB.Name = "specificPeriodCB";
+			specificPeriodCB.Size = new Size(92, 25);
+			specificPeriodCB.TabIndex = 15;
+			specificPeriodCB.Text = "فترة محدده";
+			specificPeriodCB.UseVisualStyleBackColor = true;
+			specificPeriodCB.CheckedChanged += specificPeriodCB_CheckedChanged;
+			// 
 			// LogWindow
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.AliceBlue;
 			ClientSize = new Size(800, 664);
+			Controls.Add(specificPeriodCB);
+			Controls.Add(specificTimeBTN);
+			Controls.Add(ToLabel);
+			Controls.Add(FromLabel);
+			Controls.Add(specificTimeTo);
+			Controls.Add(specificTimeFrom);
 			Controls.Add(LogDataGridView);
 			Controls.Add(pdfButton);
 			Name = "LogWindow";
@@ -119,6 +190,7 @@
 			((System.ComponentModel.ISupportInitialize)LogDataGridView).EndInit();
 			((System.ComponentModel.ISupportInitialize)mealLogBindingSource).EndInit();
 			ResumeLayout(false);
+			PerformLayout();
 		}
 
 		#endregion
@@ -130,5 +202,11 @@
 		private DataGridViewTextBoxColumn mealIdDataGridViewTextBoxColumn;
 		private DataGridViewTextBoxColumn choosenmealDataGridViewTextBoxColumn;
 		private DataGridViewTextBoxColumn TimeTaken;
+		private DateTimePicker specificTimeFrom;
+		private DateTimePicker specificTimeTo;
+		private Label FromLabel;
+		private Label ToLabel;
+		private Button specificTimeBTN;
+		private CheckBox specificPeriodCB;
 	}
 }
