@@ -157,6 +157,7 @@
 			loggedInTime.HeaderText = "loggedInTime";
 			loggedInTime.Name = "loggedInTime";
 			loggedInTime.ReadOnly = true;
+			loggedInTime.Width = 150;
 			// 
 			// loggedOutTime
 			// 
@@ -164,6 +165,7 @@
 			loggedOutTime.HeaderText = "loggedOutTime";
 			loggedOutTime.Name = "loggedOutTime";
 			loggedOutTime.ReadOnly = true;
+			loggedOutTime.Width = 145;
 			// 
 			// AdminPanel
 			// 

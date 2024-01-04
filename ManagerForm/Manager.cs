@@ -48,6 +48,12 @@ namespace Westry.ManagerForm
 			//This method should be called after the specific form closed
 			if(Application.OpenForms.Count <= 1)
 			{
+				if (currentLoggedCashier != null)
+				{
+					currentLoggedCashier.loggedOutTime = DateTime.Now;
+					Utility.db.Cashiers.Update(currentLoggedCashier);
+					Utility.db.SaveChanges();
+				}
 				Application.Exit();
 			}
 		}

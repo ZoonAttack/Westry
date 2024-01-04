@@ -42,6 +42,9 @@ namespace Westry
 				{
 					isCashier = true;
 					Manager.currentLoggedCashier = loginCashier;
+					Manager.currentLoggedCashier.loggedInTime = DateTime.Now;
+					Utility.db.Cashiers.Update(Manager.currentLoggedCashier);
+					Utility.db.SaveChanges();
 				}
 
 
