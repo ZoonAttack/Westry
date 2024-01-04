@@ -30,7 +30,7 @@
 		{
 			nameLabel = new Label();
 			subCountLabel = new Label();
-			dinnerRemLabel = new Label();
+			w = new Label();
 			launchRemLabel = new Label();
 			breakfastRemLabel = new Label();
 			phoneLabel = new Label();
@@ -45,6 +45,9 @@
 			specifyBuffetLabel = new Label();
 			recordOrderButton = new Button();
 			resetButton = new Button();
+			BFRenewBTn = new Button();
+			LunchRenewBTN = new Button();
+			DinnerRenewBTN = new Button();
 			SuspendLayout();
 			// 
 			// nameLabel
@@ -68,15 +71,15 @@
 			subCountLabel.TabIndex = 1;
 			subCountLabel.Text = "عدد مرات الاشتراك";
 			// 
-			// dinnerRemLabel
+			// w
 			// 
-			dinnerRemLabel.AutoSize = true;
-			dinnerRemLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-			dinnerRemLabel.Location = new Point(12, 135);
-			dinnerRemLabel.Name = "dinnerRemLabel";
-			dinnerRemLabel.Size = new Size(182, 25);
-			dinnerRemLabel.TabIndex = 2;
-			dinnerRemLabel.Text = "وجبات العشاء المتبقيه";
+			w.AutoSize = true;
+			w.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+			w.Location = new Point(99, 135);
+			w.Name = "w";
+			w.Size = new Size(182, 25);
+			w.TabIndex = 2;
+			w.Text = "وجبات العشاء المتبقيه";
 			// 
 			// launchRemLabel
 			// 
@@ -92,7 +95,7 @@
 			// 
 			breakfastRemLabel.AutoSize = true;
 			breakfastRemLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-			breakfastRemLabel.Location = new Point(983, 135);
+			breakfastRemLabel.Location = new Point(943, 135);
 			breakfastRemLabel.Name = "breakfastRemLabel";
 			breakfastRemLabel.Size = new Size(222, 25);
 			breakfastRemLabel.TabIndex = 4;
@@ -226,12 +229,51 @@
 			resetButton.UseVisualStyleBackColor = false;
 			resetButton.Click += resetButton_Click;
 			// 
+			// BFRenewBTn
+			// 
+			BFRenewBTn.BackColor = Color.AntiqueWhite;
+			BFRenewBTn.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+			BFRenewBTn.Location = new Point(1211, 118);
+			BFRenewBTn.Name = "BFRenewBTn";
+			BFRenewBTn.Size = new Size(91, 50);
+			BFRenewBTn.TabIndex = 17;
+			BFRenewBTn.Text = "تجديد";
+			BFRenewBTn.UseVisualStyleBackColor = false;
+			BFRenewBTn.Click += BFRenewBTn_Click;
+			// 
+			// LunchRenewBTN
+			// 
+			LunchRenewBTN.BackColor = Color.AntiqueWhite;
+			LunchRenewBTN.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+			LunchRenewBTN.Location = new Point(790, 118);
+			LunchRenewBTN.Name = "LunchRenewBTN";
+			LunchRenewBTN.Size = new Size(91, 50);
+			LunchRenewBTN.TabIndex = 18;
+			LunchRenewBTN.Text = "تجديد";
+			LunchRenewBTN.UseVisualStyleBackColor = false;
+			LunchRenewBTN.Click += LunchRenewBTN_Click;
+			// 
+			// DinnerRenewBTN
+			// 
+			DinnerRenewBTN.BackColor = Color.AntiqueWhite;
+			DinnerRenewBTN.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+			DinnerRenewBTN.Location = new Point(341, 118);
+			DinnerRenewBTN.Name = "DinnerRenewBTN";
+			DinnerRenewBTN.Size = new Size(91, 50);
+			DinnerRenewBTN.TabIndex = 19;
+			DinnerRenewBTN.Text = "تجديد";
+			DinnerRenewBTN.UseVisualStyleBackColor = false;
+			DinnerRenewBTN.Click += DinnerRenewBTN_Click;
+			// 
 			// RecordOrder
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.AliceBlue;
 			ClientSize = new Size(1314, 694);
+			Controls.Add(DinnerRenewBTN);
+			Controls.Add(LunchRenewBTN);
+			Controls.Add(BFRenewBTn);
 			Controls.Add(resetButton);
 			Controls.Add(recordOrderButton);
 			Controls.Add(specifyBuffetLabel);
@@ -246,7 +288,7 @@
 			Controls.Add(phoneLabel);
 			Controls.Add(breakfastRemLabel);
 			Controls.Add(launchRemLabel);
-			Controls.Add(dinnerRemLabel);
+			Controls.Add(w);
 			Controls.Add(subCountLabel);
 			Controls.Add(nameLabel);
 			Name = "RecordOrder";
@@ -263,7 +305,7 @@
 
 		private Label nameLabel;
         private Label subCountLabel;
-        private Label dinnerRemLabel;
+        private Label w;
         private Label launchRemLabel;
         private Label breakfastRemLabel;
         private Label phoneLabel;
@@ -278,5 +320,8 @@
         private Label specifyBuffetLabel;
         private Button recordOrderButton;
         private Button resetButton;
-    }
+		private Button BFRenewBTn;
+		private Button LunchRenewBTN;
+		private Button DinnerRenewBTN;
+	}
 }

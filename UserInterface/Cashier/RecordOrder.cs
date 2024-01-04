@@ -11,6 +11,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Westry.Models;
 using Westry.ManagerForm;
+using Westry.UserInterface.Cashier;
 
 namespace Westry
 {
@@ -26,32 +27,51 @@ namespace Westry
 		private int? subscriptionType;
 		private Customer customer;
 		private readonly DevDbContext db;
-
+		bool sameCustomer = false;
 		public RecordOrder(Customer FoundCustomer)
 		{
 			customer = FoundCustomer;
 			db = new DevDbContext();
 
+			
+
 			InitializeComponent();
 			subscriptionType = FoundCustomer.MealId;
-			ManageComboboxes(subscriptionType);
+			//ManageComboboxes(subscriptionType);
 			ShowData();
 
 			specifyBuffetLabel.Visible = false;
 			specifyNotesLabel.Visible = false;
 			buffetTextBox.Visible = false;
 			buffetCheckBox.Visible = true;
-			if(FoundCustomer.BreakfastCounter <= 0)
+
+			BFRenewBTn.Visible = false;
+			LunchRenewBTN.Visible = false;
+			DinnerRenewBTN.Visible = false;
+
+			if (FoundCustomer.BreakfastCounter <= 0)
 			{
 				BreakfastComboBox.Enabled = false;
+				if ((bool)Utility.db.Meals.Find(FoundCustomer.MealId).hasBreakfast)
+				{
+					BFRenewBTn.Visible = true;
+				}
 			}
-			if(FoundCustomer.LunchCounter <= 0)
+			if (FoundCustomer.LunchCounter <= 0)
 			{
 				LaunchComboBox.Enabled = false;
+				if ((bool)Utility.db.Meals.Find(FoundCustomer.MealId).hasLunch)
+				{
+					LunchRenewBTN.Visible = true;
+				}
 			}
-			if(FoundCustomer.DinnerCounter <= 0)
+			if (FoundCustomer.DinnerCounter <= 0)
 			{
-				DinnerComboBox.Enabled = false;	
+				DinnerComboBox.Enabled = false;
+				if ((bool)Utility.db.Meals.Find(FoundCustomer.MealId).hasDinner)
+				{
+					DinnerRenewBTN.Visible = true;
+				}
 			}
 		}
 
@@ -64,19 +84,19 @@ namespace Westry
 			subCountLabel.Text = $"عدد مرات الاشتراك السابقه: {customer.SubscriptionCount}";
 			breakfastRemLabel.Text = $"عدد وجبات الافطار المتبقيه: {customer.BreakfastCounter}";
 			launchRemLabel.Text = $"عدد وجبات الغداء المتبقيه: {customer.LunchCounter}";
-			dinnerRemLabel.Text = $"عدد وجبات العشاء المتبقيه: {customer.DinnerCounter}";
+			w.Text = $"عدد وجبات العشاء المتبقيه: {customer.DinnerCounter}";
 
 		}
 
-		private void ManageComboboxes(int? subtype)
-		{
-			if (subtype == 1)
-			{
-				BreakfastComboBox.Visible = false; DinnerComboBox.Visible = false;
-				breakfastRemLabel.Visible = false; dinnerRemLabel.Visible = false;
-			}
-			else if (subtype == 2) { DinnerComboBox.Visible = false; dinnerRemLabel.Visible = false; }
-		}
+		//private void ManageComboboxes(int? subtype)
+		//{
+		//	if (subtype == 1)
+		//	{
+		//		BreakfastComboBox.Visible = false; DinnerComboBox.Visible = false;
+		//		breakfastRemLabel.Visible = false; w.Visible = false;
+		//	}
+		//	else if (subtype == 2) { DinnerComboBox.Visible = false; w.Visible = false; }
+		//}
 
 		private void BreakfastComboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -133,21 +153,21 @@ namespace Westry
 				}
 				if (customer.DinnerCounter > 0)
 				{
-					BreakfastComboBox.Enabled = true;
+					DinnerComboBox.Enabled = true;
 				}
 			}
 		}
 
 		private void buffetCheckBox_CheckedChanged(object sender, EventArgs e)
 		{
-			if(buffetCheckBox.Checked)
+			if (buffetCheckBox.Checked)
 			{
 				buffetTextBox.Visible = true;
 				specifyBuffetLabel.Visible = true;
 				BreakfastComboBox.Enabled = false;
-				LaunchComboBox.Enabled =false;
-				DinnerComboBox.Enabled=false;
-				
+				LaunchComboBox.Enabled = false;
+				DinnerComboBox.Enabled = false;
+
 
 			}
 			else
@@ -222,7 +242,7 @@ namespace Westry
 				{
 					RecordAndLogOrder();
 					MessageBox.Show("تم تسجيل الطلب بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					
+
 					this.Close();
 				}
 				catch (Exception ex)
@@ -237,9 +257,12 @@ namespace Westry
 
 		private void RecordOrder_FormClosing(object sender, FormClosingEventArgs e)
 		{
-
-			var SearchCust = new SearchCustomer();
-			SearchCust.Show();
+			if (!sameCustomer)
+			{
+				var SearchCust = new SearchCustomer();
+				SearchCust.Show();
+			}
+			Utility.db.Entry(customer).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
 		}
 
 
@@ -301,7 +324,7 @@ namespace Westry
 		{
 			buffetCheckBox.Checked = false;
 
-			
+
 
 			KeyPreview = true;
 			var breakfastOps = db.BreakFastOptions.Where(e => e.MealId == customer.MealId).ToList();
@@ -321,6 +344,57 @@ namespace Westry
 			BreakfastComboBox.SelectedIndex = -1;
 			LaunchComboBox.SelectedIndex = -1;
 			DinnerComboBox.SelectedIndex = -1;
+		}
+
+		private void BFRenewBTn_Click(object sender, EventArgs e)
+		{
+			using(confirmDialog dialog = new confirmDialog())
+			{
+				if(dialog.ShowDialog() == DialogResult.OK)
+				{
+					customer.BreakfastCounter = 22;
+					Utility.db.Customers.Update(customer);
+					Utility.db.SaveChanges();
+					RecordOrder newform = new RecordOrder(customer);
+					newform.Show();
+					sameCustomer = true;
+					this.Close();
+				}
+			}
+		}
+
+		private void LunchRenewBTN_Click(object sender, EventArgs e)
+		{
+			using (confirmDialog dialog = new confirmDialog())
+			{
+				if (dialog.ShowDialog() == DialogResult.OK)
+				{
+					customer.LunchCounter = 22;
+					Utility.db.Customers.Update(customer);
+					Utility.db.SaveChanges();
+					RecordOrder newform = new RecordOrder(customer);
+					newform.Show();
+					sameCustomer = true;
+					this.Close();
+				}
+			}
+		}
+
+		private void DinnerRenewBTN_Click(object sender, EventArgs e)
+		{
+			using (confirmDialog dialog = new confirmDialog())
+			{
+				if (dialog.ShowDialog() == DialogResult.OK)
+				{
+					customer.DinnerCounter = 22;
+					Utility.db.Customers.Update(customer);
+					Utility.db.SaveChanges();
+					RecordOrder newform = new RecordOrder(customer);
+					newform.Show();
+					sameCustomer= true;
+					this.Close();
+				}
+			}
 		}
 	}
 }
