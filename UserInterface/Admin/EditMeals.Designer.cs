@@ -172,6 +172,7 @@
 			DinnerADD.TabIndex = 25;
 			DinnerADD.Text = "إضافه";
 			DinnerADD.UseVisualStyleBackColor = false;
+			DinnerADD.Click += DinnerADD_Click;
 			// 
 			// LunchADD
 			// 
@@ -183,6 +184,7 @@
 			LunchADD.TabIndex = 26;
 			LunchADD.Text = "إضافه";
 			LunchADD.UseVisualStyleBackColor = false;
+			LunchADD.Click += LunchADD_Click;
 			// 
 			// LunchDLE
 			// 
@@ -216,6 +218,7 @@
 			BFADD.TabIndex = 29;
 			BFADD.Text = "إضافه";
 			BFADD.UseVisualStyleBackColor = false;
+			BFADD.Click += BFADD_Click;
 			// 
 			// EditMealBTN
 			// 

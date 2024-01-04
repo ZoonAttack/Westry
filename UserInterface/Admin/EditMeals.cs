@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +15,16 @@ namespace Westry.UserInterface.Admin
 	public partial class EditMeals : Form
 	{
 		List<Meal> mealTypes;
+		List<BreakFastOption> breakfastopts;
+		List<LunchOption> lunchopts;
+		List<DinnerOption> dinneropts;
+
+		List<BreakFastOption> bftobeadded = new List<BreakFastOption>();
+		List<LunchOption> lunchtobeadded = new List<LunchOption>();
+		List<DinnerOption> dinnertobeadded = new List<DinnerOption>();
+
 		private bool isFirstTime = true;
+		Meal mealToBeEdited;
 		public EditMeals()
 		{
 			InitializeComponent();
@@ -24,12 +34,35 @@ namespace Westry.UserInterface.Admin
 		{
 			AdminPanel adminPanel = new AdminPanel();
 			adminPanel.Show();
+
+			foreach (var entity in bftobeadded)
+			{
+				var entry = Utility.db.Entry(entity);
+
+				if (entry.State == EntityState.Added)
+					entry.State = EntityState.Detached;
+			}
+			foreach (var entity in lunchtobeadded)
+			{
+				var entry = Utility.db.Entry(entity);
+
+				if (entry.State == EntityState.Added)
+					entry.State = EntityState.Detached;
+			}
+			foreach (var entity in dinnertobeadded)
+			{
+				var entry = Utility.db.Entry(entity);
+
+				if (entry.State == EntityState.Added)
+					entry.State = EntityState.Detached;
+			}
+
 		}
 
 		private void EditMeals_Load(object sender, EventArgs e)
 		{
 			KeyPreview = true;
-			
+
 
 			hideBF();
 			hideDinner();
@@ -47,11 +80,30 @@ namespace Westry.UserInterface.Admin
 			ChooseMealComboBox.SelectedIndex = -1;
 		}
 
+		private void refreshBFLB()
+		{
+			BFLB.DataSource = null;
+			BFLB.DataSource = breakfastopts;
+			BFLB.DisplayMember = "optionName";
+		}
+		private void refreshLunchLB()
+		{
+			LunchLB.DataSource = null;
+			LunchLB.DataSource = lunchopts;
+			LunchLB.DisplayMember = "optionName";
+		}
+		private void refreshDinnerLB()
+		{
+			DinnerLB.DataSource = null;
+			DinnerLB.DataSource = dinneropts;
+			DinnerLB.DisplayMember = "optionName";
+		}
+
 		private void hideControls()
 		{
 			EditMealBTN.Visible = false;
 			mealDLEBTN.Visible = false;
-			
+
 		}
 
 		private void showControls()
@@ -170,30 +222,32 @@ namespace Westry.UserInterface.Admin
 		}
 		private void EditMealBTN_Click(object sender, EventArgs e)
 		{
-			Meal selectedMeal = ChooseMealComboBox.SelectedItem as Meal;
-			if((bool)selectedMeal.hasBreakfast)
+			try
+			{
+				mealToBeEdited = ChooseMealComboBox.SelectedItem as Meal;
+			}
+			catch
+			{
+				MessageBox.Show("حدث خطأ ما", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+
+			if ((bool)mealToBeEdited.hasBreakfast)
 			{
 				showBF();
-				List<BreakFastOption> bfOpts = Utility.db.BreakFastOptions.Where(u => u.MealId == selectedMeal.MealId).ToList();
-				BFLB.DataSource = null;
-				BFLB.DataSource = bfOpts;
-				BFLB.DisplayMember = "optionName";
+				breakfastopts = Utility.db.BreakFastOptions.Where(u => u.MealId == mealToBeEdited.MealId).ToList();
+				refreshBFLB();
 			}
-			if ((bool)selectedMeal.hasLunch)
+			if ((bool)mealToBeEdited.hasLunch)
 			{
 				showLunch();
-				List<LunchOption> LunchOpts = Utility.db.LunchOptions.Where(u => u.MealId == selectedMeal.MealId).ToList();
-				LunchLB.DataSource = null;
-				LunchLB.DataSource = LunchOpts;
-				LunchLB.DisplayMember = "optionName";
+				lunchopts = Utility.db.LunchOptions.Where(u => u.MealId == mealToBeEdited.MealId).ToList();
+				refreshLunchLB();
 			}
-			if ((bool)selectedMeal.hasDinner)
+			if ((bool)mealToBeEdited.hasDinner)
 			{
 				showDinner();
-				List<DinnerOption> dinnerOpts = Utility.db.DinnerOptions.Where(u => u.MealId == selectedMeal.MealId).ToList();
-				DinnerLB.DataSource = null;
-				DinnerLB.DataSource = dinnerOpts;
-				DinnerLB.DisplayMember = "optionName";
+				dinneropts = Utility.db.DinnerOptions.Where(u => u.MealId == mealToBeEdited.MealId).ToList();
+				refreshDinnerLB();
 			}
 		}
 
@@ -210,5 +264,77 @@ namespace Westry.UserInterface.Admin
 				MessageBox.Show("حدث خطأ ما", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+
+		private void BFADD_Click(object sender, EventArgs e)
+		{
+			addNewOptToMeal(0);
+		}
+
+
+		private void LunchADD_Click(object sender, EventArgs e)
+		{
+			addNewOptToMeal(1);
+		}
+
+		private void DinnerADD_Click(object sender, EventArgs e)
+		{
+			addNewOptToMeal(2);
+		}
+
+		private void addNewOptToMeal(int type)
+		{
+			string newOptName;
+			using (newOptDialog dialog = new newOptDialog())
+			{
+				if (dialog.ShowDialog() == DialogResult.OK && dialog.validated)
+				{
+					newOptName = dialog.optName;
+				}
+				else
+				{
+					return;
+				}
+			}
+
+			//type 
+			// 0 breakfast
+			// 1 lunch
+			// 2 dinner
+
+
+			if (type == 0)
+			{
+				BreakFastOption newOpt = new BreakFastOption();
+				newOpt.optionName = newOptName;
+				newOpt.MealId = mealToBeEdited.MealId;
+				Utility.db.BreakFastOptions.Add(newOpt);
+				breakfastopts.Add(newOpt);
+				refreshBFLB();
+				bftobeadded.Add(newOpt);
+			}
+			else if (type == 1)
+			{
+				LunchOption newOpt = new LunchOption();
+				newOpt.optionName = newOptName;
+				newOpt.MealId = mealToBeEdited.MealId;
+				Utility.db.LunchOptions.Add(newOpt);
+				lunchopts.Add(newOpt);
+				refreshLunchLB();
+				lunchtobeadded.Add(newOpt);
+			}
+			else if (type == 2)
+			{
+				DinnerOption newOpt = new DinnerOption();
+				newOpt.optionName = newOptName;
+				newOpt.MealId = mealToBeEdited.MealId;
+				Utility.db.DinnerOptions.Add(newOpt);
+				dinneropts.Add(newOpt);
+				refreshDinnerLB();
+				dinnertobeadded.Add(newOpt);
+			}
+
+		}
+
+
 	}
 }
