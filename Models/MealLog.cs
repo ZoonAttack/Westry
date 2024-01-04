@@ -14,4 +14,7 @@ public partial class MealLog
     public DateTime TimeTaken { get; set; }
 
     public string? CashierName { get; set; }
+
+    public bool? isBuffet {  get; set; }
+    public bool? isKitchen { get; set; }
 }
