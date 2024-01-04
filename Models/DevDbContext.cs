@@ -98,7 +98,6 @@ public partial class DevDbContext : DbContext
         modelBuilder.Entity<Meal>(entity =>
         {
             entity.Property(e => e.MealId)
-                .ValueGeneratedNever()
                 .HasColumnName("meal_id");
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
