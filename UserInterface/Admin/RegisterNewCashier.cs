@@ -34,6 +34,7 @@ namespace Westry
 			{
 				cashier.UserName = nameBox.Text;
 				cashier.Password = passwordBox.Text;
+				cashier.ordersServied = 0;
 				_db.Cashiers.Add(cashier);
 				try
 				{

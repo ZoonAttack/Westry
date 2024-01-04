@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Westry.Models;
+using Westry.ManagerForm;
 
 namespace Westry
 {
@@ -173,6 +174,7 @@ namespace Westry
 				{
 					RecordAndLogOrder();
 					MessageBox.Show("تم تسجيل الطلب بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					
 					this.Close();
 				}
 				catch (Exception ex)
@@ -219,7 +221,8 @@ namespace Westry
 			}
 
 			db.MealLog.Add(newlog);
-
+			Manager.currentLoggedCashier.ordersServied += 1;
+			db.Cashiers.Update(Manager.currentLoggedCashier);
 			db.SaveChanges();
 		}
 
