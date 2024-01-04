@@ -76,6 +76,7 @@
 			Controls.Add(BFRenewBTn);
 			Controls.Add(w);
 			Name = "confirmDialog";
+			StartPosition = FormStartPosition.CenterScreen;
 			Text = "confirmDialog";
 			ResumeLayout(false);
 			PerformLayout();
