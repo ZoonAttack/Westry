@@ -41,6 +41,18 @@ namespace Westry
 			specifyNotesLabel.Visible = false;
 			buffetTextBox.Visible = false;
 			buffetCheckBox.Visible = true;
+			if(FoundCustomer.BreakfastCounter <= 0)
+			{
+				BreakfastComboBox.Enabled = false;
+			}
+			if(FoundCustomer.LunchCounter <= 0)
+			{
+				LaunchComboBox.Enabled = false;
+			}
+			if(FoundCustomer.DinnerCounter <= 0)
+			{
+				DinnerComboBox.Enabled = false;	
+			}
 		}
 
 		private void ShowData()
@@ -68,15 +80,21 @@ namespace Westry
 
 		private void BreakfastComboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if(BreakfastComboBox.SelectedIndex != -1)
+			if (BreakfastComboBox.SelectedIndex != -1)
 			{
 				LaunchComboBox.Enabled = false;
 				DinnerComboBox.Enabled = false;
 			}
 			else
 			{
-				LaunchComboBox.Enabled = true;
-				DinnerComboBox.Enabled = true;
+				if (customer.LunchCounter > 0)
+				{
+					LaunchComboBox.Enabled = true;
+				}
+				if (customer.DinnerCounter > 0)
+				{
+					DinnerComboBox.Enabled = true;
+				}
 			}
 		}
 
@@ -89,8 +107,14 @@ namespace Westry
 			}
 			else
 			{
-				BreakfastComboBox.Enabled = true;
-				DinnerComboBox.Enabled = true;
+				if (customer.BreakfastCounter > 0)
+				{
+					BreakfastComboBox.Enabled = true;
+				}
+				if (customer.DinnerCounter > 0)
+				{
+					DinnerComboBox.Enabled = true;
+				}
 			}
 		}
 
@@ -103,8 +127,14 @@ namespace Westry
 			}
 			else
 			{
-				LaunchComboBox.Enabled = true;
-				BreakfastComboBox.Enabled = true;
+				if (customer.LunchCounter > 0)
+				{
+					LaunchComboBox.Enabled = true;
+				}
+				if (customer.DinnerCounter > 0)
+				{
+					BreakfastComboBox.Enabled = true;
+				}
 			}
 		}
 
@@ -124,9 +154,18 @@ namespace Westry
 			{
 				buffetTextBox.Visible = false;
 				specifyBuffetLabel.Visible = false;
-				BreakfastComboBox.Enabled = true;
-				LaunchComboBox.Enabled = true;
-				DinnerComboBox.Enabled = true;
+				if (customer.BreakfastCounter > 0)
+				{
+					BreakfastComboBox.Enabled = true;
+				}
+				if (customer.LunchCounter > 0)
+				{
+					LaunchComboBox.Enabled = true;
+				}
+				if (customer.DinnerCounter > 0)
+				{
+					DinnerComboBox.Enabled = true;
+				}
 			}
 
 		}
@@ -142,9 +181,18 @@ namespace Westry
 			buffetCheckBox.Visible = true;
 			buffetTextBox.Visible = false;
 			buffetCheckBox.Checked = false;
-			BreakfastComboBox.Enabled = true;
-			LaunchComboBox.Enabled = true;
-			DinnerComboBox.Enabled = true;
+			if (customer.BreakfastCounter > 0)
+			{
+				BreakfastComboBox.Enabled = true;
+			}
+			if (customer.LunchCounter > 0)
+			{
+				LaunchComboBox.Enabled = true;
+			}
+			if (customer.DinnerCounter > 0)
+			{
+				DinnerComboBox.Enabled = true;
+			}
 			notesTextBox.Text = string.Empty;
 			buffetTextBox.Text = string.Empty;
 		}
