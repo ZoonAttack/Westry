@@ -11,7 +11,12 @@ public partial class Meal
 
     public string? Name { get; set; }
 
-    public virtual ICollection<Customer> Customers { get; } = new List<Customer>();
+    public bool? hasBreakfast {  get; set; }
+    public bool? hasDinner { get; set; }
+    public bool? hasLunch { get; set; }
+
+
+	public virtual ICollection<Customer> Customers { get; } = new List<Customer>();
     public virtual ICollection<BreakFastOption> BreakFastOptions { get; } = new List<BreakFastOption>();
     public virtual ICollection<DinnerOption> DinnerOptions { get; } = new List<DinnerOption>();
     public virtual ICollection<LunchOption> LunchOptions { get; } = new List<LunchOption>();

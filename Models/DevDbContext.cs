@@ -104,7 +104,16 @@ public partial class DevDbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(true)
                 .HasColumnName("name");
-        });
+
+            entity.Property(e => e.hasBreakfast)
+                .HasColumnName("hasBreakfast");
+
+			entity.Property(e => e.hasLunch)
+				.HasColumnName("hasLunch");
+
+			entity.Property(e => e.hasDinner)
+				.HasColumnName("hasDinner");
+		});
 
         modelBuilder.Entity<Meal>().HasData(
             new Meal { MealId = 1, Name = "نظام الوجبه الواحده"},

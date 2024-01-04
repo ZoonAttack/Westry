@@ -41,7 +41,9 @@ namespace Westry
 
 				MessageBox.Show("الرجاء ادخال اسم العميل ورقم الهاتف");
 			}
-			else if (!oneMealRadioButton.Checked && !threeMealRadioButton.Checked && !twoMealRadioButton.Checked) { MessageBox.Show("الرجاء اختيار نوع الاشتراك"); }
+
+			else if (mealTypeComboBox.SelectedIndex == -1) 
+			{ MessageBox.Show("الرجاء اختيار نوع الاشتراك"); }
 			else
 			{
 				if (oldCustomer != null)
@@ -49,15 +51,12 @@ namespace Westry
 					oldCustomer.SubscriptionCount += 1;
 					adjustCustomer(oldCustomer, true);
 				}
-				else
-				{
+			else
+			{
 					Customer newCustomer = new Customer();
 					newCustomer.SubscriptionCount = 0;
 					adjustCustomer(newCustomer, false);
 				}
-
-
-
 			}
 		}
 
@@ -65,43 +64,32 @@ namespace Westry
 		{
 			nameBox.Text = oldCustomer.Name;
 			phoneBox.Text = oldCustomer.PhoneNumber;
-			switch (oldCustomer.MealId)
-			{
-				case 1:
-					oneMealRadioButton.Checked = true; break;
-				case 2:
-					twoMealRadioButton.Checked = true; break;
-				case 3:
-					threeMealRadioButton.Checked = true; break;
-			}
 		}
 
 		private void adjustCustomer(Customer customer, bool isOld)
 		{
-			customer.Name = nameBox.Text;
-			customer.PhoneNumber = phoneBox.Text;
+			customer.Name = nameBox.Text.Trim();
+			customer.PhoneNumber = phoneBox.Text.Trim();
+			Meal? type = mealTypeComboBox.SelectedItem as Meal;
+			customer.MealId = type.MealId;
 
-			if (oneMealRadioButton.Checked)
+			customer.BreakfastCounter = 0;
+			customer.LunchCounter = 0;
+			customer.DinnerCounter = 0;
+
+			if ((bool)type.hasBreakfast)
 			{
-				customer.MealId = 1;
-				customer.BreakfastCounter = 0;
-				customer.LunchCounter = 22;
-				customer.DinnerCounter = 0;
-			}
-			else if (twoMealRadioButton.Checked)
-			{
-				customer.MealId = 2;
 				customer.BreakfastCounter = 22;
-				customer.LunchCounter = 22;
-				customer.DinnerCounter = 0;
 			}
-			else if (threeMealRadioButton.Checked)
+			if ((bool)type.hasLunch)
 			{
-				customer.MealId = 3;
-				customer.BreakfastCounter = 22;
 				customer.LunchCounter = 22;
+			}
+			if ((bool)type.hasDinner)
+			{
 				customer.DinnerCounter = 22;
 			}
+
 
 			try
 			{
@@ -128,30 +116,6 @@ namespace Westry
 
 		}
 
-		private void nameLabel_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void phoneLabel_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void oneMealRadioButton_CheckedChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void twoMealRadioButton_CheckedChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void threeMealRadioButton_CheckedChanged(object sender, EventArgs e)
-		{
-
-		}
 
 		private void nameBox_KeyPress(object sender, KeyPressEventArgs e)
 		{
@@ -181,6 +145,10 @@ namespace Westry
 		private void RegsisterNewClient_Load(object sender, EventArgs e)
 		{
 			KeyPreview = true;
+			var mealTypes = db.Meals.ToList();
+			mealTypeComboBox.DisplayMember = "Name";
+			mealTypeComboBox.DataSource = mealTypes;
+			mealTypeComboBox.SelectedIndex = -1;
 		}
 
 		private void RegsisterNewClient_KeyDown(object sender, KeyEventArgs e)
