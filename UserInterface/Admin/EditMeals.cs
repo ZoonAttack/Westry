@@ -235,6 +235,7 @@ namespace Westry.UserInterface.Admin
 			{
 				Meal? selectedMeal = ChooseMealComboBox.SelectedItem as Meal;
 				Utility.db.Meals.Remove(selectedMeal);
+				mealTypes.Remove(selectedMeal);
 				refreshComboBox();
 			}
 			catch
