@@ -210,6 +210,7 @@ namespace Westry
 				if (BreakfastComboBox.SelectedIndex != -1)
 				{
 					customer.BreakfastCounter--;
+
 				}
 				if (LaunchComboBox.SelectedIndex != -1)
 				{
@@ -218,6 +219,10 @@ namespace Westry
 				if (DinnerComboBox.SelectedIndex != -1)
 				{
 					customer.DinnerCounter--;
+				}
+				if (customer.LunchCounter == 0 && customer.BreakfastCounter == 0 && customer.DinnerCounter == 0)
+				{
+					customer.MealId = null;
 				}
 				try
 				{

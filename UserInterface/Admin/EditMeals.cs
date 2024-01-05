@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,6 +30,7 @@ namespace Westry.UserInterface.Admin
 
 		private bool isFirstTime = true;
 		Meal mealToBeEdited;
+		List<Meal> mealsToBeRemoved = new List<Meal>();
 		public EditMeals()
 		{
 			InitializeComponent();
@@ -99,6 +101,15 @@ namespace Westry.UserInterface.Admin
 				if (entry.State == EntityState.Deleted)
 					entry.State = EntityState.Detached;
 			}
+
+			foreach (var entity in mealsToBeRemoved)
+			{
+				var entry = Utility.db.Entry(entity);
+
+				if (entry.State == EntityState.Deleted)
+					entry.State = EntityState.Detached;
+			}
+
 		}
 		private void refreshComboBox()
 		{
@@ -231,12 +242,50 @@ namespace Westry.UserInterface.Admin
 		}
 		private void mealDLEBTN_Click(object sender, EventArgs e)
 		{
+
+
 			try
 			{
 				Meal? selectedMeal = ChooseMealComboBox.SelectedItem as Meal;
-				Utility.db.Meals.Remove(selectedMeal);
-				mealTypes.Remove(selectedMeal);
-				refreshComboBox();
+
+				SqlConnection conn = new SqlConnection(Utility.db.Database.GetConnectionString());
+				SqlCommand cmd;
+				cmd = new SqlCommand("SELECT * FROM Customers WHERE meal_id = @MEALID  AND (breakfast_counter > 0  OR lunch_counter > 0  OR dinner_counter > 0);", conn);
+				cmd.Parameters.AddWithValue("@MEALID", selectedMeal.MealId);
+				conn.Open();
+				SqlDataReader reader = cmd.ExecuteReader();
+
+				if (reader.HasRows)
+				{
+					MessageBox.Show("لا يمكن حذف الوجبه مازال هناك عملاء مشتركين بها", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+				else
+				{
+					Utility.db.Meals.Remove(selectedMeal);
+					mealTypes.Remove(selectedMeal);
+					mealsToBeRemoved.Add(selectedMeal);
+
+					var bfmeals = Utility.db.BreakFastOptions.Where(u => u.MealId == selectedMeal.MealId).ToList();
+					foreach (var bfmeal in bfmeals)
+					{
+						bftoberemoved.Add(bfmeal);
+						Utility.db.BreakFastOptions.Remove(bfmeal);
+					}
+					var lunchmeals = Utility.db.LunchOptions.Where(u => u.MealId == selectedMeal.MealId).ToList();
+					foreach(var lunch in lunchmeals)
+					{
+						lunchtoberemoved.Add(lunch);
+						Utility.db.LunchOptions.Remove(lunch);
+					}
+					var dinnermeals = Utility.db.DinnerOptions.Where(u => u.MealId == selectedMeal.MealId).ToList();
+					foreach( var dinner in dinnermeals)
+					{
+						dinnertoberemoved.Add(dinner);
+						Utility.db.DinnerOptions.Remove(dinner);
+					}
+
+					refreshComboBox();
+				}
 			}
 			catch
 			{
@@ -282,9 +331,9 @@ namespace Westry.UserInterface.Admin
 				MessageBox.Show("تم حفظ التغيرات بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				this.Close();
 			}
-			catch
+			catch (Exception ex)
 			{
-				MessageBox.Show("حدث خطأ ما", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(/*"حدث خطأ ما"*/ ex.InnerException.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
