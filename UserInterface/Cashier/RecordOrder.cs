@@ -17,14 +17,6 @@ namespace Westry
 {
 	public partial class RecordOrder : Form
 	{
-
-		private string? clientName; //got from the cashierPage form
-		private string? clientPhoneNumber;
-		private int? clientPreviousSubscriptions;
-		private int? remainingBreakfast;
-		private int? remainingLunch;
-		private int? remainingDinner;
-		private int? subscriptionType;
 		private Customer customer;
 		private readonly DevDbContext db;
 		bool sameCustomer = false;
@@ -33,7 +25,7 @@ namespace Westry
 			customer = FoundCustomer;
 			db = new DevDbContext();
 
-			
+
 
 			InitializeComponent();
 			ShowData();
@@ -82,7 +74,8 @@ namespace Westry
 			subCountLabel.Text = $"عدد مرات الاشتراك السابقه: {customer.SubscriptionCount}";
 			breakfastRemLabel.Text = $"عدد وجبات الافطار المتبقيه: {customer.BreakfastCounter}";
 			launchRemLabel.Text = $"عدد وجبات الغداء المتبقيه: {customer.LunchCounter}";
-			w.Text = $"عدد وجبات العشاء المتبقيه: {customer.DinnerCounter}";
+			DinnerRemLabel.Text = $"عدد وجبات العشاء المتبقيه: {customer.DinnerCounter}";
+			mealTypeLBL.Text = $"نوع الاشتارك:{Utility.db.Meals.Find(customer.MealId).Name}";
 
 		}
 
@@ -248,7 +241,7 @@ namespace Westry
 			var SearchCust = new SearchCustomer();
 			SearchCust.Show();
 			Utility.db.Entry(customer).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
-			
+
 		}
 
 
@@ -334,9 +327,9 @@ namespace Westry
 
 		private void BFRenewBTn_Click(object sender, EventArgs e)
 		{
-			using(confirmDialog dialog = new confirmDialog())
+			using (confirmDialog dialog = new confirmDialog())
 			{
-				if(dialog.ShowDialog() == DialogResult.OK)
+				if (dialog.ShowDialog() == DialogResult.OK)
 				{
 					try
 					{
@@ -345,7 +338,7 @@ namespace Westry
 						Utility.db.SaveChanges();
 						MessageBox.Show("تم التجديد بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
-					catch 
+					catch
 					{
 						MessageBox.Show("حدث خطأ ما", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
@@ -366,7 +359,7 @@ namespace Westry
 						Utility.db.Customers.Update(customer);
 						Utility.db.SaveChanges();
 						MessageBox.Show("تم التجديد بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-						
+
 					}
 					catch
 					{
@@ -383,7 +376,7 @@ namespace Westry
 			{
 				if (dialog.ShowDialog() == DialogResult.OK)
 				{
-					try 
+					try
 					{
 						customer.DinnerCounter = 22;
 						Utility.db.Customers.Update(customer);

@@ -31,13 +31,6 @@
 			components = new System.ComponentModel.Container();
 			pdfButton = new Button();
 			LogDataGridView = new DataGridView();
-			mealLogBindingSource = new BindingSource(components);
-			specificTimeFrom = new DateTimePicker();
-			specificTimeTo = new DateTimePicker();
-			FromLabel = new Label();
-			ToLabel = new Label();
-			specificTimeBTN = new Button();
-			specificPeriodCB = new CheckBox();
 			phoneNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 			mealIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 			choosenmealDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -45,6 +38,13 @@
 			isBuffet = new DataGridViewTextBoxColumn();
 			TimeTaken = new DataGridViewTextBoxColumn();
 			CashierName = new DataGridViewTextBoxColumn();
+			mealLogBindingSource = new BindingSource(components);
+			specificTimeFrom = new DateTimePicker();
+			specificTimeTo = new DateTimePicker();
+			FromLabel = new Label();
+			ToLabel = new Label();
+			specificTimeBTN = new Button();
+			specificPeriodCB = new CheckBox();
 			((System.ComponentModel.ISupportInitialize)LogDataGridView).BeginInit();
 			((System.ComponentModel.ISupportInitialize)mealLogBindingSource).BeginInit();
 			SuspendLayout();
@@ -75,6 +75,58 @@
 			LogDataGridView.RowTemplate.Height = 25;
 			LogDataGridView.Size = new Size(1055, 555);
 			LogDataGridView.TabIndex = 9;
+			// 
+			// phoneNumberDataGridViewTextBoxColumn
+			// 
+			phoneNumberDataGridViewTextBoxColumn.DataPropertyName = "PhoneNumber";
+			phoneNumberDataGridViewTextBoxColumn.HeaderText = "PhoneNumber";
+			phoneNumberDataGridViewTextBoxColumn.Name = "phoneNumberDataGridViewTextBoxColumn";
+			phoneNumberDataGridViewTextBoxColumn.ReadOnly = true;
+			phoneNumberDataGridViewTextBoxColumn.Width = 150;
+			// 
+			// mealIdDataGridViewTextBoxColumn
+			// 
+			mealIdDataGridViewTextBoxColumn.DataPropertyName = "MealId";
+			mealIdDataGridViewTextBoxColumn.HeaderText = "MealId";
+			mealIdDataGridViewTextBoxColumn.Name = "mealIdDataGridViewTextBoxColumn";
+			mealIdDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// choosenmealDataGridViewTextBoxColumn
+			// 
+			choosenmealDataGridViewTextBoxColumn.DataPropertyName = "choosen_meal";
+			choosenmealDataGridViewTextBoxColumn.HeaderText = "choosen_meal";
+			choosenmealDataGridViewTextBoxColumn.Name = "choosenmealDataGridViewTextBoxColumn";
+			choosenmealDataGridViewTextBoxColumn.ReadOnly = true;
+			choosenmealDataGridViewTextBoxColumn.Width = 300;
+			// 
+			// isKitchen
+			// 
+			isKitchen.DataPropertyName = "isKitchen";
+			isKitchen.HeaderText = "isKitchen";
+			isKitchen.Name = "isKitchen";
+			isKitchen.ReadOnly = true;
+			// 
+			// isBuffet
+			// 
+			isBuffet.DataPropertyName = "isBuffet";
+			isBuffet.HeaderText = "isBuffet";
+			isBuffet.Name = "isBuffet";
+			isBuffet.ReadOnly = true;
+			// 
+			// TimeTaken
+			// 
+			TimeTaken.DataPropertyName = "TimeTaken";
+			TimeTaken.HeaderText = "TimeTaken";
+			TimeTaken.Name = "TimeTaken";
+			TimeTaken.ReadOnly = true;
+			TimeTaken.Width = 150;
+			// 
+			// CashierName
+			// 
+			CashierName.DataPropertyName = "CashierName";
+			CashierName.HeaderText = "CashierName";
+			CashierName.Name = "CashierName";
+			CashierName.ReadOnly = true;
 			// 
 			// mealLogBindingSource
 			// 
@@ -139,58 +191,6 @@
 			specificPeriodCB.UseVisualStyleBackColor = true;
 			specificPeriodCB.CheckedChanged += specificPeriodCB_CheckedChanged;
 			// 
-			// phoneNumberDataGridViewTextBoxColumn
-			// 
-			phoneNumberDataGridViewTextBoxColumn.DataPropertyName = "PhoneNumber";
-			phoneNumberDataGridViewTextBoxColumn.HeaderText = "PhoneNumber";
-			phoneNumberDataGridViewTextBoxColumn.Name = "phoneNumberDataGridViewTextBoxColumn";
-			phoneNumberDataGridViewTextBoxColumn.ReadOnly = true;
-			phoneNumberDataGridViewTextBoxColumn.Width = 150;
-			// 
-			// mealIdDataGridViewTextBoxColumn
-			// 
-			mealIdDataGridViewTextBoxColumn.DataPropertyName = "MealId";
-			mealIdDataGridViewTextBoxColumn.HeaderText = "MealId";
-			mealIdDataGridViewTextBoxColumn.Name = "mealIdDataGridViewTextBoxColumn";
-			mealIdDataGridViewTextBoxColumn.ReadOnly = true;
-			// 
-			// choosenmealDataGridViewTextBoxColumn
-			// 
-			choosenmealDataGridViewTextBoxColumn.DataPropertyName = "choosen_meal";
-			choosenmealDataGridViewTextBoxColumn.HeaderText = "choosen_meal";
-			choosenmealDataGridViewTextBoxColumn.Name = "choosenmealDataGridViewTextBoxColumn";
-			choosenmealDataGridViewTextBoxColumn.ReadOnly = true;
-			choosenmealDataGridViewTextBoxColumn.Width = 300;
-			// 
-			// isKitchen
-			// 
-			isKitchen.DataPropertyName = "isKitchen";
-			isKitchen.HeaderText = "isKitchen";
-			isKitchen.Name = "isKitchen";
-			isKitchen.ReadOnly = true;
-			// 
-			// isBuffet
-			// 
-			isBuffet.DataPropertyName = "isBuffet";
-			isBuffet.HeaderText = "isBuffet";
-			isBuffet.Name = "isBuffet";
-			isBuffet.ReadOnly = true;
-			// 
-			// TimeTaken
-			// 
-			TimeTaken.DataPropertyName = "TimeTaken";
-			TimeTaken.HeaderText = "TimeTaken";
-			TimeTaken.Name = "TimeTaken";
-			TimeTaken.ReadOnly = true;
-			TimeTaken.Width = 150;
-			// 
-			// CashierName
-			// 
-			CashierName.DataPropertyName = "CashierName";
-			CashierName.HeaderText = "CashierName";
-			CashierName.Name = "CashierName";
-			CashierName.ReadOnly = true;
-			// 
 			// LogWindow
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -205,6 +205,7 @@
 			Controls.Add(specificTimeFrom);
 			Controls.Add(LogDataGridView);
 			Controls.Add(pdfButton);
+			MaximizeBox = false;
 			Name = "LogWindow";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Log";

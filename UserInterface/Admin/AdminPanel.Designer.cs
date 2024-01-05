@@ -34,14 +34,14 @@
 			viewClientsButton = new Button();
 			viewDailyButton = new Button();
 			cashierInfoDataGridView = new DataGridView();
-			cashierBindingSource1 = new BindingSource(components);
-			cashierBindingSource = new BindingSource(components);
-			editMeals = new Button();
 			userNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 			passwordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 			ordersServied = new DataGridViewTextBoxColumn();
 			loggedInTime = new DataGridViewTextBoxColumn();
 			loggedOutTime = new DataGridViewTextBoxColumn();
+			cashierBindingSource1 = new BindingSource(components);
+			cashierBindingSource = new BindingSource(components);
+			editMeals = new Button();
 			((System.ComponentModel.ISupportInitialize)cashierInfoDataGridView).BeginInit();
 			((System.ComponentModel.ISupportInitialize)cashierBindingSource1).BeginInit();
 			((System.ComponentModel.ISupportInitialize)cashierBindingSource).BeginInit();
@@ -49,6 +49,7 @@
 			// 
 			// addCashierButton
 			// 
+			addCashierButton.Anchor = AnchorStyles.None;
 			addCashierButton.BackColor = Color.AntiqueWhite;
 			addCashierButton.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
 			addCashierButton.Location = new Point(71, 345);
@@ -61,6 +62,7 @@
 			// 
 			// deleteCashierButton
 			// 
+			deleteCashierButton.Anchor = AnchorStyles.None;
 			deleteCashierButton.BackColor = Color.AntiqueWhite;
 			deleteCashierButton.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
 			deleteCashierButton.Location = new Point(266, 345);
@@ -73,6 +75,7 @@
 			// 
 			// viewClientsButton
 			// 
+			viewClientsButton.Anchor = AnchorStyles.None;
 			viewClientsButton.BackColor = Color.AntiqueWhite;
 			viewClientsButton.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
 			viewClientsButton.Location = new Point(71, 449);
@@ -85,6 +88,7 @@
 			// 
 			// viewDailyButton
 			// 
+			viewDailyButton.Anchor = AnchorStyles.None;
 			viewDailyButton.BackColor = Color.AntiqueWhite;
 			viewDailyButton.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
 			viewDailyButton.Location = new Point(266, 449);
@@ -99,6 +103,7 @@
 			// 
 			cashierInfoDataGridView.AllowUserToAddRows = false;
 			cashierInfoDataGridView.AllowUserToDeleteRows = false;
+			cashierInfoDataGridView.Anchor = AnchorStyles.None;
 			cashierInfoDataGridView.AutoGenerateColumns = false;
 			cashierInfoDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			cashierInfoDataGridView.Columns.AddRange(new DataGridViewColumn[] { userNameDataGridViewTextBoxColumn, passwordDataGridViewTextBoxColumn, ordersServied, loggedInTime, loggedOutTime });
@@ -109,26 +114,6 @@
 			cashierInfoDataGridView.RowTemplate.Height = 25;
 			cashierInfoDataGridView.Size = new Size(640, 303);
 			cashierInfoDataGridView.TabIndex = 5;
-			// 
-			// cashierBindingSource1
-			// 
-			cashierBindingSource1.DataSource = typeof(Models.Cashier);
-			// 
-			// cashierBindingSource
-			// 
-			cashierBindingSource.DataSource = typeof(Models.Cashier);
-			// 
-			// editMeals
-			// 
-			editMeals.BackColor = Color.AntiqueWhite;
-			editMeals.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
-			editMeals.Location = new Point(565, 345);
-			editMeals.Name = "editMeals";
-			editMeals.Size = new Size(146, 79);
-			editMeals.TabIndex = 6;
-			editMeals.Text = "تعديل الوجبات";
-			editMeals.UseVisualStyleBackColor = false;
-			editMeals.Click += editMeals_Click;
 			// 
 			// userNameDataGridViewTextBoxColumn
 			// 
@@ -167,6 +152,27 @@
 			loggedOutTime.ReadOnly = true;
 			loggedOutTime.Width = 145;
 			// 
+			// cashierBindingSource1
+			// 
+			cashierBindingSource1.DataSource = typeof(Models.Cashier);
+			// 
+			// cashierBindingSource
+			// 
+			cashierBindingSource.DataSource = typeof(Models.Cashier);
+			// 
+			// editMeals
+			// 
+			editMeals.Anchor = AnchorStyles.None;
+			editMeals.BackColor = Color.AntiqueWhite;
+			editMeals.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
+			editMeals.Location = new Point(565, 345);
+			editMeals.Name = "editMeals";
+			editMeals.Size = new Size(146, 79);
+			editMeals.TabIndex = 6;
+			editMeals.Text = "تعديل الوجبات";
+			editMeals.UseVisualStyleBackColor = false;
+			editMeals.Click += editMeals_Click;
+			// 
 			// AdminPanel
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -179,6 +185,7 @@
 			Controls.Add(viewClientsButton);
 			Controls.Add(deleteCashierButton);
 			Controls.Add(addCashierButton);
+			MaximizeBox = false;
 			Name = "AdminPanel";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "AdminPage";

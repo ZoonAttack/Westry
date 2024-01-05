@@ -72,6 +72,7 @@
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(327, 157);
+			ControlBox = false;
 			Controls.Add(button1);
 			Controls.Add(BFRenewBTn);
 			Controls.Add(w);

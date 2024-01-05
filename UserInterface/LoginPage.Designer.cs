@@ -37,6 +37,7 @@
 			// 
 			// nameLabel
 			// 
+			nameLabel.Anchor = AnchorStyles.None;
 			nameLabel.AutoSize = true;
 			nameLabel.Font = new Font("Times New Roman", 20F, FontStyle.Regular, GraphicsUnit.Point);
 			nameLabel.Location = new Point(536, 156);
@@ -48,6 +49,7 @@
 			// 
 			// passwordLabel
 			// 
+			passwordLabel.Anchor = AnchorStyles.None;
 			passwordLabel.AutoSize = true;
 			passwordLabel.Font = new Font("Times New Roman", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
 			passwordLabel.Location = new Point(536, 207);
@@ -59,6 +61,7 @@
 			// 
 			// nameBox
 			// 
+			nameBox.Anchor = AnchorStyles.None;
 			nameBox.Location = new Point(355, 156);
 			nameBox.Name = "nameBox";
 			nameBox.Size = new Size(154, 23);
@@ -67,6 +70,7 @@
 			// 
 			// passwordBox
 			// 
+			passwordBox.Anchor = AnchorStyles.None;
 			passwordBox.Location = new Point(355, 207);
 			passwordBox.Name = "passwordBox";
 			passwordBox.Size = new Size(154, 23);
@@ -76,6 +80,7 @@
 			// 
 			// loginButton
 			// 
+			loginButton.Anchor = AnchorStyles.None;
 			loginButton.BackColor = Color.AntiqueWhite;
 			loginButton.Font = new Font("Times New Roman", 20F, FontStyle.Regular, GraphicsUnit.Point);
 			loginButton.ForeColor = SystemColors.ControlText;
@@ -91,6 +96,7 @@
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
+			AutoSize = true;
 			BackColor = Color.AliceBlue;
 			ClientSize = new Size(800, 450);
 			Controls.Add(loginButton);

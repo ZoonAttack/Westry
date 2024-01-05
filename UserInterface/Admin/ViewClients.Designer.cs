@@ -30,7 +30,6 @@
 		{
 			components = new System.ComponentModel.Container();
 			ClientsDataGridView = new DataGridView();
-			customerBindingSource = new BindingSource(components);
 			nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 			phoneNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 			mealIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -39,6 +38,7 @@
 			lunchCounterDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 			dinnerCounterDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
 			createdBy = new DataGridViewTextBoxColumn();
+			customerBindingSource = new BindingSource(components);
 			((System.ComponentModel.ISupportInitialize)ClientsDataGridView).BeginInit();
 			((System.ComponentModel.ISupportInitialize)customerBindingSource).BeginInit();
 			SuspendLayout();
@@ -57,10 +57,6 @@
 			ClientsDataGridView.RowTemplate.Height = 25;
 			ClientsDataGridView.Size = new Size(861, 660);
 			ClientsDataGridView.TabIndex = 0;
-			// 
-			// customerBindingSource
-			// 
-			customerBindingSource.DataSource = typeof(Models.Customer);
 			// 
 			// nameDataGridViewTextBoxColumn
 			// 
@@ -120,6 +116,10 @@
 			createdBy.Name = "createdBy";
 			createdBy.ReadOnly = true;
 			// 
+			// customerBindingSource
+			// 
+			customerBindingSource.DataSource = typeof(Models.Customer);
+			// 
 			// ViewClients
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -127,6 +127,7 @@
 			BackColor = Color.AliceBlue;
 			ClientSize = new Size(885, 684);
 			Controls.Add(ClientsDataGridView);
+			MaximizeBox = false;
 			Name = "ViewClients";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Clients";

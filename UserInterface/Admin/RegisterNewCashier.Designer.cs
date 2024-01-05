@@ -97,6 +97,7 @@
 			Controls.Add(nameBox);
 			Controls.Add(passwordLabel);
 			Controls.Add(nameLabel);
+			MaximizeBox = false;
 			Name = "RegisterNewCashier";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "AddCashierPage";

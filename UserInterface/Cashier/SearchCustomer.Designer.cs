@@ -90,6 +90,7 @@
 			Controls.Add(searchButton);
 			Controls.Add(phoneBox);
 			Controls.Add(phoneLabel);
+			MaximizeBox = false;
 			Name = "SearchCustomer";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Cashier Page";

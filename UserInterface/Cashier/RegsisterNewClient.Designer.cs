@@ -120,6 +120,7 @@
 			Controls.Add(nameBox);
 			Controls.Add(phoneLabel);
 			Controls.Add(nameLabel);
+			MaximizeBox = false;
 			Name = "RegsisterNewClient";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "userRegistrationPage";

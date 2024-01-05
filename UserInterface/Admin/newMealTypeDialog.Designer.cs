@@ -113,7 +113,9 @@
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
+			AutoSize = true;
 			ClientSize = new Size(327, 185);
+			ControlBox = false;
 			Controls.Add(DinnerCB);
 			Controls.Add(LunchCB);
 			Controls.Add(BFCB);

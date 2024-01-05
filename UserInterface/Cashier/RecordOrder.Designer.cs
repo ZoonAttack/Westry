@@ -30,7 +30,7 @@
 		{
 			nameLabel = new Label();
 			subCountLabel = new Label();
-			w = new Label();
+			DinnerRemLabel = new Label();
 			launchRemLabel = new Label();
 			breakfastRemLabel = new Label();
 			phoneLabel = new Label();
@@ -48,6 +48,7 @@
 			BFRenewBTn = new Button();
 			LunchRenewBTN = new Button();
 			DinnerRenewBTN = new Button();
+			mealTypeLBL = new Label();
 			SuspendLayout();
 			// 
 			// nameLabel
@@ -71,15 +72,15 @@
 			subCountLabel.TabIndex = 1;
 			subCountLabel.Text = "عدد مرات الاشتراك";
 			// 
-			// w
+			// DinnerRemLabel
 			// 
-			w.AutoSize = true;
-			w.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-			w.Location = new Point(99, 135);
-			w.Name = "w";
-			w.Size = new Size(182, 25);
-			w.TabIndex = 2;
-			w.Text = "وجبات العشاء المتبقيه";
+			DinnerRemLabel.AutoSize = true;
+			DinnerRemLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+			DinnerRemLabel.Location = new Point(99, 135);
+			DinnerRemLabel.Name = "DinnerRemLabel";
+			DinnerRemLabel.Size = new Size(182, 25);
+			DinnerRemLabel.TabIndex = 2;
+			DinnerRemLabel.Text = "وجبات العشاء المتبقيه";
 			// 
 			// launchRemLabel
 			// 
@@ -268,12 +269,23 @@
 			DinnerRenewBTN.UseVisualStyleBackColor = false;
 			DinnerRenewBTN.Click += DinnerRenewBTN_Click;
 			// 
+			// mealTypeLBL
+			// 
+			mealTypeLBL.AutoSize = true;
+			mealTypeLBL.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			mealTypeLBL.Location = new Point(523, 25);
+			mealTypeLBL.Name = "mealTypeLBL";
+			mealTypeLBL.Size = new Size(110, 25);
+			mealTypeLBL.TabIndex = 20;
+			mealTypeLBL.Text = "نوع الاشتراك";
+			// 
 			// RecordOrder
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.AliceBlue;
 			ClientSize = new Size(1314, 694);
+			Controls.Add(mealTypeLBL);
 			Controls.Add(DinnerRenewBTN);
 			Controls.Add(LunchRenewBTN);
 			Controls.Add(BFRenewBTn);
@@ -291,9 +303,10 @@
 			Controls.Add(phoneLabel);
 			Controls.Add(breakfastRemLabel);
 			Controls.Add(launchRemLabel);
-			Controls.Add(w);
+			Controls.Add(DinnerRemLabel);
 			Controls.Add(subCountLabel);
 			Controls.Add(nameLabel);
+			MaximizeBox = false;
 			Name = "RecordOrder";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Record Order Page";
@@ -308,7 +321,7 @@
 
 		private Label nameLabel;
         private Label subCountLabel;
-        private Label w;
+        private Label DinnerRemLabel;
         private Label launchRemLabel;
         private Label breakfastRemLabel;
         private Label phoneLabel;
@@ -326,5 +339,6 @@
 		private Button BFRenewBTn;
 		private Button LunchRenewBTN;
 		private Button DinnerRenewBTN;
+		private Label mealTypeLBL;
 	}
 }

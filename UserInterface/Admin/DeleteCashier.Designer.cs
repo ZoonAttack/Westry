@@ -71,6 +71,7 @@
 			Controls.Add(deleteCashierButton);
 			Controls.Add(cashierNameLabel);
 			Controls.Add(cashierNameTextBox);
+			MaximizeBox = false;
 			Name = "DeleteCashierPage";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Delete Cashier";

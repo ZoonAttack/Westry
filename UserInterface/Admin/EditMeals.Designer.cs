@@ -270,6 +270,7 @@
 			Controls.Add(newMealBTN);
 			Controls.Add(mealLBL);
 			Controls.Add(ChooseMealComboBox);
+			MaximizeBox = false;
 			Name = "EditMeals";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "EditMeals";

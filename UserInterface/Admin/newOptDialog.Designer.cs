@@ -81,6 +81,7 @@
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(327, 157);
+			ControlBox = false;
 			Controls.Add(label1);
 			Controls.Add(optNameTB);
 			Controls.Add(CancelBTN);
