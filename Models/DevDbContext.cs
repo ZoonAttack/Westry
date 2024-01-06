@@ -52,7 +52,11 @@ public partial class DevDbContext : DbContext
                 .HasColumnName("user_name");
         });
 
-        modelBuilder.Entity<Cashier>(entity =>
+		modelBuilder.Entity<Admin>().HasData(
+			new Admin { AdminId = 1, UserName ="admin", Password="123"}
+			);
+
+		modelBuilder.Entity<Cashier>(entity =>
         {
 
             entity.HasKey(e => e.Password);
@@ -75,8 +79,8 @@ public partial class DevDbContext : DbContext
 				.HasColumnName("LoggedOut_time");
 		});
 
-        modelBuilder.Entity<Cashier>().HasData(
-            new Cashier { UserName = "test", Password = "123" }
+		modelBuilder.Entity<Cashier>().HasData(
+            new Cashier { UserName = "test", Password = "123",ordersServied = 0 }
             );
 
         modelBuilder.Entity<Customer>(entity =>
@@ -124,9 +128,9 @@ public partial class DevDbContext : DbContext
 		});
 
         modelBuilder.Entity<Meal>().HasData(
-            new Meal { MealId = 1, Name = "نظام الوجبه الواحده"},
-            new Meal { MealId = 2, Name = "نظام الوجبتين"},
-            new Meal { MealId = 3, Name = "نظام الثلاث وجبات"}
+            new Meal { MealId = 1, Name = "نظام الوجبه الواحده", hasBreakfast = false, hasLunch = true, hasDinner = false },
+            new Meal { MealId = 2, Name = "نظام الوجبتين", hasBreakfast = true, hasLunch = true, hasDinner = false },
+            new Meal { MealId = 3, Name = "نظام الثلاث وجبات", hasBreakfast = true, hasLunch = true, hasDinner = true }
             );
 
         modelBuilder.Entity<MealLog>(entity =>
@@ -164,6 +168,15 @@ public partial class DevDbContext : DbContext
 				.HasConstraintName("FK_BreakFastOptions_Meals");
 		});
 
+		modelBuilder.Entity<BreakFastOption>().HasData(
+			new BreakFastOption { optionID = 1, optionName = "عصير -برش مربه- برشن عسل -نوع جبنه - بيضه مسلوقه -معيش الطازج", MealId = 2 },
+			new BreakFastOption { optionID = 2, optionName = "اختيار اي 3 سندوتشات من فيل الفينو", MealId = 2 },
+			new BreakFastOption { optionID = 3, optionName = "قطعتين من الباتيه او الكرواسون مع الشاي او النسكافيه", MealId = 2 },
+			new BreakFastOption { optionID = 4, optionName = "عصير -برش مربه- برشن عسل -نوع جبنه - بيضه مسلوقه -معيش الطازج", MealId = 3 },
+			new BreakFastOption { optionID = 5, optionName = "اختيار اي 3 سندوتشات من فيل الفينو", MealId = 3 },
+			new BreakFastOption { optionID = 6, optionName = "قطعتين من الباتيه او الكرواسون مع الشاي او النسكافيه", MealId = 3 }
+			);
+
 		modelBuilder.Entity<LunchOption>(entity =>
 		{
 			entity.HasKey(e => e.optionID);
@@ -178,6 +191,23 @@ public partial class DevDbContext : DbContext
 				.HasConstraintName("FK_LunchOptions_Meals");
 		});
 
+		modelBuilder.Entity<LunchOption>().HasData(
+			new LunchOption { optionID = 1, optionName = "وجبة البوفتيك والأرز والبوم فريت", MealId = 1 },
+			new LunchOption { optionID = 2, optionName = "وجبة الاستربس مع الأرز والبوم فريت", MealId = 1 },
+			new LunchOption { optionID = 3, optionName = "وجبة الكفته والأرز والبوم الفريت", MealId = 1 },
+			new LunchOption { optionID = 4, optionName = "وجبة الفراخ المشوية مع الأرز والبوم فريت", MealId = 1 },
+
+			new LunchOption { optionID = 5, optionName = "وجبة البوفتيك والأرز والبوم فريت", MealId = 2 },
+			new LunchOption { optionID = 6, optionName = "وجبة الاستربس مع الأرز والبوم فريت", MealId = 2 },
+			new LunchOption { optionID = 7, optionName = "وجبة الكفته والأرز والبوم الفريت", MealId = 2 },
+			new LunchOption { optionID = 8, optionName = "وجبة الفراخ المشوية مع الأرز والبوم فريت", MealId = 2 },
+
+			new LunchOption { optionID = 9, optionName = "وجبة البوفتيك والأرز والبوم فريت", MealId = 3 },
+			new LunchOption { optionID = 10, optionName = "وجبة الاستربس مع الأرز والبوم فريت", MealId = 3 },
+			new LunchOption { optionID = 11, optionName = "وجبة الكفته والأرز والبوم الفريت", MealId = 3 },
+			new LunchOption { optionID = 12, optionName = "وجبة الفراخ المشوية مع الأرز والبوم فريت", MealId = 3 }
+			);
+
 		modelBuilder.Entity<DinnerOption>(entity =>
 		{
 			entity.HasKey(e => e.optionID);
@@ -191,6 +221,13 @@ public partial class DevDbContext : DbContext
 				.HasForeignKey(d => d.MealId)
 				.HasConstraintName("FK_DinnerOptions_Meals");
 		});
+
+		modelBuilder.Entity<DinnerOption>().HasData(
+			new DinnerOption { optionID = 1, optionName = "( البيتزا): مرجريتا -- او بيتزا الخضار -- او بيتزا الهوت دوج", MealId = 3 },
+			new DinnerOption { optionID = 2, optionName = "البرجر مع الكلوسلو سلاط والبوم فريت", MealId = 3 },
+			new DinnerOption { optionID = 3, optionName = "4 سندوتشات من فيل افينو", MealId = 3 },
+			new DinnerOption { optionID = 4, optionName = "قطع 3من دجاج الاستربس مع البوم فريت", MealId = 3 }
+			);
 
 		OnModelCreatingPartial(modelBuilder);
     }
