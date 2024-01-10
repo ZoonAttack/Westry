@@ -1,4 +1,8 @@
-# Westry
+# Subscription managment system for a resturant
+
+This System was done as a project for The Software Engineering Course and it took about 1 month.
+
+
 # VERY IMPORTANT DATABASE INFORMATION
 
 Create a new Server and make sure that it's name is "localhost"
@@ -29,3 +33,8 @@ And Click Enter
 This will create all the tables and even the database
 
 You just have to create the server itself and name it localhost as in the first step.
+
+# System Requirements Specification pdf
+
+[System Requirements Specification.pdf](https://github.com/ZoonAttack/Westry/files/13884223/System.Requirements.Specification.pdf)
+
